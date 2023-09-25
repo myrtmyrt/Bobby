@@ -15,9 +15,13 @@
     </head>
     <body class="antialiased">
         <div class="flex h-screen justify-center items-center gap-6">
-            Myrtille
-            <button class="bg-red-50 rounded-full">Connection</button>
+            @if(session("user"))
+                {{ session("user")['firstName'] }} {{ session("user")['lastName'] }} -
+                {{ session("user")["assos"][0]["user_role"]["name"] }} @ {{ session("user")["assos"][0]["shortname"] }}
+                <a href="/logout" class="bg-red-50 rounded-full">déconnexion</a>
+            @else
+                <a href="/login" class="bg-red-50 rounded-full">connexion</a>
+            @endif
         </div>
-
     </body>
 </html>
