@@ -16,11 +16,19 @@
     <body class="antialiased">
         <div class="flex h-screen justify-center items-center gap-6">
             @if(session("user"))
-                {{ session("user")['firstName'] }} {{ session("user")['lastName'] }} -
-                {{ session("user")["assos"][0]["user_role"]["name"] }} @ {{ session("user")["assos"][0]["shortname"] }}
-                <a href="/logout" class="bg-red-50 rounded-full">déconnexion</a>
+                {{--@dump(session("user"))--}}
+
+                <b>{{ session("user")['firstName'] }} {{ session("user")['lastName'] }}</b> <br>
+
+                @for ($i = 0; $i < count(session("user")["assos"]); $i++)
+                    {{  session("user")["assos"][$i]["user_role"]["name"] }} @ {{ session("user")["assos"][$i]["shortname"] }}
+                    <br>
+                @endfor
+
+                {{--{{ session("user")["assos"][0]["user_role"]["name"] }} @ {{ session("user")["assos"][0]["shortname"] }}--}}
+                <a href="/logout" class="bg-red-50 rounded-full p-2">Déconnexion</a>
             @else
-                <a href="/login" class="bg-red-50 rounded-full">connexion</a>
+                <a href="/login" class="bg-red-50 rounded-full p-2">Connexion</a>
             @endif
         </div>
     </body>
