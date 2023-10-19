@@ -33,9 +33,15 @@ usecase "Voir le materiel preté par son asso" as US14
 rectangle Acteurs{
 :Membre: as m
 :Responsable: as r
+}
+
+rectangle Acteurs2{
 :Pole: as p
 :BDE: as b
 }
+
+Acteurs2 --|> r 
+note left of Acteurs2 : Acteurs2 herite de Responsable pour toutes les assos \n dont ils sont responsables
 
 rectangle Repondants{
 :Membre: as m2
@@ -56,8 +62,7 @@ r --> US7
 
 r --> US8 
 US8 --> m2
-p --> US8 
-b --> US8 
+
 US9 --> r2
 US10 <-- r 
 r --> US11
