@@ -1,0 +1,70 @@
+@startuml
+rectangle Commun {
+:Utilisateur:
+:Membre: 
+:Responsable:
+:Pole:
+:BDE:
+}
+
+usecase "Se connecter" as US1
+usecase "Se deconnecter" as US2
+usecase "Rechercher du materiel" as US3
+
+left to right direction
+Commun --> US1
+Commun --> US2
+Commun --> US3
+
+usecase "Voir la liste du materiel de son asso" as US4
+usecase "Ajouter du materiel" as US5
+usecase "Modifier du materiel" as US6
+usecase "Supprimer du materiel" as US7
+usecase "Donner des acces restreints" as US8
+usecase "Faire une demande d'emprunt" as US9
+usecase "Voir l'historique des emprunts" as US10
+usecase "Repondre aux demandes d'emprunts" as US11
+usecase "Voir les emprunts en cours" as US12
+usecase "Demander des acces" as US13
+
+rectangle 1{
+:Membre: as m
+:Responsable: as r
+:Pole: as p
+:BDE: as b
+}
+
+rectangle 2{
+:Membre: as m2
+:Responsable: as r2
+:Pole: as p2
+:BDE: as b2
+}
+
+left to right direction
+
+Commun --> US4
+r --> US9 
+r --> US5 
+
+r --> US6 
+
+r --> US7 
+
+r --> US8 
+US8 --> m2
+p --> US8 
+b --> US8 
+US9 --> r2
+US10 <-- r 
+r --> US11
+US12 <-- r
+m --> US13
+US13 -->r2
+US13 -->b2
+US13 -->p2
+US11 --> r2
+
+@enduml
+
+
