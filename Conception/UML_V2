@@ -1,0 +1,44 @@
+@startuml
+
+class Item{
+state : char,
+description : char
+}
+
+class Class{
+name : char,
+quantity : int,
+disponibility : bool
+
+}
+
+class Category{
+name : char,
+
+}
+
+class Unavailability{
+start_date : date,
+end_date : date,
+}
+
+class Borrow_Request{
+organisation : char,
+request_date : datetime,
+debut_date : datetime,
+end_date : datetime,
+state : char,
+comment : char
+}
+
+
+Class "1..1" <|- "1..*" Item : "belong to" < 
+Borrow_Request "1..1" -- "0..*" Class : "correspond to" >
+Class "1..*" -- "0..*" Category : "belong to" <
+Unavailability "1..1" -- "0..*" Item : "is not available" <
+Unavailability "1..1" - "0..*" Class : "is not available" <
+
+@enduml
+
+
+
