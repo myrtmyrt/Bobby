@@ -1,0 +1,69 @@
+
+@startuml
+
+enum Role{
+    membre
+    responsable
+    pole
+    bde
+}
+
+enum State{
+    neuf
+    tresBon
+    bon
+    moyen
+    mauvais
+    tresMauvais
+}
+
+class TemporaryAccess{
+    user: string
+    asso: string
+    role: Role
+    semester: string
+}
+
+class Item{
+id : uuid
+state : State
+}
+
+class Class{
+name : char
+description : string
+private : bool
+}
+
+class Category{
+name : string
+
+}
+
+class Unavailability{
+start_date : date
+end_date : date
+}
+
+class Borrow_Request{
+organisation : string,
+request_date : datetime,
+debut_date : datetime,
+end_date : datetime,
+state : string,
+comment : string
+}
+
+class inventory{
+    user: string
+    asso: string
+    date: date
+}
+
+Class "1..1" <|- "1..*" Item : "belong to" < 
+Borrow_Request "1..1" -- "0..*" Class : "correspond to" >
+Class "1..*" -- "0..*" Category : "belong to" <
+Unavailability "1..1" -- "0..*" Item : "is not available" <
+
+
+@enduml
