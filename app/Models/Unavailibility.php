@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TemporaryAccess extends Model
+class Unavailibility extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "user",
-        "state",
+        "start_date",
         "end_date"
     ];
 
     protected $casts = [
+        "start_date" => "datetime",
         "end_date" => "datetime"
     ];
 
-    public function association()
+    public function item()
     {
-        return $this->belongsTo('App\Models\Association');
+        return $this->hasMany('App\Models\Item');
     }
 }

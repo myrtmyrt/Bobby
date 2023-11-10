@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TemporaryAccess extends Model
+class Inventory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         "user",
-        "state",
-        "end_date"
+        "date"
     ];
 
-    protected $casts = [
-        "end_date" => "datetime"
+    protected $casts =[
+        "date" => "datetime"
     ];
 
     public function association()

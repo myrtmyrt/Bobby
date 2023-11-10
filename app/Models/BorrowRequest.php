@@ -14,7 +14,7 @@ class BorrowRequest extends Model
         "start_date",
         "end_date",
         "state",
-        "comment",
+        "comment"
     ];
 
     protected $casts = [
@@ -22,4 +22,19 @@ class BorrowRequest extends Model
         "start_date" => "datetime",
         "end_date" => "datetime"
     ];
+
+    public function item()
+    {
+        return $this->hasMany('App\Models\Item');
+    }
+
+    public function borrower(): MorphToMany
+    {
+        return $this->morphedByMany(Association::class, 'asso'); // ca doit pas etre ca??
+    }
+
+    public function lender(): MorphToMany
+    {
+        return $this->morphedByMany(Association::class, 'asso');// ca doit pas etre ca??
+    }
 }
