@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class ItemClass extends Model
@@ -16,13 +17,13 @@ class ItemClass extends Model
         "private"
     ];
 
-    public function item()
+    public function item() : HasMany
     {
-        return $this->hasMany('App\Models\Item');
+        return $this->hasMany(Item::class, 'class_id');
     }
 
-    public function class_categories(): MorphToMany
+    public function categories(): MorphToMany
     {
-        return $this->morphToMany(ClassCategory::class, 'class_category');
+        return $this->hasMany(ClassCategory::class, 'class_id');
     }
 }

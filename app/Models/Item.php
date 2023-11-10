@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Item extends Model
 {
@@ -16,29 +18,29 @@ class Item extends Model
 
     protected $keyType = "uuid";
 
-    public function association()
+    public function association() : BelongsTo
     {
-        return $this->belongsTo('App\Models\Association');
+        return $this->belongsTo(Association::class, 'asso_id');
     }
 
-    public function unavailibility()
+    public function unavailibility() : BelongsTo
     {
-        return $this->belongsTo('App\Models\Unavailibility');
+        return $this->belongsTo(Unavailibility::class, 'unavailibility_id');
     }
 
-    public function itemClass()
+    public function itemClass(): BelongsTo
     {
-        return $this->belongsTo('App\Models\ItemClass');
+        return $this->belongsTo(ItemClass::class, 'class_id');
     }
 
-    public function request()
+    public function request(): HasMany
     {
-        return $this->belongsTo('App\Models\BorrowRequest');
+        return $this->hasMany(BorrowRequest::class, 'item_id');
     }
 
-    public function item_condition_histories(): MorphToMany
+    public function conditions(): HasMany
     {
-        return $this->morphToMany(ItemConditionHistory::class, 'item_condition_history');
+        return $this->hasMany(ConditionHistory::class, 'item_id');
     }
 
 }

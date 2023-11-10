@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Unavailibility extends Model
 {
@@ -19,8 +20,8 @@ class Unavailibility extends Model
         "end_date" => "datetime"
     ];
 
-    public function item()
+    public function item() : HasMany
     {
-        return $this->hasMany('App\Models\Item');
+        return $this->hasMany(Item::class, 'unavailibility_id');
     }
 }

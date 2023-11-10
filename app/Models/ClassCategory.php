@@ -4,19 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ClassCategory extends Model
 {
     use HasFactory;
 
-    public function categories(): MorphToMany
+    public function category(): BelongsTo
     {
-        return $this->morphedByMany(Category::class, 'class_category');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function classes(): MorphToMany
+    public function class(): BelongsTo
     {
-        return $this->morphedByMany(ItemClass::class, 'class_category');
+        return $this->belongsTo(ItemClass::class, 'class_id');
     }
 
 }

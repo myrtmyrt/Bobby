@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('condition_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('item_id')->constrained();
             $table->string('condition');
             $table->datetimes('date');
             $table->timestamps();

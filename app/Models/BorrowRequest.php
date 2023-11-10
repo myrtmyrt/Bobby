@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BorrowRequest extends Model
 {
@@ -23,18 +25,18 @@ class BorrowRequest extends Model
         "end_date" => "datetime"
     ];
 
-    public function item()
+    public function item() : HasMany
     {
-        return $this->hasMany('App\Models\Item');
+        return $this->hasMany(Item::class,'item_id');
     }
 
-    public function borrower(): MorphToMany
+    public function borrower(): BelongsTo
     {
-        return $this->morphedByMany(Association::class, 'asso'); // ca doit pas etre ca??
+        return $this->belongsTo(Association::class, 'from');
     }
 
-    public function lender(): MorphToMany
+    public function lender(): BelongsTo
     {
-        return $this->morphedByMany(Association::class, 'asso');// ca doit pas etre ca??
+        return $this->belongsTo(Association::class, 'to');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ConditionHistory extends Model
 {
@@ -18,8 +19,8 @@ class ConditionHistory extends Model
         "date" => "datetime"
     ];
 
-    public function item_condition_histories(): MorphToMany
+    public function item(): BelongsTo
     {
-        return $this->morphToMany(ItemConditionHistory::class, 'item_condition_history');
+        return $this->belongsTo(Item::class, 'item_id');
     }
 }

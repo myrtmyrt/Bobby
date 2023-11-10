@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -13,9 +14,9 @@ class Category extends Model
         "name"
     ];
 
-    public function class_categories(): MorphToMany
+    public function classes(): HasMany
     {
-        return $this->morphToMany(ClassCategory::class, 'class_category');
+        return $this->hasMany(ClassCategory::class, 'category_id');
     }
 
 }
