@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('item_id')->constrained();
             $table->string('condition');
-            $table->datetimes('date');
+            $table->datetime('date');
             $table->timestamps();
         });
     }

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('from')->constrained('associations');
             $table->foreignId('to')->constrained('associations');
-            $table->datetimes('request_date');
-            $table->datetimes('debut_date');
-            $table->datetimes('end_date');
+            $table->datetime('request_date');
+            $table->datetime('debut_date');
+            $table->datetime('end_date');
             $table->string('state');
             $table->text('comment');
             $table->timestamps();

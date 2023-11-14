@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('asso_id')->constrained('associations');
             $table->string('user');
-            $table->datetimes('end_date');
+            $table->datetime('end_date');
             $table->string('state');
             $table->timestamps();
         });

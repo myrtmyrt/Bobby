@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('unavailibilities', function (Blueprint $table) {
             $table->id();
-            $table->datetimes('start_date');
-            $table->datetimes('end_date');
+            $table->datetime('start_date');
+            $table->datetime('end_date');
             $table->timestamps();
         });
     }
