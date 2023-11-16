@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Controllers\LoginController;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class connexion
+class Connexion
 {
     /**
      * Handle an incoming request.
@@ -15,9 +16,9 @@ class connexion
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(session('user') != null){
+        if(session()->has('user')){
             return $next($request);
         }
-        return redirect('/login');
+        return redirect()->route("login");
     }
 }
