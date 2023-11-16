@@ -14,9 +14,18 @@
         <!-- Styles -->
         @vite('resources/css/app.css')
     </head>
-    <div class="flex w-full h-screen justify-center items-center">
+    <div <--!class="flex w-full h-screen justify-center items-center">
         <h1 class="text-center">HOME</h1>
     </div>
+
+<div>
+    <ul>
+        <li>  <a href="/materiel">Materiel</a> </li>
+        <li>  <a href="/inventaire">Inventaire</a> </li>
+        <li>  <a href="/emprunts">Mes emprunts</a> </li>
+        <li>  <a href="/asso">Mon asso</a> </li>
+    </ul>
+</div>
 
 
 </html>
