@@ -13,15 +13,12 @@ class Item extends Model
 
     protected $fillable = [
         "description",
-        "state"
+        "state",
+        "mono_item",
+        "quantity"
     ];
 
     protected $keyType = "uuid";
-
-    public function association() : BelongsTo
-    {
-        return $this->belongsTo(Association::class, 'asso_id');
-    }
 
     public function unavailibility() : BelongsTo
     {
@@ -35,7 +32,7 @@ class Item extends Model
 
     public function request(): HasMany
     {
-        return $this->hasMany(BorrowRequest::class, 'item_id');
+        return $this->hasMany(BorrowedItem::class, 'item_id');
     }
 
     public function conditions(): HasMany

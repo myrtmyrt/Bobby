@@ -14,7 +14,8 @@ class ItemClass extends Model
     protected $fillable = [
         "name",
         "description",
-        "private"
+        "private",
+        "asso_id"
     ];
 
     public function item() : HasMany
@@ -22,7 +23,7 @@ class ItemClass extends Model
         return $this->hasMany(Item::class, 'class_id');
     }
 
-    public function categories(): MorphToMany
+    public function categories():HasMany
     {
         return $this->hasMany(ClassCategory::class, 'class_id');
     }

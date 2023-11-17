@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->boolean("mono_item");
+            $table->integer("quantity");
             $table->foreignId('unavailibility_id')->nullable()->constrained();
             $table->foreignId('class_id')->constrained('item_classes');
-            $table->foreignId('asso_id')->constrained('associations');
-
             $table->text('description');
             $table->timestamps();
         });

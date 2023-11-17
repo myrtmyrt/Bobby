@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asso_id')->constrained('associations');
+            $table->string('asso_id');
             $table->string('user');
             $table->datetime('date');
             $table->timestamps();

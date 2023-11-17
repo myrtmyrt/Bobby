@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\ConditionEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,8 @@ class ConditionHistory extends Model
     ];
 
     protected $casts=[
-        "date" => "datetime"
+        "date" => "datetime",
+        "condition" => ConditionEnum::class
     ];
 
     public function item(): BelongsTo
