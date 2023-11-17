@@ -14,7 +14,8 @@ class TemporaryAccess extends Model
     protected $fillable = [
         "user",
         "state",
-        "end_date"
+        "end_date",
+        "asso_id"
     ];
 
     protected $casts = [
@@ -22,8 +23,4 @@ class TemporaryAccess extends Model
         "state" => RequestStateEnum::class
     ];
 
-    public function association() : BelongsTo
-    {
-        return $this->belongsTo(Association::class, 'asso_id');
-    }
 }

@@ -37,6 +37,6 @@ class BorrowRequest extends Model
 
     public function borrower(): HasMany
     {
-        return $this->hasMany(BorrowedItem::class,"borrow_id");
+        return $this->hasMany(BorrowedItem::class,'borrow_id');
     }
     }

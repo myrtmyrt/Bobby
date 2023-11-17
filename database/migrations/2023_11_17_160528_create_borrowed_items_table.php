@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer("quantity");
-            $table->foreignId('borrow_id')->constrained('BorrowRequest');
-            $table->foreignId('item_id')->constrained('Item');
+            $table->foreignId('borrow_id')->constrained('borrow_requests');
+            $table->foreignId('item_id')->constrained('items');
         });
     }
 
