@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('temporary_accesses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asso_id')->constrained('associations');
+            $table->string('asso_id');
             $table->string('user');
             $table->datetime('end_date');
-            $table->string('state');
+            $table->string('state')->default('En attente');
             $table->timestamps();
         });
     }

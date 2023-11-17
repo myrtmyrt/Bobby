@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('borrow_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from')->constrained('associations');
-            $table->foreignId('to')->constrained('associations');
+            $table->string('asso_id');
             $table->datetime('request_date');
             $table->datetime('debut_date');
             $table->datetime('end_date');
-            $table->string('state');
+            $table->string('state')->default("En attente");
             $table->text('comment');
             $table->timestamps();
         });

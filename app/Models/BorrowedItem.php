@@ -2,27 +2,26 @@
 
 namespace App\Models;
 
-use App\Enum\ConditionEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ConditionHistory extends Model
+class BorrowedItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-      "condition",
-      "date"
+    protected $fillable=[
+        "quantity"
     ];
 
-    protected $casts=[
-        "date" => "datetime",
-        "condition" => ConditionEnum::class
-    ];
-
-    public function item(): BelongsTo
+    public function borrow (): BelongsTo
     {
         return $this->belongsTo(Item::class, 'item_id');
     }
+
+    public function request (): BelongsTo
+    {
+        return $this->belongsTo(BorrowRequest::class, 'borrow_id');
+    }
 }
+

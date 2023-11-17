@@ -12,15 +12,11 @@ class Inventory extends Model
 
     protected $fillable = [
         "user",
-        "date"
+        "date",
+        "asso_id"
     ];
 
     protected $casts =[
         "date" => "datetime"
     ];
-
-    public function association() : BelongsTo
-    {
-        return $this->belongsTo(Association::class, 'asso_id');
-    }
 }

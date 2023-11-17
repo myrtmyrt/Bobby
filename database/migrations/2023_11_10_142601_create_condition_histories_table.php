@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('condition_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('item_id')->constrained();
-            $table->enum('condition',['Neuf','Tres bon', 'Bon','Moyen', 'Mauvais', 'Tres mauvais']);
+            $table->string('condition')->default('Bon');
             $table->datetime('date');
             $table->timestamps();
         });
