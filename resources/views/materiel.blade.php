@@ -20,7 +20,7 @@
 
 <div>
     @if($items != null)
-        {{--@dump($items)--}}
+        @dump($items)
 
     @endif
 
