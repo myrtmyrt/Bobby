@@ -47,66 +47,24 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
-<header class="bg-#FFFFFF text-#73747A p-3 flex items-center content-center justify-between">
-    <a href="/" class="flex-shrink-0 mr-6">
-        <img src="{{ asset('assets/logoBobby.png') }}" alt="Logo" class="h-12">
-    </a>
+<header class="bg-#FFFFFF text-#73747A p-4 flex items-center justify-between">
+    <div class="flex-shrink-0 mr-6">
+        <img src="{{ asset('assets/logoBobby.png') }}" alt="Logo" class="h-8">
+    </div>
     <nav class="flex items-center">
-        <div class="relative group">
-            <a href="/materiel" class="mr-4 hover:text-[#D90368]">Matériel</a>
-            <div class="absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">
-                <a href="/materiel/evenementiel" class="block px-4 py-2 hover:text-[#D90368]">Evènementiel</a>
-                <a href="/materiel/decoration" class="block px-4 py-2 hover:text-[#D90368]">Décoration</a>
-                <a href="/materiel/meubles" class="block px-4 py-2 hover:text-[#D90368]">Meubles</a>
-                <a href="/materiel/deguisements" class="block px-4 py-2 hover:text-[#D90368]">Déguisements</a>
-            </div>
-        </div>
+        <a href="/materiel" class="mr-4 hover:text-[#D90368]">Materiel</a>
+        <a href="/inventaire" class="mr-4 hover:text-[#D90368]">Inventaire</a>
         <a href="/emprunts" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
-        <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
-        @if (session("user"))
-            <!-- User is logged in, show logout button -->
-            <a href="/logout">
-                <button class="ml-4 w-8 h-8 bg-[#D90368] rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-white">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-                    </svg>
-                </button>
-            </a>
-        @else
-            <!-- User is not logged in, show login button -->
-            <a href="/login">
-                <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Connexion</button>
-            </a>
-        @endif
+        <a href="/asso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
+        <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded">Connexion</button>
+        <div class="ml-4 w-6 h-6 bg-[#D90368] rounded-full flex items-center justify-center">
+            <span class="text-white text-2xl material-icons-outlined">X</span>
+        </div>
+        <div class="ml-4 w-6 h-6 bg-[#D90368] rounded-full flex items-center justify-center">
+            <span class="text-white text-2xl material-icons-outlined">X</span>
+        </div>
     </nav>
 
+    <div class="ml-auto">
+    </div>
 </header>
-
-<script>
-    // JavaScript pour afficher/cacher le sous-menu au survol
-    const group = document.querySelector('.group');
-    const subMenu = document.querySelector('.absolute');
-
-    let mouseTimer;
-
-    group.addEventListener('mouseover', function() {
-        clearTimeout(mouseTimer);
-        subMenu.classList.remove('hidden');
-    });
-
-    group.addEventListener('mouseleave', function() {
-        mouseTimer = setTimeout(() => {
-            subMenu.classList.add('hidden');
-        }, 200); // Délai en millisecondes avant de masquer le sous-menu
-    });
-
-    // Annuler le délai si la souris revient sur le sous-menu
-    subMenu.addEventListener('mouseover', function() {
-        clearTimeout(mouseTimer);
-    });
-
-    // Cacher le sous-menu s'il n'est pas survolé
-    subMenu.addEventListener('mouseleave', function() {
-        subMenu.classList.add('hidden');
-    });
-</script>
