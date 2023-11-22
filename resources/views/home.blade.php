@@ -79,36 +79,36 @@
     @include('.header')
     <h1 class="bg-custom-gray text-white text-center py-2">HOME</h1>
 
-    <div class="flex p-24">
+    <div class="bg-gray-100 flex p-12 items-center">
         <div class="flex-1 pr-8">
             <h2 class="text-2xl font-semibold mb-4">Qu’est-ce que Bobby?</h2>
             <p>Bobby est l’outil proposé par le SIMDE permettant aux associations de gérer leur matériel via un système d’inventaire.</p>
-            <p>Avec Bobby, profitez aussi du système d’emprunt. Vous avez besoin de matériel? Vérifiez d’abord qu’une autre asso ne le possède pas déjà!</p>
+            <p class="pb-8">Avec Bobby, profitez aussi du système d’emprunt. Vous avez besoin de matériel? Vérifiez d’abord qu’une autre asso ne le possède pas déjà!</p>
             <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded">Découvrir Bobby</button>
         </div>
 
-        <div class="flex-1">
-            <img src="chemin-vers-votre-image.jpg" alt="Image de Bobby" class="w-full h-auto rounded-md">
+        <div class="mx-auto w-1/2 p-0 m-0">
+            <img src="{{ asset('assets/image_logique.png') }}" class="w-full touch-auto h-auto rounded-md p-0 m-0">
         </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-8 p-28">
-        <div class="bg-gray-100 p-6 rounded-md">
+    <div class="grid grid-cols-2 gap-16 p-28">
+        <div class="bg-gray-100 p-6 rounded-md shadow-lg">
             <h2 class="text-lg font-semibold mb-4">Materiel</h2>
             <p>Dans cet onglet, retrouve tout le matériel disponible sur Bobby. Il correspond au matériel que les associations acceptent de prêter. Si tu souhaites réserver un item, appuie sur le bouton "emprunter" et remplis la feuille d'emprunt.</p>
         </div>
 
-        <div class="bg-gray-100 p-6 rounded-md">
+        <div class="bg-gray-100 p-6 rounded-md shadow-lg">
             <h2 class="text-lg font-semibold mb-4">Inventaire</h2>
             <p>Dans cet onglet, tu as accès à tout le matériel de ton association.</p>
         </div>
 
-        <div class="bg-gray-100 p-6 rounded-md">
+        <div class="bg-gray-100 p-6 rounded-md shadow-lg">
             <h2 class="text-lg font-semibold mb-4">Mes emprunts</h2>
             <p>Dans cet onglet, tu as accès à tout le matériel de ton association.</p>
         </div>
 
-        <div class="bg-gray-100 p-6 rounded-md">
+        <div class="bg-gray-100 p-6 rounded-md shadow-lg">
             <h2 class="text-lg font-semibold mb-4">Inventaire</h2>
             <p>Dans cet onglet, tu as accès à tout le matériel de ton association.</p>
         </div>

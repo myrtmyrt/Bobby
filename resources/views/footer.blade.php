@@ -15,16 +15,7 @@
         color: #D90368;
     }
 
-    .logo {
-        position: absolute;
-        width: 84px;
-        height: 86px;
-        left: 57px;
-        top: 3px;
-        background: #D9D9D9;
-        border: 2px solid #73747A;
-        border-radius: 1px;
-    }
+
 
 </style>
 
@@ -51,19 +42,19 @@
         <div class="w-1/2 mr-8 text-center">
             <h2 class="text-xl font-bold mb-4">Le BDE</h2>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-salle.png" alt="Logo Salle" class="mr-2">
+                <img src="{{ asset('assets/Lieu.png') }}" alt="Logo Email" class="mr-2">
                 <p>Salle BF E101</p>
             </div>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-email.png" alt="Logo Email" class="mr-2">
+                <img src="{{ asset('assets/Mail.png') }}" alt="Logo Email" class="mr-2">
                 <p>bde@assos.utc.fr</p>
             </div>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-person.png" alt="Logo Person" class="mr-2">
+                <img src="{{ asset('assets/Facebook.png') }}" alt="Logo FB" class="mr-2">
                 <p>Roger Delacom</p>
             </div>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-bde.png" alt="Logo BDE" class="mr-2">
+                <img src="{{ asset('assets/Facebook.png') }}" alt="Logo BDE" class="mr-2">
                 <p>bde_utc</p>
             </div>
             <p class="mt-4"><a href="#">Contacter le BDE</a></p>
@@ -72,18 +63,17 @@
         <div class="w-1/2 text-center">
             <h2 class="text-xl font-bold mb-4">Le SIMDE</h2>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-salle.png" alt="Logo Salle" class="mr-2">
+                <img src="{{ asset('assets/Lieu.png') }}" alt="Logo Email" class="mr-2">
                 <p>Salle...</p>
             </div>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-email.png" alt="Logo Email" class="mr-2">
+                <img src="{{ asset('assets/Mail.png') }}" alt="Logo Email" class="mr-2">
                 <p>simde@assos.utc.fr</p>
             </div>
             <div class="flex items-center mb-2">
-                <img src="chemin-vers-logo-person.png" alt="Logo Person" class="mr-2">
+                <img src="{{ asset('assets/Facebook.png') }}" alt="Logo FB" class="mr-2">
                 <p>Jessy Mde</p>
             </div>
-            <p class="mt-4"><a href="#">Contacter le SIMDE</a></p>
         </div>
     </div>
     <br>
