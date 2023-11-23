@@ -12,19 +12,23 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-{{--    @vite('resources/css/app.css')--}}
+    @vite('resources/css/app.css')
 </head>
 <div>
 <h1 class="text-center">Materiel</h1>
 </div>
 
-{{--<div>--}}
+<div>
 {{--    @if($items != null)--}}
-{{--        --}}{{--@dump($items)--}}
+{{--        @dump($items)--}}
 
 {{--    @endif--}}
+        <ul>
+            @ <li></li>
+        </ul>
+        @dump($result)
 
-{{--</div>--}}
+</div>
 
 
 </html>
