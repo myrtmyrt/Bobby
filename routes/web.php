@@ -23,3 +23,4 @@ Route::get('/login', [LoginController::class, 'login'])->name("login");
 Route::get('/logout', [LoginController::class, 'logout'])->name("logout");
 Route::get('/', [HomeController::class, 'home'])->name("home");
 
+Route::get('/materiel/{name}', [\App\Http\Controllers\MaterielController::class, 'getOneByName'])->name("materiel");
