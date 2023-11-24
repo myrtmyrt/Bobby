@@ -18,7 +18,7 @@ class ItemClass extends Model
         "asso_id"
     ];
 
-    public function item() : HasMany
+    public function items() : HasMany
     {
         return $this->hasMany(Item::class, 'class_id');
     }
