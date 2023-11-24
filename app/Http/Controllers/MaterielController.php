@@ -10,18 +10,30 @@ use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
-    public function index(){
+   /* public function getAllClasses(){
 
         //$items = DB::table('items')->get();
-        $items = ItemClass::all();
+        $classes = ItemClass::all();
         $result = null;
-        return view('materiel', ['items' => $items, 'result' => $result]);
+        return view('materiel', ['classes' => $classes]);
     }
 
-    public function getOneByName($name){
+    public function getClassByName($name){
         //$result = ItemClass->where('name', 'like', '%'.$name.'%');
         $result = DB::table('item_classes')->where('name', 'like', '%'.$name.'%')->get();
         return view('materiel',  ['result' => $result]);
+    }
+
+    public function getAllItems(){
+        $items = Item::all();
+        return view('materiel', ['items' => $items]);
+    }*/
+
+    public function getAssoItems(Request $request){
+        $items = DB::table('item_classes')->where('item_classes.asso_id', '=', $request->asso_id)
+            ->join('items', 'items.class_id','=', 'item_classes.id');
+
+        return view('materiel', ['items' => $items]);
     }
 
 
