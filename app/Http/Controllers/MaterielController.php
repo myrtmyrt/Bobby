@@ -11,30 +11,26 @@ use Illuminate\Support\Facades\DB;
 class MaterielController extends Controller
 {
     public function getAllClasses(){
-
-        //$items = DB::table('items')->get();
         $classes = ItemClass::all();
         return view('materiel', ['classes' => $classes]);
     }
 
     public function getClassByName($name){
         //$result = ItemClass->where('name', 'like', '%'.$name.'%');
-        $result = DB::table('item_classes')->where('name', 'like', '%'.$name.'%')->get();
-        return view('materiel',  ['result' => $result]);
-    }
-
-    public function getAllItems(){
-        $items = Item::all();
-        return view('materiel', ['items' => $items]);
+        $result = ItemClass::where('name', 'like', '%'.$name.'%')->get();
+        return view('materiel',  ['classes' => $result]);
     }
 
     public function getAssoItems(Request $request){
-        $items = $request->input('asso_id');
-        /*$items = DB::table('item_classes')->where('item_classes.asso_id', '=', $asso)
-            ->join('items', 'items.class_id','=', 'item_classes.id');*/
-        \Log::info('toto');
-        return view('materiel', ['items' => $items]);
+        $asso = $request->input('asso_id');
+        $class_id = ItemClass::where('asso_id',$asso)->with('items')->get();
+        dd($class_id);
+        $item = new Item();
+        $result = $item->itemClass($class_id);
+        return view('materiel', ['items' => $result]);
     }
+
+    
 
 
 

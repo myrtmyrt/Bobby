@@ -1,3 +1,4 @@
+@props(['classes'=>null])
 <!DOCTYPE html>
 
 <html>
@@ -14,19 +15,33 @@
     <!-- Styles -->
     @vite('resources/css/app.css')
 </head>
-<div>
-<h1 class="text-center">Materiel</h1>
+<body>
+
+{{--
+@include('.header')
+--}}
+
+<h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
+
+
+<div class="flex justify-between items-center p-12">
+    <div class="flex">
+        <h2 class="bg-[#D90368]">Catégories</h2>
+        <h1 class="p-32">Faire une recherche</h1>
+    </div>
+
+    <div class="p-24">
+       {{-- <x-objet type="objet"></x-objet>
+        <x-objet type="objet"></x-objet>
+        <x-objet type="objet"></x-objet>--}}
+    </div>
 </div>
 
 <div>
-    @if(isset($classes))
         @dump($classes)
 
-    @endif
 
-    @if(isset($result))
-        @dump($result)
-    @endif
+
 
     {{--<input>
 
@@ -35,18 +50,14 @@
         <li>{{$item->description}}</li>
     @endforeach
     </ul>--}}
-    <form >
-        <input type="text" name="asso_id" id="asso_id" value="123">
-        <button type="button" onclick="getAssoItems()" >Récupérer asso_id</button>
+    <form method="post">
+        @csrf
+        <input type="text" name="asso_id" id="asso_id" value="" class="border border-red-700">
+        <button type="submit"  class="border border-red-500">Récupérer asso_id</button>
         </form>
-        @if(isset($items))
-            @dump($items)
-        @endif
 
-        <a href="">
-            <button></button>
-        </a>
 </div>
 
+</body>
 
 </html>
