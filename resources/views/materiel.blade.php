@@ -35,6 +35,13 @@
         <li>{{$item->description}}</li>
     @endforeach
     </ul>--}}
+    <form >
+        <input type="text" name="asso_id" id="asso_id" value="123">
+        <button type="button" onclick="getAssoItems()" >Récupérer asso_id</button>
+        </form>
+        @if(isset($items))
+            @dump($items)
+        @endif
 
 </div>
 

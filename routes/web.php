@@ -25,4 +25,4 @@ Route::get('/', [HomeController::class, 'home'])->name("home");
 Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAllClasses'])->name("materiel");
 
 Route::get('/materiel/{name}', [\App\Http\Controllers\MaterielController::class, 'getClassByName'])->name("materiel");
-/*Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel");*/
+Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel");
