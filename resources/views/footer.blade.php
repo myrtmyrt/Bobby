@@ -95,22 +95,21 @@
                 Contacter le BDE
             </button>
         </div>
-
-        <div class="w-1/2 text-center">
-            <h2 class="text-xl font-bold mb-4">Le SIMDE</h2>
-            <div class="flex items-center mb-2">
-                <img src="{{ asset('assets/Lieu.png') }}" alt="Logo Email" class="mr-2">
-                <p>Salle...</p>
-            </div>
-            <div class="flex items-center mb-2">
-                <img src="{{ asset('assets/Mail.png') }}" alt="Logo Email" class="mr-2">
-                <p>simde@assos.utc.fr</p>
-            </div>
-            <div class="flex items-center mb-2">
-                <img src="{{ asset('assets/Facebook.png') }}" alt="Logo FB" class="mr-2">
-                <p>Jessy Mde</p>
-            </div>
+        <div class="w-1/4  mb-5">
+            <h3 class="text-xl font-medium p-2 tracking-[.2em] pb-5 ml-6 ">Le SiMDE</h3>
+            <ul class="pt-4 mb-7">
+                <li><img src="{{ asset('assets/Lieu.png') }}" width=20px alt="Lieu-icon" class="inline mr-2 ">Salle ...</li>
+                <li><img src="{{ asset('assets/Mail.png') }}" width=20px alt="Mail-icon" class="inline mr-2 ">simde@assos.utc.fr</li>
+                <li><img src="{{ asset('assets/Facebook.png') }}" width=10px alt="Facebook-icon" class="inline mr-4 ">Jessy MDE</li>
+            </ul>
+            <button class=" hover:shadow-primary  hover:shadow font-medium transition-shadow w-full text-white py-2 px-4 mt-4 bg-primary rounded">
+                Contacter le SiMDE
+            </button>
         </div>
+
+    </div>
+    <div class="block text-center text-white text-sm">Le portail associatif de l’UTC a été développé et est maintenu par
+        le SiMDE (Service informatique de la Maison des étudiants) <br> © 2023 Bureau des étudiants de l’UTC
     </div>
 </footer>
 
