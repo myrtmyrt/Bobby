@@ -29,10 +29,10 @@ class MaterielController extends Controller
     }
 
     public function getAssoItems(Request $request){
-        $asso = $request->input('asso_id');
-        $items = DB::table('item_classes')->where('item_classes.asso_id', '=', $asso)
-            ->join('items', 'items.class_id','=', 'item_classes.id');
-
+        $items = $request->input('asso_id');
+        /*$items = DB::table('item_classes')->where('item_classes.asso_id', '=', $asso)
+            ->join('items', 'items.class_id','=', 'item_classes.id');*/
+        \Log::info('toto');
         return view('materiel', ['items' => $items]);
     }
 
