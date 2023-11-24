@@ -19,14 +19,22 @@
 </div>
 
 <div>
-   {{-- @if($items != null)
-        @dump($items)
+    {{--@if($classes != null)
+        @dump($classes)
 
     @endif--}}
 
-    @if($result)
+   {{-- @if($result)
         @dump($result)
-    @endif
+    @endif--}}
+
+    <input>
+
+        <ul>
+    @foreach($items as $item)
+        <li>{{$item->description}}</li>
+    @endforeach
+    </ul>
 
 </div>
 

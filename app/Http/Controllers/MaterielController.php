@@ -2,101 +2,40 @@
 
 namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
-
-use App\Models\Category;
-use App\Models\ClassCategory;
 use App\Models\Item;
 use App\Models\ItemClass;
-use App\Models\Materiel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
 class MaterielController extends Controller
 {
+   /* public function getAllClasses(){
 
-    public function getAllClasses(Request $request){
+        //$items = DB::table('items')->get();
         $classes = ItemClass::all();
-        return view('materiel', ['classes' => $classes, 'request'=>$request]);
+        $result = null;
+        return view('materiel', ['classes' => $classes]);
     }
 
-    public function getClassByName($name, Request $request){
+    public function getClassByName($name){
         //$result = ItemClass->where('name', 'like', '%'.$name.'%');
-        $result = ItemClass::where('asso_id', 'like', "%".$name."%")->get();
-        return view('materiel',  ['classes' => $result]);
+        $result = DB::table('item_classes')->where('name', 'like', '%'.$name.'%')->get();
+        return view('materiel',  ['result' => $result]);
     }
 
-    public function getClasses(Request $request) {
-        // if ?query, search by itemclass name
-        // if ?asso_id, return only classes from this asso
-
-        $query = $request->input('query');
-        $asso_id = $request->input('asso_id');
-
-        $classes = ItemClass::query();
-        if ($query) {
-            $classes = $classes->where('name', 'like', '%'.$query.'%');
-        }
-        if ($asso_id) {
-            $classes = $classes->where('asso_id', $asso_id);
-        }
-
-        return view('materiel', ['classes' => $classes->simplePaginate(9), 'request'=>$request]);
-    }
-
-    public function searchClassesByAsso(Request $request) {
-        $query = $request->input('query');
-        $result = ItemClass::where('asso_id', 'like', "%".$query."%")->get();
-        return view('materiel', ['classes' => $result]);
-    }
+    public function getAllItems(){
+        $items = Item::all();
+        return view('materiel', ['items' => $items]);
+    }*/
 
     public function getAssoItems(Request $request){
-        $asso = session("user")["assos"][0]["login"];
-        $class_id = ItemClass::where('asso_id',$asso)->with('items')->get();
-        return view('myAsso', ['items' => $class_id]);
+        $items = DB::table('item_classes')->where('item_classes.asso_id', '=', $request->asso_id)
+            ->join('items', 'items.class_id','=', 'item_classes.id');
+
+        return view('materiel', ['items' => $items]);
     }
 
-    public function getCategoryItems(Request $request){
-        $category_name= $request->input('category');
-        $category= Category::where('name',$category_name);
-        $classes= ClassCategory::where('category',$category)->get();
-//        dd($classes);
-        $item = new Item();
-        $result = $item->itemClass($classes);
-        return view('materiel', ['items' => $result]);
-    }
 
-    public function itemsAvailable($class_id){
-        $classes = new ItemClass();
-        $result = $classes->items($class_id)->whereNull('unavailibility');
-        return view('materiel', ['items'=> $result]);
-    }
 
-    public function create(Request $request){
-        return view('materiel', ['classes' => [], 'request' => $request]);
-
-    public function store(Request $request)
-    {
-        // Valider les données du formulaire
-        $validatedData = $request->validate([
-            'objectName' => 'required',
-            'objectPosition' => 'required',
-        ]);
-
-        $asso = session("user")["assos"][0]["login"];
-
-        // Créer un nouvel objet dans la base de données
-        $newObject = ItemClass::create([
-
-            'name' => $validatedData['objectName'],
-            'description' => $validatedData['objectPosition'],
-            'private' => False,
-            'asso_id' => $asso
-        ]);
-
-        // Rediriger ou effectuer toute autre action après l'ajout
-        return redirect()->back()->with('success', 'Objet ajouté avec succès');
-    }
 }
-
