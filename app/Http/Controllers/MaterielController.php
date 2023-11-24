@@ -12,13 +12,18 @@ class MaterielController extends Controller
 {
     public function index(){
 
-        $items = DB::table('items')->get();
-
-        return view('materiel', ['items' => $items]);
+        //$items = DB::table('items')->get();
+        $items = ItemClass::all();
+        $result = null;
+        return view('materiel', ['items' => $items, 'result' => $result]);
     }
 
     public function getOneByName($name){
+        //$result = ItemClass->where('name', 'like', '%'.$name.'%');
         $result = DB::table('item_classes')->where('name', 'like', '%'.$name.'%')->get();
         return view('materiel',  ['result' => $result]);
     }
+
+
+
 }
