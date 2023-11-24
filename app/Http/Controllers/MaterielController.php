@@ -29,7 +29,8 @@ class MaterielController extends Controller
     }
 
     public function getAssoItems(Request $request){
-        $items = DB::table('item_classes')->where('item_classes.asso_id', '=', $request->asso_id)
+        $asso = $request->input('asso_id');
+        $items = DB::table('item_classes')->where('item_classes.asso_id', '=', $asso)
             ->join('items', 'items.class_id','=', 'item_classes.id');
 
         return view('materiel', ['items' => $items]);
