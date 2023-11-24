@@ -19,14 +19,14 @@
 </div>
 
 <div>
-{{--    @if($items != null)--}}
-{{--        @dump($items)--}}
+   {{-- @if($items != null)
+        @dump($items)
 
-{{--    @endif--}}
-        <ul>
-            @ <li></li>
-        </ul>
+    @endif--}}
+
+    @if($result)
         @dump($result)
+    @endif
 
 </div>
 

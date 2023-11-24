@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
+
     public function getAllClasses(Request $request){
         $classes = ItemClass::all();
         return view('materiel', ['classes' => $classes, 'request'=>$request]);
@@ -72,11 +73,8 @@ class MaterielController extends Controller
         return view('materiel', ['items'=> $result]);
     }
 
-
     public function create(Request $request){
         return view('materiel', ['classes' => [], 'request' => $request]);
-    }
-
 
     public function store(Request $request)
     {
@@ -100,5 +98,5 @@ class MaterielController extends Controller
         // Rediriger ou effectuer toute autre action après l'ajout
         return redirect()->back()->with('success', 'Objet ajouté avec succès');
     }
-
 }
+
