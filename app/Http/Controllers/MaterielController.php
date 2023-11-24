@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
-   /* public function getAllClasses(){
+    public function getAllClasses(){
 
         //$items = DB::table('items')->get();
         $classes = ItemClass::all();
-        $result = null;
         return view('materiel', ['classes' => $classes]);
     }
 
@@ -27,7 +26,7 @@ class MaterielController extends Controller
     public function getAllItems(){
         $items = Item::all();
         return view('materiel', ['items' => $items]);
-    }*/
+    }
 
     public function getAssoItems(Request $request){
         $items = DB::table('item_classes')->where('item_classes.asso_id', '=', $request->asso_id)
