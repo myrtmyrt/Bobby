@@ -22,6 +22,4 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'login'])->name("login");
 Route::get('/logout', [LoginController::class, 'logout'])->name("logout");
 Route::get('/', [HomeController::class, 'home'])->name("home");
-Route::get('/materiel',function (){return view('materiel');});
-//Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'index'])->name("materiel");
 
