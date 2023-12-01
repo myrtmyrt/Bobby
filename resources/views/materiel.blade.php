@@ -42,7 +42,7 @@
         @dump($classes)
 --}}
 
-    @dump($request->session)
+{{--    @dump($request->session)--}}
 
     <div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
@@ -75,10 +75,10 @@
 
 
 
-    <form method="post" class="container mx-auto m-2">
+    <form method="get"  class="container mx-auto m-2" action="/materiel/search">
         @csrf
         <div class="flex items-center">
-            <input type="text" name="asso_id" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'association">
+            <input type="text" name="query" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'association">
             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
         </div>
     </form>
