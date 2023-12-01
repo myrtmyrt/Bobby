@@ -38,23 +38,51 @@
 </div>
 
 <div>
+{{--
         @dump($classes)
+--}}
+
+    @dump($request->session)
+
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
+
+        @if(count($classes) > 0)
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">ID</th>
+                    <th class="py-2 px-4 border-b">Nom</th>
+                    <th class="py-2 px-4 border-b">Asso_id</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($classes as $class)
+                    <tr class="text-center">
+                        <td class="py-2 px-4 border-b ">{{ $class->id }}</td>
+                        <td class="py-2 px-4 border-b">{{ $class->name }}</td>
+                        <td class="py-2 px-4 border-b">{{ $class->asso_id }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Aucun item trouvé.</p>
+        @endif
+    </div>
 
 
 
 
-    {{--<input>
 
-        <ul>
-    @foreach($items as $item)
-        <li>{{$item->description}}</li>
-    @endforeach
-    </ul>--}}
-    <form method="post">
+    <form method="post" class="container mx-auto m-2">
         @csrf
-        <input type="text" name="asso_id" id="asso_id" value="" class="border border-red-700">
-        <button type="submit"  class="border border-red-500">Récupérer asso_id</button>
-        </form>
+        <div class="flex items-center">
+            <input type="text" name="asso_id" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'association">
+            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
+        </div>
+    </form>
+
 
 </div>
 
