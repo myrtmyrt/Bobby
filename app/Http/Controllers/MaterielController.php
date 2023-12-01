@@ -38,7 +38,7 @@ class MaterielController extends Controller
             $classes = $classes->where('asso_id', $asso_id);
         }
 
-        return view('materiel', ['classes' => $classes->get()]);
+        return view('materiel', ['classes' => $classes->get(), 'request'=>$request]);
     }
 
     public function searchClassesByAsso(Request $request) {

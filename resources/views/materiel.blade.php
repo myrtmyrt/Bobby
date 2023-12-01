@@ -1,3 +1,4 @@
+@props(['classes'=>null])
 <!DOCTYPE html>
 
 <html>
@@ -12,11 +13,13 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-{{--    @vite('resources/css/app.css')--}}
+    @vite('resources/css/app.css')
 </head>
 <body>
 
+{{--
 @include('.header')
+--}}
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
@@ -28,13 +31,61 @@
     </div>
 
     <div class="p-24">
+       {{-- <x-objet type="objet"></x-objet>
         <x-objet type="objet"></x-objet>
-        <x-objet type="objet"></x-objet>
-        <x-objet type="objet"></x-objet>
+        <x-objet type="objet"></x-objet>--}}
     </div>
 </div>
 
-@include('.footer')
+<div>
+{{--
+        @dump($classes)
+--}}
+
+{{--    @dump($request->session)--}}
+
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
+
+        @if(count($classes) > 0)
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">ID</th>
+                    <th class="py-2 px-4 border-b">Nom</th>
+                    <th class="py-2 px-4 border-b">Asso_id</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($classes as $class)
+                    <tr class="text-center">
+                        <td class="py-2 px-4 border-b ">{{ $class->id }}</td>
+                        <td class="py-2 px-4 border-b">{{ $class->name }}</td>
+                        <td class="py-2 px-4 border-b">{{ $class->asso_id }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Aucun item trouvé.</p>
+        @endif
+    </div>
+
+
+
+
+
+    <form method="get"  class="container mx-auto m-2">
+        @csrf
+        <div class="flex items-center">
+            <input type="text" value="{{ $request->input('query') }}" name="query" id="item_name" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="item class name">
+            <input type="text" name="asso_id" id="asso_id" value="{{ $request->input('asso_id') }}" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="asso id">
+            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
+        </div>
+    </form>
+
+
+</div>
 
 </body>
 
