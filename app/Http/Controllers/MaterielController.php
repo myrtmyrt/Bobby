@@ -10,15 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class MaterielController extends Controller
 {
-    public function getAllClasses(){
+    public function getAllClasses(Request $request){
         $classes = ItemClass::all();
-        return view('materiel', ['classes' => $classes]);
+        return view('materiel', ['classes' => $classes, 'request'=>$request]);
     }
 
-    public function getClassByName($name){
+    public function getClassByName($name, Request $request){
         //$result = ItemClass->where('name', 'like', '%'.$name.'%');
         $result = ItemClass::where('name', 'like', '%'.$name.'%')->get();
-        return view('materiel',  ['classes' => $result]);
+        return view('materiel',  ['classes' => $result, 'request'=>$request]);
     }
 
     public function getAssoItems(Request $request){
@@ -30,7 +30,12 @@ class MaterielController extends Controller
         return view('materiel', ['items' => $result]);
     }
 
-    
+    public function getCategoryItems(Request $request){
+        $category= $request->input('category');
+
+    }
+
+
 
 
 
