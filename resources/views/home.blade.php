@@ -114,15 +114,28 @@
         </div>
     </div>
 
-    <section>
-        <div class="content p-4 px-12">
-            <h2 class="m-8 p-0 text-2xl ml-32">Besoin d'aide</h2>
-            <p class="m-8 p-0 text-base pt-12 pb-6">Nous sommes là pour répondre à toutes questions, contacte-nous sans hésitations dès que tu en as le besoin !
-                S’il s’agit d’une question sur la vie associative, ton BDE préféré sera ravi de t’aider.
-                Si tu souhaites signaler un bug ou si tu as une question informatique à propos des services numériques associatifs ou de ton association, ton SiMDE préféré sera ravi de t’aider.
-            </p>
+{{--    <section>--}}
+{{--        <div class="content p-4 px-12">--}}
+{{--            <h2 class="m-8 p-0 text-2xl ml-32">Besoin d'aide</h2>--}}
+{{--            <p class="m-8 p-0 text-base pt-12 pb-6">Nous sommes là pour répondre à toutes questions, contacte-nous sans hésitations dès que tu en as le besoin !--}}
+{{--                S’il s’agit d’une question sur la vie associative, ton BDE préféré sera ravi de t’aider.--}}
+{{--                Si tu souhaites signaler un bug ou si tu as une question informatique à propos des services numériques associatifs ou de ton association, ton SiMDE préféré sera ravi de t’aider.--}}
+{{--            </p>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+
+    <div class="bg-[#F16EAC] p-20 round shadow-inner">
+        <div class="flex flex-col ml-40 p-0 justify-around space-y-5   ">
+            <div class="text-2xl font-bold">
+                Besoin d'aide ?
+            </div>
+            <div > Nous sommes là pour répondre à toutes questions, contacte-nous sans hésitations dès que tu <br> en as le besoin ! </div>
+            <div>
+                S’il s’agit d’une <b>question sur la vie associative</b>, ton BDE préféré sera ravi de t’aider.<br>
+                Si tu souhaites signaler un bug ou si tu as une <b>question informatique</b> à propos des services <br> numériques  associatifs ou de ton association, ton SiMDE préféré sera ravi de t’aider.
+            </div>
         </div>
-    </section>
+    </div>
 
 
     @include('.footer')
