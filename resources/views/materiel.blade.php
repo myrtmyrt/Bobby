@@ -17,9 +17,9 @@
 </head>
 <body>
 
-{{--
+
 @include('.header')
---}}
+
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
@@ -84,8 +84,17 @@
         </div>
     </form>
 
+    <form method="post"  action="materiel/create" class="container mx-auto m-2">
+        @csrf
+        <div class="flex items-center">
+            <input type="text" name="itemName" id="item_name" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="item class name">
+            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
+        </div>
+    </form>
+
 
 </div>
+@include('.footer')
 
 </body>
 

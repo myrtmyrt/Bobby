@@ -53,9 +53,9 @@
     </a>
     <nav class="flex items-center">
         <a href="/materiel" class="mr-4 hover:text-[#D90368]">Materiel</a>
-        <a href="/inventaire" class="mr-4 hover:text-[#D90368]">Inventaire</a>
+{{--        <a href="/inventory" class="mr-4 hover:text-[#D90368]">Inventaire</a>--}}
         <a href="/emprunts" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
-        <a href="/asso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
+        <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
         @if (session("user"))
             <!-- User is logged in, show logout button -->
             <a href="/logout">
