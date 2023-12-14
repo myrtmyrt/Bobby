@@ -1,5 +1,5 @@
 @props(['classes'=>null])
-<!DOCTYPE html>
+        <!DOCTYPE html>
 
 <html>
 <head>
@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
     <!-- Styles -->
     @vite('resources/css/app.css')
@@ -32,65 +32,60 @@
 
 <div>
 
-    <form method="get"  class="container mx-auto m-2">
+    <form method="get" class="container mx-auto m-2">
         @csrf
         <div class="flex items-center">
-            <input type="text" value="{{ $request->input('query') }}" name="query" id="item_name" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="item class name">
-            <input type="text" name="asso_id" id="asso_id" value="{{ $request->input('asso_id') }}" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="asso id">
+            <input type="text" value="{{ $request->input('query') }}" name="query" id="item_name" value=""
+                   class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="item class name">
+            <input type="text" name="asso_id" id="asso_id" value="{{ $request->input('asso_id') }}"
+                   class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="asso id">
             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
         </div>
     </form>
 
-    <form method="post"  action="materiel/create" class="container mx-auto m-2">
+    <form method="post" action="materiel/create" class="container mx-auto m-2">
         @csrf
         <div class="flex items-center">
-            <input type="text" name="itemName" id="item_name" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="item class name">
+            <input type="text" name="itemName" id="item_name" value=""
+                   class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="item class name">
             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
         </div>
     </form>
-{{--
-        @dump($classes)
---}}
+    {{--
+            @dump($classes)
+    --}}
 
-{{--    @dump($request->session)--}}
+    {{--    @dump($request->session)--}}
 
     <div class="container mx-auto mt-8 px-32">
         <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
-
         @if(count($classes) > 0)
-            <table class="min-w-full bg-white border border-gray-300">
-                <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b">ID</th>
-                    <th class="py-2 px-4 border-b">Nom</th>
-                    <th class="py-2 px-4 border-b">Asso_id</th>
-                </tr>
-                </thead>
-                <tbody>
+            <div class="grid grid-cols-3">
                 @foreach($classes as $class)
-                    @include('components.objet', [
-                    'nom' => $class->id,
-                    'etat' => $class->name,
-                    'position' => $class->asso_id
-                    ])
-{{--                    <tr class="text-center">--}}
-{{--                        <td class="py-2 px-4 border-b ">{{ $class->id }}</td>--}}
-{{--                        <td class="py-2 px-4 border-b">{{ $class->name }}</td>--}}
-{{--                        <td class="py-2 px-4 border-b">{{ $class->asso_id }}</td>--}}
-{{--                    </tr>--}}
+                    <article>
+                        @include('components.objet', [
+                        'nom' => $class->id,
+                        'etat' => $class->name,
+                        'position' => $class->asso_id
+                        ])
+                    </article>
                 @endforeach
-                </tbody>
-            </table>
+            </div>
+            <div class="flex justify-between m-4">
+                <a
+                    href="?page={{ max(app('request')->input("page")-1, 1) }}"
+                    class="px-4 py-2 rounded border bg-white transition-all {{ app('request')->input("page") <= 1 ? "cursor-not-allowed text-zinc-500" : "hover:border-[#D90368] hover:text-[#D90368]" }}"
+                >
+                    Previous page
+                </a>
+                <a href="?page={{ app('request')->input("page")+1 }}" class="px-4 py-2 rounded border bg-white hover:border-[#D90368] hover:text-[#D90368] transition-all">Next page</a>
+            </div>
         @else
             <p>Aucun item trouvé.</p>
         @endif
     </div>
 
 
-
-
-
-</div>
 @include('.footer')
 
 </body>
