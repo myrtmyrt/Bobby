@@ -55,7 +55,7 @@
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
-<div class="px-12">
+<div class="px-12 py-6">
     <div class="flex justify-end">
         <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Faire mon inventaire</button>
         <button id="addObjectButton" class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter un objet</button>
@@ -83,8 +83,7 @@
 
 <div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg mx-auto">
-        <form action="/ajouter-objet" method="post">
-            @csrf
+        <form action="/create" method="post">
             <label for="objectName">Nom de l'objet:</label>
             <input type="text" name="objectName" id="objectName" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
