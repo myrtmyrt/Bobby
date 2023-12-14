@@ -32,7 +32,7 @@
 
 <div>
 
-    <div class="container">
+    <div class="container pt-12">
 
         <div class="flex">
             <div class="shadow-lg px-12">
@@ -42,7 +42,7 @@
                     <div class="flex items-center">
                         <input type="text" value="{{ $request->input('query') }}" name="query" id="item_name" value="" class="border border-[#D90368] px-3 py-2 mr-2 rounded-md" placeholder="item class name">
                         <input type="text" name="asso_id" id="asso_id" value="{{ $request->input('asso_id') }}" class="border border-[#D90368] px-3 py-2 mr-2 rounded-md" placeholder="asso id">
-                        <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded-md">Entrer</button>
+                        <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded-md">Rechercher</button>
                     </div>
                 </form>
 
@@ -50,7 +50,7 @@
                     @csrf
                     <div class="flex items-center">
                         <input type="text" name="itemName" id="item_name" value="" class="border border-[#D90368] px-3 py-2 mr-2 rounded-md" placeholder="item class name">
-                        <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded-md">Entrer</button>
+                        <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded-md">Rechercher</button>
                     </div>
                 </form>
                 <h1 class="text-2xl font-bold mb-4">Catégories</h1>
@@ -62,7 +62,7 @@
 
 
             </div>
-            <div>
+            <div class="flex flex-col items-center">
                 <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
                 @if(count($classes) > 0)
                     <table class="min-w-full bg-white border border-gray-300">

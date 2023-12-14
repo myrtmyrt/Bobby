@@ -14,39 +14,92 @@
 
     <!-- Styles -->
     @vite('resources/css/app.css')
-</head>
-<body>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addObjectButton = document.getElementById('addObjectButton');
+            const addObjectForm = document.getElementById('addObjectForm');
+            const closeFormButton = document.getElementById('closeForm');
+
+            addObjectButton.addEventListener('click', function () {
+                addObjectForm.classList.remove('hidden');
+            });
+
+            closeFormButton.addEventListener('click', function () {
+                addObjectForm.classList.add('hidden');
+            });
+        });
+    </script>
+</head>
+
+<div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden items-center justify-center">
+    <div class="bg-white p-8 rounded-lg">
+        <form action="/ajouter-objet" method="post">
+            @csrf
+            <label for="objectName">Nom de l'objet:</label>
+            <input type="text" name="objectName" id="objectName" required class="mb-4">
+
+            <label for="objectPosition">Position de l'objet:</label>
+            <input type="text" name="objectPosition" id="objectPosition" required class="mb-4">
+
+            <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter</button>
+        </form>
+
+        <button id="closeForm" class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Fermer</button>
+    </div>
+</div>
+
+<body>
 
 @include('.header')
 
-@dump($items)
-{{--<div class="container mx-auto mt-8">--}}
-{{--    <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>--}}
+<h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
-{{--    @if(count($classes) > 0)--}}
-{{--        <table class="min-w-full bg-white border border-gray-300">--}}
-{{--            <thead>--}}
-{{--            <tr>--}}
-{{--                <th class="py-2 px-4 border-b">ID</th>--}}
-{{--                <th class="py-2 px-4 border-b">Nom</th>--}}
-{{--                <th class="py-2 px-4 border-b">Asso_id</th>--}}
-{{--            </tr>--}}
-{{--            </thead>--}}
-{{--            <tbody>--}}
-{{--            @foreach($classes as $class)--}}
-{{--                <tr class="text-center">--}}
-{{--                    <td class="py-2 px-4 border-b ">{{ $class->id }}</td>--}}
-{{--                    <td class="py-2 px-4 border-b">{{ $class->name }}</td>--}}
-{{--                    <td class="py-2 px-4 border-b">{{ $class->asso_id }}</td>--}}
-{{--                </tr>--}}
-{{--            @endforeach--}}
-{{--            </tbody>--}}
-{{--        </table>--}}
-{{--    @else--}}
-{{--        <p>Aucun item trouvé.</p>--}}
-{{--    @endif--}}
-{{--</div>--}}
+<div class="px-12">
+    <div class="flex justify-end">
+        <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Faire mon inventaire</button>
+        <button id="addObjectButton" class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter un objet</button>
+
+    </div>
+
+    <div class="flex flex-col items-center">
+        @if(count($items) > 0)
+            <table class="min-w-full bg-white border border-gray-300">
+                <tbody>
+                @foreach($items as $item)
+                    @include('components.objet', [
+                    'nom' => $item->id,
+                    'etat' => $item->name,
+                    'position' => $item->asso_id
+                    ])
+                @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Aucun item trouvé.</p>
+        @endif
+    </div>
+</div>
+
+<div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg mx-auto">
+        <form action="/ajouter-objet" method="post">
+            @csrf
+            <label for="objectName">Nom de l'objet:</label>
+            <input type="text" name="objectName" id="objectName" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+
+            <label for="objectPosition">Position de l'objet:</label>
+            <input type="text" name="objectPosition" id="objectPosition" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+
+            <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter</button>
+        </form>
+
+        <button id="closeForm" class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Annuler</button>
+    </div>
+</div>
+
 
 @include('.footer')
 </body>
+
+
