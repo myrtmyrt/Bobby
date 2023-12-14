@@ -30,6 +30,7 @@ class Item extends Model
         return $this->belongsTo(ItemClass::class, 'class_id');
     }
 
+
     public function request(): HasMany
     {
         return $this->hasMany(BorrowedItem::class, 'item_id');
