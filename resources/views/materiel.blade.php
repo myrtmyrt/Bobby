@@ -1,7 +1,7 @@
 @props(['classes'=>null])
 <!DOCTYPE html>
 
-<html>
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,23 +17,42 @@
 </head>
 <body>
 
-{{--
 @include('.header')
---}}
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
 
-<div class="flex justify-between items-center p-12">
-    <div class="flex">
-        <h2 class="bg-[#D90368]">Catégories</h2>
-        <h1 class="p-32">Faire une recherche</h1>
+<div class=" justify-between items-center  grid gap-3grid grid-cols-6 gap-4" >
+    <div class="col-span-2 bg-gray-300  h-full">
+        <div class="grid grid-cols-4 h-full">
+            <div class="col-span-1 bg-[#D90368] p-2 flex items-center justify-center">
+                <h2>Catégories</h2>
+            </div>
+            <div class="col-span-3 p-2  justify-center items-center">
+                <form method="get" class="p-2 w-auto space-y-2">
+                    @csrf
+                    <div>
+                        <label for="asso_id" class="block">Entre asso_id</label>
+                        <input type="text" name="asso_id" id="asso_id"  placeholder="Entrer le nom de l'asso">
+                    </div>
+                    <div>
+                        <label for="query" class="block">Entre query</label>
+                        <input type="text" name="query" id="asso_id" placeholder="Entrer le nom de l'item">
+                    </div>
+                    <button type="submit" class="bg-red-500 text-white p-1 rounded-md">Entrer</button>
+
+                </form>
+            </div>
+
+
+        </div>
+
     </div>
 
-    <div class="p-24">
-       {{-- <x-objet type="objet"></x-objet>
+    <div class="col-span-4  p-4">
         <x-objet type="objet"></x-objet>
-        <x-objet type="objet"></x-objet>--}}
+        <x-objet type="objet"></x-objet>
+        <x-objet type="objet"></x-objet>
     </div>
 </div>
 
@@ -72,17 +91,6 @@
     </div>
 
 
-
-
-
-    <form method="get"  class="container mx-auto m-2" >
-        @csrf
-        <div class="flex items-center">
-            <input type="text" name="asso_id" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'asso'">
-            <input type="text" name="query" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'item">
-            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
-        </div>
-    </form>
 
 
 </div>
