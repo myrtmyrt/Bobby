@@ -1,17 +1,21 @@
-<div class="flex items-center shadow-lg m-4">
-    <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto rounded-md p-0 m-0">
+<div class="container rounded-md">
+    <div class="grid grid-cols-5 items-center shadow-lg m-4">
+        <div class="col-span-1">
+            <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-0 m-0" alt="Image objet">
+        </div>
 
-    <div class="ml-8 p-6"> <!-- Ajoute une marge à gauche -->
-        <h1>Nom de l'objet</h1>
-        <h2>Etat de l'objet</h2>
-    </div>
-
-    <div class="p-12 ml-8"> <!-- Ajoute une marge à gauche -->
-        <h2>Position de l'objet</h2>
-        <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button>
+        <div class="col-span-2">
+            <h1>{{$name}}</h1>
+            <h2>Etat de l'objet</h2>
+        </div>
+        <div class="col-span-2 ltr h-full bg-gray-300">
+            <div class=" border-s-2 border-dashed border-l-rose-600">
+                <h2>Position de l'objet</h2>
+                <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button>
+            </div>
+        </div>
     </div>
 </div>
-
 
 {{--<h3>Nom de l'objet: {{ $objet->nom }}</h3>--}}
 {{--<p>État: {{ $objet->etat }}</p>--}}
