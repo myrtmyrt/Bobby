@@ -15,14 +15,16 @@
     <!-- Styles -->
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="h-lvh">
 
 @include('.header')
-
+{{--
+{{dump($classes)}}
+--}}
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
 
-<div class=" justify-between items-center  grid gap-3grid grid-cols-6 gap-4" >
+<div class="h-full justify-between items-center  grid gap-3grid grid-cols-6 gap-4" >
     <div class="col-span-2 bg-gray-300  h-full">
         <div class="grid grid-cols-4 h-full">
             <div class="col-span-1 bg-[#D90368] p-2 flex items-center justify-center">
@@ -50,9 +52,13 @@
     </div>
 
     <div class="col-span-4  p-4">
-        <x-objet type="objet"></x-objet>
-        <x-objet type="objet"></x-objet>
-        <x-objet type="objet"></x-objet>
+        @if(count($classes) > 0)
+            @foreach($classes as $class)
+        <x-objet type="objet" :name="$class->name"></x-objet>
+            @endforeach
+        @else
+            <p>Aucun item trouvé.</p>
+        @endif
     </div>
 </div>
 
@@ -63,7 +69,7 @@
 
 {{--    @dump($request->session)--}}
 
-    <div class="container mx-auto mt-8">
+    {{--<div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
 
         @if(count($classes) > 0)
@@ -88,7 +94,7 @@
         @else
             <p>Aucun item trouvé.</p>
         @endif
-    </div>
+    </div>--}}
 
 
 
