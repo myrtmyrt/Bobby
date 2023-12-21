@@ -41,14 +41,17 @@ class MaterielController extends Controller
 
     public function searchClassesByAsso(Request $request) {
         $query = $request->input('query');
-        $result = ItemClass::where('asso_id', 'like', "%".$query."%")->get();
-        return view('materiel', ['classes' => $result]);
+        $classes = ItemClass::where('asso_id', 'like', "%".$query."%")->get();
+        /*foreach ($classes as $element){
+            $element = $element.categ
+        }*/
+        return view('materiel', ['classes' => $classes]);
     }
 
     public function getAssoItems(Request $request){
         $asso = $request->input('asso_id');
         $class_id = ItemClass::where('asso_id',$asso)->with('items')->get();
-//        dd($class_id);
+//        /*dd($class_id);*/
         $item = new Item();
         $result = $item->itemClass($class_id);
         return view('materiel', ['items' => $result]);
