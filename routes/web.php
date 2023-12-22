@@ -27,3 +27,7 @@ Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getCl
 Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel");
 //Route::get('/materiel/{name}', [\App\Http\Controllers\MaterielController::class, 'getClassByName'])->name("materiel");
 //Route::get('/materiel/search', [\App\Http\Controllers\MaterielController::class, 'searchClassesByAsso'])->name("materiel");
+
+
+Route::get('/demandeEmprunt', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests");
+Route::post('/demandeEmprunt', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests");
