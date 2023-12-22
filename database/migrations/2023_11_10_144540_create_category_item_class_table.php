@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('class_categories', function (Blueprint $table) {
+        Schema::create('category_item_class', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('class_id')->constrained('item_classes');
+            $table->foreignId('item_class_id')->constrained('item_classes');
             $table->foreignId('category_id')->constrained();
 
             $table->timestamps();

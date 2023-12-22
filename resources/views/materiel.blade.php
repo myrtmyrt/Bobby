@@ -41,6 +41,20 @@
                         <label for="query" class="block">Entre query</label>
                         <input type="text" name="query" id="asso_id" placeholder="Entrer le nom de l'item">
                     </div>
+
+                    <div>
+                        <label for="categories" class="block">Selectionne une categorie</label>
+
+                        <select name="categories" id="categories" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                            @foreach($categories as $cat)
+                                <option value={{$cat->name}}>{{$cat->name}}</option>
+                            @endforeach
+                        </select>
+
+{{--
+                        <input type="text" name="category" id="category" placeholder="Entrer le nom de la category">
+--}}
+                    </div>
                     <button type="submit" class="bg-red-500 text-white p-1 rounded-md">Entrer</button>
 
                 </form>
@@ -54,7 +68,8 @@
     <div class="col-span-4  p-4">
         @if(count($classes) > 0)
             @foreach($classes as $class)
-        <x-objet type="objet" :name="$class->name"></x-objet>
+                @dump($class->name)
+        <x-objet type="objet" :class="$class"></x-objet>
             @endforeach
         @else
             <p>Aucun item trouvé.</p>
