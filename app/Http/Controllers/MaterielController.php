@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemClass;
 use Illuminate\Http\Request;
@@ -27,16 +28,19 @@ class MaterielController extends Controller
 
         $query = $request->input('query');
         $asso_id = $request->input('asso_id');
+        $category = $request->input('category');
 
         $classes = ItemClass::query();
+        $classes->with('categories');
         if ($query) {
             $classes = $classes->where('name', 'like', '%'.$query.'%');
         }
         if ($asso_id) {
             $classes = $classes->where('asso_id', $asso_id);
         }
+        $categories = Category::all();
 
-        return view('materiel', ['classes' => $classes->get()]);
+        return view('materiel', ['classes' => $classes->get(),'categories'=>$categories]);
     }
 
     public function searchClassesByAsso(Request $request) {
