@@ -13,7 +13,6 @@ class BorrowRequest extends Model
     use HasFactory;
 
     protected $fillable = [
-        "request_date",
         "start_date",
         "end_date",
         "state",
@@ -22,7 +21,6 @@ class BorrowRequest extends Model
     ];
 
     protected $casts = [
-        "request_date" => "datetime",
         "start_date" => "datetime",
         "end_date" => "datetime",
         "state" =>  RequestStateEnum::class
