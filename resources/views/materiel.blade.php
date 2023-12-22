@@ -75,10 +75,11 @@
 
 
 
-    <form method="get"  class="container mx-auto m-2" action="/materiel/search">
+    <form method="get"  class="container mx-auto m-2" >
         @csrf
         <div class="flex items-center">
-            <input type="text" name="query" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'association">
+            <input type="text" name="asso_id" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'asso'">
+            <input type="text" name="query" id="asso_id" value="" class="border border-red-700 px-3 py-2 mr-2 rounded-md" placeholder="Entrer le nom de l'item">
             <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md">Entrer</button>
         </div>
     </form>
