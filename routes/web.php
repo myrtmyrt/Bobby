@@ -26,11 +26,14 @@ Route::get('/', [HomeController::class, 'home'])->name("home");
 
 
 Route::get('/myAsso', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("myAsso");
-
 Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getClasses'])->name("materiel");
 Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel");
 //Route::get('/materiel/{name}', [\App\Http\Controllers\MaterielController::class, 'getClassByName'])->name("materiel");
 //Route::get('/materiel/search', [\App\Http\Controllers\MaterielController::class, 'searchClassesByAsso'])->name("materiel");
+
 //Route::post('/materiel/create', [\App\Http\Controllers\MaterielController::class, 'create'])->name("materiel-create");
 
 Route::post('/addObject', [MaterielController::class, 'store']);
+
+Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests");
+Route::post('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests");
