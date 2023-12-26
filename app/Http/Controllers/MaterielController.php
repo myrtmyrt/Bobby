@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
+
 use App\Models\Category;
 use App\Models\ClassCategory;
 use App\Models\Item;
 use App\Models\ItemClass;
+use App\Models\Materiel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -75,6 +78,27 @@ class MaterielController extends Controller
     }
 
 
+    public function store(Request $request)
+    {
+        // Valider les données du formulaire
+        $validatedData = $request->validate([
+            'objectName' => 'required',
+            'objectPosition' => 'required',
+        ]);
 
+        $asso = session("user")["assos"][0]["login"];
+
+        // Créer un nouvel objet dans la base de données
+        $newObject = ItemClass::create([
+
+            'name' => $validatedData['objectName'],
+            'description' => $validatedData['objectPosition'],
+            'private' => False,
+            'asso_id' => $asso
+        ]);
+
+        // Rediriger ou effectuer toute autre action après l'ajout
+        return redirect()->back()->with('success', 'Objet ajouté avec succès');
+    }
 
 }
