@@ -14,7 +14,7 @@
         <div class="col-span-2 ltr h-full bg-gray-300">
             <div class=" border-s-2 border-dashed border-l-rose-600">
                 <h2>Position de l'objet</h2>
-                <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button>
+                <a href="/demandeEmprunt/{{$class->id}}"><button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button></a>
             </div>
         </div>
     </div>

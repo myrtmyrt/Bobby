@@ -29,5 +29,5 @@ Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getA
 //Route::get('/materiel/search', [\App\Http\Controllers\MaterielController::class, 'searchClassesByAsso'])->name("materiel");
 
 
-Route::get('/demandeEmprunt', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests");
-Route::post('/demandeEmprunt', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests");
+Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests");
+Route::post('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests");
