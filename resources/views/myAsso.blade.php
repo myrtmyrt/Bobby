@@ -33,18 +33,6 @@
 </head>
 
 <div class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden items-center justify-center">
-{{--    <div class="bg-white p-8 rounded-lg">--}}
-{{--        <form action="/addObject" method="post">--}}
-{{--            @csrf--}}
-{{--            <label for="objectName">Nom de l'objet:</label>--}}
-{{--            <input type="text" name="objectName" id="objectName" required class="mb-4">--}}
-
-{{--            <label for="objectPosition">Position de l'objet:</label>--}}
-{{--            <input type="text" name="objectPosition" id="objectPosition" required class="mb-4">--}}
-
-{{--            <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter</button>--}}
-{{--        </form>--}}
-
         <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Fermer</button>
     </div>
 </div>

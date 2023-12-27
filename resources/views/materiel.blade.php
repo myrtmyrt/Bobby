@@ -1,3 +1,5 @@
+
+
 @props(['classes'=>null, 'message'=> null])
     <!DOCTYPE html>
 
@@ -87,6 +89,9 @@
                 @dump($class->name)
                 <x-objet type="objet" :class="$class"></x-objet>
             @endforeach
+                <div class="mx-8 my-6">
+                    {{ $classes->links() }}
+                </div>
         @else
             <p>Aucun item trouvé.</p>
         @endif

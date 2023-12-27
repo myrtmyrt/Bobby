@@ -84,7 +84,10 @@
             <h2 class="text-2xl font-semibold mb-4">Qu’est-ce que Bobby?</h2>
             <p>Bobby est l’outil proposé par le SIMDE permettant aux associations de gérer leur matériel via un système d’inventaire.</p>
             <p class="pb-8">Avec Bobby, profitez aussi du système d’emprunt. Vous avez besoin de matériel? Vérifiez d’abord qu’une autre asso ne le possède pas déjà!</p>
-            <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded">Découvrir Bobby</button>
+            <a href="/materiel">
+                <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded">Découvrir Bobby</button>
+            </a>
+
         </div>
 
         <div class="mx-auto w-1/2 p-0 m-0">

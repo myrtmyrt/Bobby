@@ -38,10 +38,11 @@ class MaterielController extends Controller
         if ($asso_id) {
             $classes = $classes->where('asso_id', $asso_id);
         }
-        $classes->simplePaginate(10);
+        $classes=$classes->paginate(10);
         $categories = Category::all();
 
-        return view('materiel', ['classes' => $classes->get(),'categories'=>$categories]);
+
+        return view('materiel', compact('classes', 'categories'));
     }
 
     public function searchClassesByAsso(Request $request) {
