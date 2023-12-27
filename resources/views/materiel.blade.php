@@ -1,5 +1,5 @@
 @props(['classes'=>null, 'message'=> null])
-<!DOCTYPE html>
+    <!DOCTYPE html>
 
 <html lang="fr">
 <head>
@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
     <!-- Styles -->
     @vite('resources/css/app.css')
@@ -20,20 +20,26 @@
 @include('.header')
 @dump($message)
 @if($message)
-<div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
-    <div class="flex">
-        <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-        <div>
-            <p class="font-bold">{{$message}}</p>
+    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+        <div class="flex">
+            <div class="py-1">
+                <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 20 20">
+                    <path
+                        d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="font-bold">{{$message}}</p>
+            </div>
         </div>
     </div>
-</div>
 @endif
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 
 
-<div class="h-full justify-between items-center  grid gap-3grid grid-cols-6 gap-4" >
+<div class="h-full justify-between items-center  grid gap-3grid grid-cols-6 gap-4">
     <div class="col-span-2 bg-gray-300  h-full">
         <div class="grid grid-cols-4 h-full">
             <div class="col-span-1 bg-[#D90368] p-2 flex items-center justify-center">
@@ -44,7 +50,7 @@
                     @csrf
                     <div>
                         <label for="asso_id" class="block">Entre asso_id</label>
-                        <input type="text" name="asso_id" id="asso_id"  placeholder="Entrer le nom de l'asso">
+                        <input type="text" name="asso_id" id="asso_id" placeholder="Entrer le nom de l'asso">
                     </div>
                     <div>
                         <label for="query" class="block">Entre query</label>
@@ -54,15 +60,16 @@
                     <div>
                         <label for="categories" class="block">Selectionne une categorie</label>
 
-                        <select name="categories" id="categories" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                        <select name="categories" id="categories"
+                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
                             @foreach($categories as $cat)
                                 <option value={{$cat->name}}>{{$cat->name}}</option>
                             @endforeach
                         </select>
 
-{{--
-                        <input type="text" name="category" id="category" placeholder="Entrer le nom de la category">
---}}
+                        {{--
+                                                <input type="text" name="category" id="category" placeholder="Entrer le nom de la category">
+                        --}}
                     </div>
                     <button type="submit" class="bg-red-500 text-white p-1 rounded-md">Entrer</button>
 
@@ -77,10 +84,8 @@
     <div class="col-span-4  p-4">
         @if(count($classes) > 0)
             @foreach($classes as $index => $class)
-                @if($index <10)
-                    @dump($class->name)
-                    <x-objet type="objet" :class="$class"></x-objet>
-                @endif
+                @dump($class->name)
+                <x-objet type="objet" :class="$class"></x-objet>
             @endforeach
         @else
             <p>Aucun item trouvé.</p>
@@ -89,11 +94,11 @@
 </div>
 
 <div>
-{{--
-        @dump($classes)
---}}
+    {{--
+            @dump($classes)
+    --}}
 
-{{--    @dump($request->session)--}}
+    {{--    @dump($request->session)--}}
 
     {{--<div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">Liste des Items</h1>
@@ -121,8 +126,6 @@
             <p>Aucun item trouvé.</p>
         @endif
     </div>--}}
-
-
 
 
 </div>
