@@ -76,9 +76,11 @@
 
     <div class="col-span-4  p-4">
         @if(count($classes) > 0)
-            @foreach($classes as $class)
-                @dump($class->name)
-        <x-objet type="objet" :class="$class"></x-objet>
+            @foreach($classes as $index => $class)
+                @if($index <10)
+                    @dump($class->name)
+                    <x-objet type="objet" :class="$class"></x-objet>
+                @endif
             @endforeach
         @else
             <p>Aucun item trouvé.</p>

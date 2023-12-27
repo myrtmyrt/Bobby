@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\MaterielController;
+
 use App\Models\BorrowRequest;
+use App\Models\Item;
 use App\Models\ItemClass;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -24,23 +27,42 @@ class BorrowController extends Controller
 
         return view('borrowRequests', ['class'=>$class[0]]);
     }
+
+    public function isAvailable($item){
+        foreach ($item->unavailibility as $unavailibility){
+            if($unavailibility->end_date > now()->toDateTimeString('Y-m-d')&& $unavailibility->start_date < now()->toDateTimeString('Y-m-d')){
+                return false;
+            }
+        }
+        return true;
+    }
     public function addRequest(Request $request, $class_id)
     {
-/*        dd($class_id);*/
+        /*$class = new ItemClass();
+        $items = $class->items();
+        foreach ($items as $currentItem){
+            $available = $this->isAvailable($currentItem);
+            $items = $items->reject(function ($item) use ($currentItem) {
+                return $item == $currentItem;
+            });
+        }
+        $stateOrder = ['neuf', 'tresBon', 'bon', 'moyen', 'mauvais', 'tresMauvais'];
+
+        $itemsOrdered = $items->sortBy(function ($item) use ($stateOrder) {
+            return array_search($item['state'], $stateOrder);
+        });*/
 
         $session = session('user')['email'];
         $asso_id = $class_id;
         $debut_date = $request->input('debut_date');
         $end_date = $request->input('end_date');
         $comment = $request->input('comment');
-/*        dd($debut_date);*/
         $borrowRequest = new BorrowRequest([
             'asso_id' => $asso_id,
             'end_date' => $end_date,
             'comment' => $comment
         ]);
         $borrowRequest['debut_date'] = $debut_date;
-//        dd($borrowRequest);
 
         $result = $borrowRequest->save();
 
