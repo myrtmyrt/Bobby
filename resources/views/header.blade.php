@@ -54,7 +54,7 @@
         <a href="/materiel" class="mr-4 hover:text-[#D90368]">Materiel</a>
         <a href="/inventaire" class="mr-4 hover:text-[#D90368]">Inventaire</a>
         <a href="/emprunts" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
-        <a href="/asso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
+        <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
         <a href="/login">
             <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Connexion</button>
         </a>
