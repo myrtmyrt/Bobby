@@ -67,11 +67,7 @@
             <table class="min-w-full bg-white border border-gray-300">
                 <tbody>
                 @foreach($items as $item)
-                    @include('components.objet', [
-                    'nom' => $item->id,
-                    'etat' => $item->name,
-                    'position' => $item->asso_id
-                    ])
+                    <x-objet :class="$item" />
                 @endforeach
                 </tbody>
             </table>
