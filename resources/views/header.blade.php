@@ -51,6 +51,7 @@
     <a href="/" class="flex-shrink-0 mr-6">
         <img src="{{ asset('assets/logoBobby.png') }}" alt="Logo" class="h-12">
     </a>
+    @if (session("user"))
     <nav class="flex items-center">
         <div class="relative group">
             <a href="/materiel" class="mr-4 hover:text-[#D90368]">Matériel</a>
@@ -63,6 +64,7 @@
         </div>
         <a href="/emprunts" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
         <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
+        @endif
         @if (session("user"))
             <!-- User is logged in, show logout button -->
             <a href="/logout">
