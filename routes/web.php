@@ -23,6 +23,8 @@ Route::get('/login', [LoginController::class, 'login'])->name("login");
 Route::get('/logout', [LoginController::class, 'logout'])->name("logout");
 Route::get('/', [HomeController::class, 'home'])->name("home");
 
+Route::get('/myAsso', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("myAsso");
+
 Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getClasses'])->name("materiel");
 Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel");
 //Route::get('/materiel/{name}', [\App\Http\Controllers\MaterielController::class, 'getClassByName'])->name("materiel");
