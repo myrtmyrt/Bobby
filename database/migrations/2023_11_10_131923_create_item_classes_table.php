@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string("asso_id");
-            $table->text('descipion');
+            $table->text('description');
             $table->boolean('private');
             $table->timestamps();
         });

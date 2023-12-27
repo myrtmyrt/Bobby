@@ -38,6 +38,7 @@ class MaterielController extends Controller
         if ($asso_id) {
             $classes = $classes->where('asso_id', $asso_id);
         }
+        $classes->simplePaginate(10);
         $categories = Category::all();
 
         return view('materiel', ['classes' => $classes->get(),'categories'=>$categories]);
@@ -53,18 +54,17 @@ class MaterielController extends Controller
     }
 
     public function getAssoItems(Request $request){
-        $asso = $request->input('asso_id');
+        $asso = session("user")["assos"][0]["login"];
         $class_id = ItemClass::where('asso_id',$asso)->with('items')->get();
-//        /*dd($class_id);*/
-        $item = new Item();
-        $result = $item->itemClass($class_id);
-        return view('materiel', ['items' => $result]);
+        return view('myAsso', ['items' => $class_id]);
     }
+
 
     public function getCategoryItems(Request $request){
         $category= $request->input('category');
 
     }
+
 
 
 

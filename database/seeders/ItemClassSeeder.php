@@ -159,7 +159,7 @@ class ItemClassSeeder extends Seeder
     {
         $itemClass = new ItemClass([
             "name" => $faker->word()." ".$faker->word(),
-            "descipion" => $faker->text(),
+            "description" => $faker->text(),
             "private" => rand(0, 100) > 5,
             "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)]
         ]);
