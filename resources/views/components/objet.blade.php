@@ -1,4 +1,4 @@
-@props(['class' => ''])
+@props(['class'])
 
 <div class="container rounded-md">
     <div class="grid grid-cols-5 items-center shadow-lg m-4">
