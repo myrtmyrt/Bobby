@@ -1,0 +1,79 @@
+@startuml
+
+enum RequestState{
+    Validee
+    Refusee
+    En attente
+}
+
+enum Condition{
+    neuf
+    tresBon
+    bon
+    moyen
+    mauvais
+    tresMauvais
+}
+
+class ConditionHistory{
+    date: datetime,
+    condition: Condition
+}
+
+class TemporaryAccess{
+    user: string
+    end_date: date
+    state : RequestState
+}
+
+class Item{
+    mono-item : bool
+    description: string    
+}
+
+class Class{
+    name : char
+    description : string
+    private : bool
+    quantity : int
+}
+
+class Category{
+    name : string
+}
+
+class Unavailability{
+start_date : date
+end_date : date
+}
+
+class Borrow_Request{
+request_date : datetime,
+debut_date : datetime,
+end_date : datetime,
+state : RequestState,
+comment : string
+}
+
+class Inventory{
+    user: string
+    date: date
+}
+
+class Association{
+    name: string
+}
+
+Class  "1..1" --  "1..*" Item : "belong to" < 
+Borrow_Request "0..*" -- "1..*" Item : is_borrowed <
+Category "0..*" - "0..*" Class : "belong to" >
+Unavailability "0..*" - "1..1" Item : "is not available" <
+TemporaryAccess "0..*" - "1..1" Association : gives <
+Association "1..1" - "0..*" Inventory : "has" >
+Association "1.1" -- "0..*" Class :  Belongs to <
+Association "1..1" -- "0..*" Borrow_Request : "demands" >
+
+
+Item "1..1" -- "1..*" ConditionHistory : "has" >
+
+@enduml
