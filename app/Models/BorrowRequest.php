@@ -28,13 +28,7 @@ class BorrowRequest extends Model
 
     ];
 
-
-    public function item() : HasMany
-    {
-        return $this->hasMany(Item::class,'item_id');
-    }
-
-    public function borrower(): BelongsToMany
+    public function items(): BelongsToMany
     {
         return $this->belongsToMany(Item::class);
     }

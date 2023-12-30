@@ -31,7 +31,7 @@ class Item extends Model
     }
 
 
-    public function request(): BelongsToMany
+    public function requests(): BelongsToMany
     {
         return $this->belongsToMany(BorrowRequest::class);
     }

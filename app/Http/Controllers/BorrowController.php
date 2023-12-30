@@ -29,15 +29,6 @@ class BorrowController extends Controller
         return view('borrowRequests', ['class'=>$class[0]]);
     }
 
-    /*public function isAvailable($item){
-//        dd($item->unavailibility);
-        foreach ($item->unavailibilities as $unavailibility){
-            if($unavailibility->end_date->gt(now()->format('Y-m-d H:i:s')) && $unavailibility->start_date->lt( now()->format('Y-m-d H:i:s'))){
-                return false;
-            }
-        }
-        return true;
-    }*/
     public function addRequest(Request $request, $class_id)
     {
         $class = ItemClass::find($class_id);
@@ -55,8 +46,6 @@ class BorrowController extends Controller
             });
             // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
-            /*        dd($itemsOrdered);*/
-
             $session = session('user')['email'];
             $asso_id = $class_id;
             $debut_date = $request->input('debut_date');
@@ -73,13 +62,12 @@ class BorrowController extends Controller
 
             $result = $borrowRequest->save();
 
-            //créer rows dans borrowed_items
+            //associer les elements a la demande
             for($i=0; $i<$quantity; $i++){
-               /*$borrowed_items = new BorrowedItem([
-                   'quantity' => $quantity,
-                   'borrow_id' => $borrowRequest['id']
-               ]);*/
+               $borrowRequest->items()->attach($filtered[$i]);
             }
+
+            dd($borrowRequest->items());
 
             if ($result) {
 //                $message = "Succes de l'ajout";
