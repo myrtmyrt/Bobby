@@ -29,22 +29,22 @@ class BorrowController extends Controller
         return view('borrowRequests', ['class'=>$class[0]]);
     }
 
-    public function isAvailable($item){
+    /*public function isAvailable($item){
 //        dd($item->unavailibility);
         foreach ($item->unavailibilities as $unavailibility){
-            if($unavailibility->end_date->gt(now()->format('Y-m-d H:i:s')) && $unavailibility->start_date->lt( now()->format('Y-m-d'))){
+            if($unavailibility->end_date->gt(now()->format('Y-m-d H:i:s')) && $unavailibility->start_date->lt( now()->format('Y-m-d H:i:s'))){
                 return false;
             }
         }
         return true;
-    }
+    }*/
     public function addRequest(Request $request, $class_id)
     {
         $class = ItemClass::find($class_id);
 /*        dd($class);*/
         $items = $class->items;
 
-        $filtered = $items->filter(function ($item){return $this->isAvailable($item);});
+        $filtered = $items->filter(function ($item){return $item->isAvailable();});
 
         $stateOrder = ['Neuf', 'Tres Bon', 'Bon', 'Moyen', 'Mauvais', 'Tres Mauvais'];
 

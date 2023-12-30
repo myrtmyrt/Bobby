@@ -41,4 +41,14 @@ class Item extends Model
         return $this->hasMany(ConditionHistory::class, 'item_id');
     }
 
+    public function isAvailable()
+    {
+        foreach ($this->unavailibilities as $unavailibility){
+            if($unavailibility->end_date->gt(now()->format('Y-m-d H:i:s')) && $unavailibility->start_date->lt( now()->format('Y-m-d H:i:s'))){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
