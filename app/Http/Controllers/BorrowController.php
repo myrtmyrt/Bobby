@@ -7,6 +7,7 @@ use App\Http\Controllers\MaterielController;
 use App\Models\BorrowRequest;
 use App\Models\Item;
 use App\Models\ItemClass;
+use App\Models\Unavailibility;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use function Termwind\render;
@@ -29,8 +30,9 @@ class BorrowController extends Controller
     }
 
     public function isAvailable($item){
-        foreach ($item->unavailibility as $unavailibility){
-            if($unavailibility->end_date > now()->toDateTimeString('Y-m-d')&& $unavailibility->start_date < now()->toDateTimeString('Y-m-d')){
+//        dd($item->unavailibility);
+        foreach ($item->unavailibilities as $unavailibility){
+            if($unavailibility->end_date->gt(now()->format('Y-m-d H:i:s')) && $unavailibility->start_date->lt( now()->format('Y-m-d'))){
                 return false;
             }
         }
@@ -38,19 +40,20 @@ class BorrowController extends Controller
     }
     public function addRequest(Request $request, $class_id)
     {
-        /*$class = new ItemClass();
-        $items = $class->items();
-        foreach ($items as $currentItem){
-            $available = $this->isAvailable($currentItem);
-            $items = $items->reject(function ($item) use ($currentItem) {
-                return $item == $currentItem;
-            });
-        }
-        $stateOrder = ['neuf', 'tresBon', 'bon', 'moyen', 'mauvais', 'tresMauvais'];
+        $class = ItemClass::find($class_id);
+/*        dd($class);*/
+        $items = $class->items;
 
-        $itemsOrdered = $items->sortBy(function ($item) use ($stateOrder) {
-            return array_search($item['state'], $stateOrder);
-        });*/
+        $filtered = $items->filter(function ($item){return $this->isAvailable($item);});
+
+        $stateOrder = ['Neuf', 'Tres Bon', 'Bon', 'Moyen', 'Mauvais', 'Tres Mauvais'];
+
+        $itemsOrdered = $filtered->sortBy(function ($item) use ($stateOrder) {
+            return array_search(($item->conditions->sortBy('updated_at')->first())['condition'], $stateOrder);
+        });
+        // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
+
+/*        dd($itemsOrdered);*/
 
         $session = session('user')['email'];
         $asso_id = $class_id;

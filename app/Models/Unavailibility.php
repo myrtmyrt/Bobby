@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Unavailibility extends Model
@@ -20,8 +21,9 @@ class Unavailibility extends Model
         "end_date" => "datetime"
     ];
 
-    public function item() : HasMany
+
+    public function item() : BelongsTo
     {
-        return $this->hasMany(Item::class, 'unavailibility_id');
+        return $this->belongsTo(Item::class, 'item_id');
     }
 }

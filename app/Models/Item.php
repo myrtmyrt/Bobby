@@ -18,11 +18,11 @@ class Item extends Model
         "quantity"
     ];
 
-    protected $keyType = "uuid";
+/*    protected $keyType = "uuid";*/
 
-    public function unavailibility() : BelongsTo
+    public function unavailibilities() : HasMany
     {
-        return $this->belongsTo(Unavailibility::class, 'unavailibility_id');
+        return $this->hasMany(Unavailibility::class, 'item_id');
     }
 
     public function itemClass(): BelongsTo

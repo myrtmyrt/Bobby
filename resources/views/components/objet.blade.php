@@ -6,6 +6,7 @@
             <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-0 m-0" alt="Image objet">
         </div>
         <div class="col-span-2">
+            <h1>{{$class->id}}</h1>
             <h1>{{$class->name}}</h1>
             <h2>Etat de l'objet</h2>
 
