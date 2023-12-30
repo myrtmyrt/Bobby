@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Item extends Model
@@ -13,7 +14,6 @@ class Item extends Model
 
     protected $fillable = [
         "description",
-        "state",
         "mono_item",
         "quantity"
     ];
@@ -31,9 +31,9 @@ class Item extends Model
     }
 
 
-    public function request(): HasMany
+    public function request(): BelongsToMany
     {
-        return $this->hasMany(BorrowedItem::class, 'item_id');
+        return $this->belongsToMany(BorrowRequest::class);
     }
 
     public function conditions(): HasMany

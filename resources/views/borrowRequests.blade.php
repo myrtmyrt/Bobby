@@ -43,9 +43,13 @@
                     <label for="belongs_to" class="block text-gray-700 text-sm font-bold mb-2">Proprietaire :</label>
                     <input type="text" name="belongs_to" id="belongs_to" disabled value="{{$class->asso_id}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 ">
                 </div>
+                <div>
+                    <label for="quantity" class="block text-gray-700 text-sm font-bold mb-2">Quantité :</label>
+                    <input type="number" name="quantity" id="quantity"  value="1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 ">
+                </div>
 
                 <div class="mb-4">
-                    <label for="debut_date" class="block text-gray-700 text-sm font-bold mb-2">Date de fin de l'emprunt:</label>
+                    <label for="debut_date" class="block text-gray-700 text-sm font-bold mb-2">Date de debut de l'emprunt:</label>
                     <input type="date" name="debut_date" id="debut_date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 ">
                 </div>
 

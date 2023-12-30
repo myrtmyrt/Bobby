@@ -6,6 +6,7 @@ use App\Enum\RequestStateEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class BorrowRequest extends Model
@@ -33,8 +34,8 @@ class BorrowRequest extends Model
         return $this->hasMany(Item::class,'item_id');
     }
 
-    public function borrower(): HasMany
+    public function borrower(): BelongsToMany
     {
-        return $this->hasMany(BorrowedItem::class,'borrow_id');
+        return $this->belongsToMany(Item::class);
     }
     }

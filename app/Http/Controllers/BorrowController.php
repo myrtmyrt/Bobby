@@ -41,40 +41,58 @@ class BorrowController extends Controller
     public function addRequest(Request $request, $class_id)
     {
         $class = ItemClass::find($class_id);
-/*        dd($class);*/
         $items = $class->items;
 
-        $filtered = $items->filter(function ($item){return $item->isAvailable();});
-
-        $stateOrder = ['Neuf', 'Tres Bon', 'Bon', 'Moyen', 'Mauvais', 'Tres Mauvais'];
-
-        $itemsOrdered = $filtered->sortBy(function ($item) use ($stateOrder) {
-            return array_search(($item->conditions->sortBy('updated_at')->first())['condition'], $stateOrder);
+        $filtered = $items->filter(function ($item) {
+            return $item->isAvailable();
         });
-        // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
+        $quantity = $request->input('quantity');
+        if(!(count($filtered) < $quantity)) {
+            $stateOrder = ['Neuf', 'Tres Bon', 'Bon', 'Moyen', 'Mauvais', 'Tres Mauvais'];
 
-/*        dd($itemsOrdered);*/
+            $itemsOrdered = $filtered->sortBy(function ($item) use ($stateOrder) {
+                return array_search(($item->conditions->sortBy('updated_at')->first())['condition'], $stateOrder);
+            });
+            // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
-        $session = session('user')['email'];
-        $asso_id = $class_id;
-        $debut_date = $request->input('debut_date');
-        $end_date = $request->input('end_date');
-        $comment = $request->input('comment');
-        $borrowRequest = new BorrowRequest([
-            'asso_id' => $asso_id,
-            'end_date' => $end_date,
-            'comment' => $comment
-        ]);
-        $borrowRequest['debut_date'] = $debut_date;
+            /*        dd($itemsOrdered);*/
 
-        $result = $borrowRequest->save();
+            $session = session('user')['email'];
+            $asso_id = $class_id;
+            $debut_date = $request->input('debut_date');
+            $end_date = $request->input('end_date');
+            $comment = $request->input('comment');
 
-        if($result){
-            $message = "Succes de l'ajout";
-            return redirect()->route("materiel")->with('message', "Succès de l'ajout");
-        }else{
-            $message = "Echec de l'ajout";
-            return redirect()->route("demandeEmprunt", ['message'=>$message]);
+            //créer demande d'emprunt
+            $borrowRequest = new BorrowRequest([
+                'asso_id' => $asso_id,
+                'end_date' => $end_date,
+                'comment' => $comment
+            ]);
+            $borrowRequest['debut_date'] = $debut_date;
+
+            $result = $borrowRequest->save();
+
+            //créer rows dans borrowed_items
+            for($i=0; $i<$quantity; $i++){
+               /*$borrowed_items = new BorrowedItem([
+                   'quantity' => $quantity,
+                   'borrow_id' => $borrowRequest['id']
+               ]);*/
+            }
+
+            if ($result) {
+//                $message = "Succes de l'ajout";
+                return redirect()->route("materiel")->with('message', "Succès de l'ajout");
+            } else {
+                $message = "Echec de l'ajout";
+                return redirect()->route("demandeEmprunt", ['message' => $message]);
+
+            }
+        }
+        else{
+            $message = "Quantité trop importante";
+            return redirect()->route("demandeEmprunt", ['message' => $message]);
 
         }
     }
