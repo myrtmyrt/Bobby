@@ -33,7 +33,7 @@ class Item extends Model
 
     public function requests(): BelongsToMany
     {
-        return $this->belongsToMany(BorrowRequest::class);
+        return $this->belongsToMany(BorrowRequest::class, 'borrow_request_item', 'item_id', 'borrow_request_id');
     }
 
     public function conditions(): HasMany

@@ -56,30 +56,36 @@ class BorrowController extends Controller
             //créer demande d'emprunt
             $borrowRequest = new BorrowRequest([
                 'asso_id' => $asso_id,
+                'debut_date' => $debut_date,
                 'end_date' => $end_date,
                 'comment' => $comment
             ]);
-            $borrowRequest['debut_date'] = $debut_date;
 
             $result = $borrowRequest->save();
-
-            //associer les elements a la demande
-            for($i=1; $i<$quantity; $i++){
-               $borrowRequest->items()->attach($itemsOrdered[$i]->id);
-            }
-
-            dd($borrowRequest->items);
-
             if ($result) {
-//                $message = "Succes de l'ajout";
-                return redirect()->route("materiel")->with('message', "Succès de l'ajout");
-            } else {
-                $message = "Echec de l'ajout";
+
+                $itemsToAttach = $itemsOrdered->take($quantity);
+                foreach ($itemsToAttach as $item) {
+                    // Ajoutez l'entrée à la table pivot avec les informations nécessaires
+                    $borrowRequest->items()->attach($item->id);
+                }
+
+/*                dd($borrowRequest->items);*/
+
+                if ($result) {
+                    //$message = "Succes de l'ajout";
+                    return redirect()->route("materiel")->with('message', "Succès de l'ajout");
+                } else {
+                    $message = "Echec de l'ajout";
+                    return redirect()->route("demandeEmprunt", ['message' => $message]);
+
+                }
+            }else {
+                $message = "Echec de la Borrow Request";
                 return redirect()->route("demandeEmprunt", ['message' => $message]);
 
             }
-        }
-        else{
+        }else {
             $message = "Quantité trop importante";
             return redirect()->route("demandeEmprunt", ['message' => $message]);
 

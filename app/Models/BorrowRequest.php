@@ -14,7 +14,7 @@ class BorrowRequest extends Model
     use HasFactory;
 
     protected $fillable = [
-        "start_date",
+        "debut_date",
         "end_date",
         "state",
         "comment",
@@ -22,7 +22,7 @@ class BorrowRequest extends Model
     ];
 
     protected $casts = [
-        "start_date" => "datetime",
+        "debut_date" => "datetime",
         "end_date" => "datetime",
         "state" =>  RequestStateEnum::class
 
@@ -30,6 +30,6 @@ class BorrowRequest extends Model
 
     public function items(): BelongsToMany
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Item::class, 'borrow_request_item','borrow_request_id','item_id');
     }
     }
