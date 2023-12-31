@@ -8,14 +8,21 @@
         <div class="col-span-2">
             <h1>{{$class->id}}</h1>
             <h1>{{$class->name}}</h1>
-            <h2>Etat de l'objet</h2>
-
-            <h1>{{$class->categories}}</h1>
+            <h2>Categories: </h2>
+            @foreach($class->categories as $category)
+            <p>{{$category['name']}}</p>
+            @endforeach
         </div>
         <div class="col-span-2 ltr h-full bg-gray-300">
             <div class=" border-s-2 border-dashed border-l-rose-600">
                 <h2>Position de l'objet</h2>
-                <a href="/demandeEmprunt/{{$class->id}}"><button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button></a>
+                @if($class->private)
+                    <button disabled class="mt-4 ml-4 bg-zinc-400 text-white px-4 py-2 rounded">Non empruntable</button>
+
+                @else
+                    <a href="/demandeEmprunt/{{$class->id}}"><button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button></a>
+
+                @endif
             </div>
         </div>
     </div>

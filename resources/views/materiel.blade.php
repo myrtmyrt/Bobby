@@ -86,7 +86,6 @@
     <div class="col-span-4  p-4">
         @if(count($classes) > 0)
             @foreach($classes as $index => $class)
-                @dump($class->name)
                 <x-objet type="objet" :class="$class"></x-objet>
             @endforeach
                 <div class="mx-8 my-6">
