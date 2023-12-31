@@ -46,6 +46,7 @@ class BorrowController extends Controller
             });
             // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
+//            dd($itemsOrdered);
             $session = session('user')['email'];
             $asso_id = $class_id;
             $debut_date = $request->input('debut_date');
@@ -63,11 +64,11 @@ class BorrowController extends Controller
             $result = $borrowRequest->save();
 
             //associer les elements a la demande
-            for($i=0; $i<$quantity; $i++){
-               $borrowRequest->items()->attach($filtered[$i]);
+            for($i=1; $i<$quantity; $i++){
+               $borrowRequest->items()->attach($itemsOrdered[$i]->id);
             }
 
-            dd($borrowRequest->items());
+            dd($borrowRequest->items);
 
             if ($result) {
 //                $message = "Succes de l'ajout";
