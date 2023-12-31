@@ -8,6 +8,8 @@
         <div class="col-span-2">
             <h1>{{$class->id}}</h1>
             <h1>{{$class->name}}</h1>
+            <h1>{{$class->asso_id}}</h1>
+
             <h2>Categories: </h2>
             @foreach($class->categories as $category)
             <p>{{$category['name']}}</p>

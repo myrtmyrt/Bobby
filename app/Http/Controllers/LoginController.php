@@ -49,7 +49,7 @@ class LoginController extends Controller
             $response = $this->provider->getResponse($request);
             $body = json_decode($response->getBody(), true);
             $user['assos'] = $body;
-            // save user in session
+            $user['current_asso'] = $body[0];            // save user in session
             session(['user' => $user]);
             // redirect to home
             return redirect('/');

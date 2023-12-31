@@ -42,6 +42,17 @@
 @include('.header')
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
+<div class="p-4 relative inline-block">
+    <h1>Vous etes connecté en tant que <b>{{session('user')['current_asso']['login']}}</b></h1>
+    @if(count(session('user')['assos']) >1)
+        <label for="changeAsso">Changer d'asso:</label>
+        <select name="changeAsso" id="changeAsso" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300">
+            @foreach(session('user')['assos'] as $asso)
+                <option value="{{$asso['login']}}">{{$asso['login']}}</option>
+            @endforeach
+        </select>
+    @endif
+</div>
 
 <div class="px-12 py-6">
     <div class="flex justify-end">
