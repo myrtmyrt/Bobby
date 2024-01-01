@@ -44,13 +44,25 @@
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 <div class="p-4 relative inline-block">
     <h1>Vous etes connecté en tant que <b>{{session('user')['current_asso']['login']}}</b></h1>
+
+    @dump(session('user')['current_asso']['login'])
     @if(count(session('user')['assos']) >1)
         <label for="changeAsso">Changer d'asso:</label>
-        <select name="changeAsso" id="changeAsso" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300">
-            @foreach(session('user')['assos'] as $asso)
-                <option value="{{$asso['login']}}">{{$asso['login']}}</option>
-            @endforeach
-        </select>
+
+        <form method="GET" action="/changeAsso">
+            @csrf
+
+            <select name="changeAsso" id="changeAsso" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300">
+                @foreach(session('user')['assos'] as $asso)
+                    <option value="{{$asso['login']}}">{{$asso['login']}}</option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
+                Valider
+            </button>
+        </form>
+
     @endif
 </div>
 

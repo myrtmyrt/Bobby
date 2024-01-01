@@ -54,11 +54,6 @@ class MaterielController extends Controller
         return view('materiel', ['classes' => $classes]);
     }
 
-    public function getAssoItems(Request $request){
-        $asso = session("user")["current_asso"]["login"];
-        $class_id = ItemClass::where('asso_id',$asso)->with('items')->get();
-        return view('myAsso', ['items' => $class_id]);
-    }
 
 
     public function getCategoryItems(Request $request){
