@@ -40,15 +40,14 @@ class BorrowController extends Controller
         $quantity = $request->input('quantity');
         if(!(count($filtered) < $quantity)) {
             $stateOrder = ['Neuf', 'Tres Bon', 'Bon', 'Moyen', 'Mauvais', 'Tres Mauvais'];
-
             $itemsOrdered = $filtered->sortBy(function ($item) use ($stateOrder) {
-                return array_search(($item->conditions->sortBy('updated_at')->first())['condition'], $stateOrder);
+                return array_search(($item->conditions->sortByDesc('updated_at')->first())['condition'], $stateOrder);
             });
             // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
-//            dd($itemsOrdered);
+            dd($itemsOrdered);
             $session = session('user')['email'];
-            $asso_id = $class_id;
+            $asso_id = session('user')['current_asso']['login'];
             $debut_date = $request->input('debut_date');
             $end_date = $request->input('end_date');
             $comment = $request->input('comment');
@@ -90,6 +89,15 @@ class BorrowController extends Controller
             return redirect()->route("demandeEmprunt", ['message' => $message]);
 
         }
+    }
+
+    public function getAssoRequests(){
+        $asso = session('user')['current_asso']['login'];
+//        dd($asso);
+        $requests = BorrowRequest::all()->where(['asso_id',$asso],['state', 'En attente'] );
+        /*->where('state', 'En attente')*/
+        dd($requests);
+        return view('manageRequests', ['requests' => $requests]);
     }
 
 }

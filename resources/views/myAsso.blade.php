@@ -35,7 +35,7 @@
 <div class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden items-center justify-center">
         <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Fermer</button>
     </div>
-</div>
+
 
 <body>
 
@@ -64,6 +64,9 @@
         </form>
 
     @endif
+</div>
+<div>
+    <a href="/gererDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes</button></a>
 </div>
 
 <div class="px-12 py-6">

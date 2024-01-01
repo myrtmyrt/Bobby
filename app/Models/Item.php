@@ -18,8 +18,6 @@ class Item extends Model
         "quantity"
     ];
 
-/*    protected $keyType = "uuid";*/
-
     public function unavailibilities() : HasMany
     {
         return $this->hasMany(Unavailibility::class, 'item_id');
@@ -50,5 +48,13 @@ class Item extends Model
         }
         return true;
     }
+
+    /*public static function boot() {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->foo = 'bar';
+        });
+    }*/
 
 }
