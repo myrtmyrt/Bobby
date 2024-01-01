@@ -46,9 +46,9 @@ class BorrowController extends Controller
             });
             // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
-            dd($itemsOrdered->map(function ($item) use ($stateOrder) {
-                return $item->conditions->sortByDesc('created_at')->first()->condition;
-            }));
+//            dd($itemsOrdered->map(function ($item) use ($stateOrder) {
+//                return $item->conditions->sortByDesc('created_at')->first()->condition;
+//            }));
             $session = session('user')['email'];
             $asso_id = session('user')['current_asso']['login'];
             $debut_date = $request->input('debut_date');
@@ -84,12 +84,14 @@ class BorrowController extends Controller
                 }
             }else {
                 $message = "Echec de la Borrow Request";
-                return redirect()->route("demandeEmprunt", ['message' => $message]);
-
+                return view('borrowRequests', ['class' => $class, 'message' => $message]);
             }
         }else {
+//            toast()
+//                ->danger('I warned you!', 'Yikes')
+//                ->pushOnNextPage();
             $message = "Quantité trop importante";
-            return redirect()->route("demandeEmprunt", ['message' => $message]);
+            return redirect('demandeEmprunt/'.$class_id.'?message='.$message.'&message_type=danger');
 
         }
     }

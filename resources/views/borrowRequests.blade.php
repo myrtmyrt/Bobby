@@ -1,4 +1,4 @@
-@props(['class'=>null, 'message'=>null])
+@props(['class'=>null])
 
 <html>
     <head>
@@ -69,4 +69,6 @@
             </form>
         </div>
     </body>
+
+    @include('.footer')
 </html>

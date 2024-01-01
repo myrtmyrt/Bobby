@@ -45,8 +45,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
-
 <header class="bg-#FFFFFF text-#73747A p-3 flex items-center content-center justify-between">
     <a href="/" class="flex-shrink-0 mr-6">
         <img src="{{ asset('assets/logoBobby.png') }}" alt="Logo" class="h-12">
@@ -111,4 +111,27 @@
     subMenu.addEventListener('mouseleave', function() {
         subMenu.classList.add('hidden');
     });
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<!-- if message, toast but execute the script at the end, after the loading of toastify -->
+<script>
+    // if there is message and message_type in url parameters, show toast
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    const messageType = urlParams.get('message_type');
+    if (message && messageType) {
+        const typeColorMap = {
+            success: "#10B981",
+            danger: "#EF4444",
+        }
+        Toastify({
+            text: message,
+            duration: 3000,
+            close: true,
+            gravity: "bottom",
+            position: "right",
+            stopOnFocus: true,
+            backgroundColor: typeColorMap[messageType],
+        }).showToast();
+    }
 </script>
