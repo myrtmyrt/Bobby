@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\ConditionEnum;
 use App\Http\Controllers\MaterielController;
 
 use App\Models\BorrowRequest;
@@ -39,13 +40,15 @@ class BorrowController extends Controller
         });
         $quantity = $request->input('quantity');
         if(!(count($filtered) < $quantity)) {
-            $stateOrder = ['Neuf', 'Tres Bon', 'Bon', 'Moyen', 'Mauvais', 'Tres Mauvais'];
+            $stateOrder = [ConditionEnum::Neuf, ConditionEnum::TB, ConditionEnum::Bon, ConditionEnum::Moyen, ConditionEnum::Mauvais, ConditionEnum::TM];
             $itemsOrdered = $filtered->sortBy(function ($item) use ($stateOrder) {
-                return array_search(($item->conditions->sortByDesc('updated_at')->first())['condition'], $stateOrder);
+                return array_search($item->conditions->sortByDesc('created_at')->first()->condition, $stateOrder);
             });
             // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
-            dd($itemsOrdered);
+            dd($itemsOrdered->map(function ($item) use ($stateOrder) {
+                return $item->conditions->sortByDesc('created_at')->first()->condition;
+            }));
             $session = session('user')['email'];
             $asso_id = session('user')['current_asso']['login'];
             $debut_date = $request->input('debut_date');
