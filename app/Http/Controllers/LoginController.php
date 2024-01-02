@@ -51,6 +51,9 @@ class LoginController extends Controller
             $user['assos'] = $body;
             $user['current_asso'] = $body[0];            // save user in session
             session(['user' => $user]);
+            $message = "Vous etes connecté en tant que " . session('user')['current_asso']['login'];
+            session(['message' => $message]);
+            session(['message_type' => 'success']);
             // redirect to home
             return redirect('/');
         } else {
@@ -62,6 +65,9 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         $request->session()->forget('user');
+        $message = "Vous etes deconnecté.";
+        session(['message' => $message]);
+        session(['message_type' => 'success']);
         return redirect('/');
     }
 }
