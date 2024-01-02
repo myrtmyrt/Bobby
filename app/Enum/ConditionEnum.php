@@ -11,3 +11,4 @@ enum ConditionEnum:string
     case Mauvais = 'Mauvais';
     case TM = 'Tres Mauvais';
 }
+

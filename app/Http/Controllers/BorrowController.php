@@ -91,6 +91,7 @@ class BorrowController extends Controller
 //                ->danger('I warned you!', 'Yikes')
 //                ->pushOnNextPage();
             $message = "Quantité trop importante";
+            return redirect()->route('borrowRequests', [$class_id]);
             return redirect('demandeEmprunt/'.$class_id.'?message='.$message.'&message_type=danger');
 
         }
