@@ -116,22 +116,32 @@
 <!-- if message, toast but execute the script at the end, after the loading of toastify -->
 <script>
     // if there is message and message_type in url parameters, show toast
-    const urlParams = new URLSearchParams(window.location.search);
+    /*const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get('message');
-    const messageType = urlParams.get('message_type');
-    if (message && messageType) {
-        const typeColorMap = {
-            success: "#10B981",
-            danger: "#EF4444",
-        }
-        Toastify({
-            text: message,
-            duration: 3000,
-            close: true,
-            gravity: "bottom",
-            position: "right",
-            stopOnFocus: true,
-            backgroundColor: typeColorMap[messageType],
-        }).showToast();
+    const messageType = urlParams.get('message_type');*/
+
+    //recuperer valeur dans variables de session
+    const message = @json(session('message'));
+    const messageType = @json(session('message_type'));
+
+    // vider message et message_type dans les variables session
+    <?php session(['message'=> null]);
+   session(['message_type'=> null]); ?>
+
+
+if (message && messageType) {
+    const typeColorMap = {
+        success: "#10B981",
+        danger: "#EF4444",
     }
+    Toastify({
+        text: message,
+        duration: 3000,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        backgroundColor: typeColorMap[messageType],
+    }).showToast();
+}
 </script>

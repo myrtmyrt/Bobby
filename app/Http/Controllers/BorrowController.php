@@ -44,11 +44,7 @@ class BorrowController extends Controller
             $itemsOrdered = $filtered->sortBy(function ($item) use ($stateOrder) {
                 return array_search($item->conditions->sortByDesc('created_at')->first()->condition, $stateOrder);
             });
-            // j'ai l'impression que le tri par condition ne marche pas?? Je sais pas pourquoi
 
-//            dd($itemsOrdered->map(function ($item) use ($stateOrder) {
-//                return $item->conditions->sortByDesc('created_at')->first()->condition;
-//            }));
             $session = session('user')['email'];
             $asso_id = session('user')['current_asso']['login'];
             $debut_date = $request->input('debut_date');
@@ -72,27 +68,21 @@ class BorrowController extends Controller
                     $borrowRequest->items()->attach($item->id);
                 }
 
-/*                dd($borrowRequest->items);*/
+                $message = "Demande prise en compte avec succes";
+                session(['message' => $message]);
+                session(['message_type' => 'success']);
+                return redirect()->route("materiel");
 
-                if ($result) {
-                    //$message = "Succes de l'ajout";
-                    return redirect()->route("materiel")->with('message', "Succès de l'ajout");
-                } else {
-                    $message = "Echec de l'ajout";
-                    return redirect()->route("demandeEmprunt", ['message' => $message]);
-
-                }
             }else {
-                $message = "Echec de la Borrow Request";
-                return view('borrowRequests', ['class' => $class, 'message' => $message]);
-            }
+                $message = "Echec de la demande";
+                session(['message' => $message]);
+                session(['message_type' => 'danger']);
+                return redirect('demandeEmprunt/'.$class_id);            }
         }else {
-//            toast()
-//                ->danger('I warned you!', 'Yikes')
-//                ->pushOnNextPage();
             $message = "Quantité trop importante";
-            return redirect()->route('borrowRequests', [$class_id]);
-            return redirect('demandeEmprunt/'.$class_id.'?message='.$message.'&message_type=danger');
+            session(['message' => $message]);
+            session(['message_type' => 'danger']);
+            return redirect('demandeEmprunt/'.$class_id);
 
         }
     }

@@ -111,5 +111,10 @@
     <div class="block text-center text-white text-sm">Le portail associatif de l’UTC a été développé et est maintenu par
         le SiMDE (Service informatique de la Maison des étudiants) <br> © 2023 Bureau des étudiants de l’UTC
     </div>
+
+
+    {{--Vider message et message_type--}}
+    {{--{{ session(['message'=> null])}}
+    {{session(['message_type'=> null])}}--}}
 </footer>
 
