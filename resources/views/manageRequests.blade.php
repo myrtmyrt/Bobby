@@ -1,10 +1,11 @@
-@props(['class'=>null, 'message'=>null, 'requests'=>null])
+@props(['class' => null, 'message' => null, 'requests' => null])
 
-<html>
+    <!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -14,20 +15,21 @@
     <!-- Styles -->
     @vite('resources/css/app.css')
 </head>
+
 <body>
 @include('.header')
 
-<div>
-    <p>Demandes de l'asso {{session('user')['current_asso']['login']}}</p>
+<div class="mt-8 px-4">
+    <p class="text-xl font-bold">Demandes de l'asso {{ session('user')['current_asso']['login'] }}</p>
 </div>
 
-<div>
-    @if(count($requests) >0)
+<div class="mt-4">
+    @if(count($requests) > 0)
         @foreach($requests as $request)
-            <x-request type="request" :request="$request"></x-request>
-
+            <x-request :request="$request" />
         @endforeach
     @endif
 </div>
 </body>
+
 </html>
