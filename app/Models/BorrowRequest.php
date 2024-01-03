@@ -32,4 +32,13 @@ class BorrowRequest extends Model
     {
         return $this->belongsToMany(Item::class, 'borrow_request_item','borrow_request_id','item_id');
     }
+
+    public function isAssoRequest($asso){
+        if ($this->items->isNotEmpty()) {
+            $class = $this->items->first()->itemclass;
+            return $class->asso_id == $asso;
+        }else{
+            return false;
+        }
     }
+}

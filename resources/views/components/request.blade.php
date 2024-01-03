@@ -16,12 +16,14 @@
         <div class="col-span-2 ltr h-full bg-gray-300">
             <div class=" border-s-2 border-dashed border-l-rose-600">
                 @foreach($request['items'] as $item)
-                    <h1>item: {{$item['id']}}</h1>
-                    <h1>class id: {{$item['class_id']}}</h1>
+                    <div class="py-2">
+                        <h1>item: {{$item['id']}}</h1>
+                        <h1>class id: {{$item['class_id']}}</h1>
+                    </div>
                 @endforeach
 
-                    <a href=""><button type="submit" class="bg-[#D90368] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Accepter</button></a>
-                    <a href=""><button type="submit" class="bg-[#D90368] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded ">Refuser</button></a>
+                    <a href="/accepterDemande/{{$request['id']}}"><button type="submit" class="bg-[#D90368] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Accepter</button></a>
+                    <a href="/refuserDemande/{{$request['id']}}"><button type="submit" class="bg-[#D90368] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded ">Refuser</button></a>
 
             </div>
         </div>

@@ -35,4 +35,6 @@ Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getA
 Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests");
 Route::post('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests");
 
-Route::get('gererDemandes', [\App\Http\Controllers\BorrowController::class, 'getAssoRequests'])->name('manageRequests');
+Route::get('/gererDemandes', [\App\Http\Controllers\BorrowController::class, 'getAssoRequests'])->name('manageRequests');
+Route::get('/refuserDemande/{id}', [\App\Http\Controllers\BorrowController::class, 'denyRequest'])->name('denyRequest');
+Route::get('/accepterDemande/{id}', [\App\Http\Controllers\BorrowController::class, 'acceptRequest'])->name('acceptRequest');

@@ -90,7 +90,13 @@ class BorrowController extends Controller
 
     public function getAssoRequests(){
         $asso = session('user')['current_asso']['login'];
-        $requests = BorrowRequest::all()->where('asso_id',$asso );
+
+
+        $requests = BorrowRequest::all();
+        $asso_requests = $requests->filter(function ($request) use ($asso){
+            return $request->isAssoRequest($asso);
+        });
+
         $filtered = $requests->filter(function ($request) {
             return $request['state'] == RequestStateEnum::EnAttente;
         });
@@ -105,6 +111,28 @@ class BorrowController extends Controller
         //dd($filtered);
 
         return view('manageRequests', ['requests' => $filtered]);
+    }
+
+    public function denyRequest($request_id){
+        $request = BorrowRequest::find($request_id);
+        $request->state = RequestStateEnum::Refusee;
+        $request->save();
+
+        $message = "Demande refusée";
+        session(['message' => $message]);
+        session(['message_type' => 'success']);
+        return redirect('gererDemandes');
+    }
+
+    public function acceptRequest($request_id){
+        $request = BorrowRequest::find($request_id);
+        $request->state = RequestStateEnum::Validee;
+        $request->save();
+
+        $message = "Demande acceptée";
+        session(['message' => $message]);
+        session(['message_type' => 'success']);
+        return redirect('gererDemandes');
     }
 
 }
