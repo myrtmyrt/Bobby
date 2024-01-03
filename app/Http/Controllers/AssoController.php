@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BorrowRequest;
 use App\Models\ItemClass;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,13 @@ class AssoController extends Controller
         $user['current_asso'] = $asso_found;
         session(['user' => $user]);
         return $this->getAssoItems($request);
+    }
+
+    public function myRequests(){
+        $asso = session('user')['current_asso']['login'];
+        $requests = BorrowRequest::all()->where('asso_id', $asso);
+
+        return view('assoRequests', ['requests' => $requests]);
     }
 
 }

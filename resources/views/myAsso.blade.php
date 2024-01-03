@@ -67,6 +67,8 @@
 </div>
 <div>
     <a href="/gererDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes</button></a>
+    <a href="/mesDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Mes demandes</button></a>
+
 </div>
 
 <div class="px-12 py-6">

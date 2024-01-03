@@ -135,4 +135,8 @@ class BorrowController extends Controller
         return redirect('gererDemandes');
     }
 
+    public function deleteRequest($request_id){
+
+    }
+
 }
