@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\ConditionEnum;
+use App\Enum\RequestStateEnum;
 use App\Http\Controllers\MaterielController;
 
 use App\Models\BorrowRequest;
@@ -89,11 +90,21 @@ class BorrowController extends Controller
 
     public function getAssoRequests(){
         $asso = session('user')['current_asso']['login'];
-//        dd($asso);
-        $requests = BorrowRequest::all()->where(['asso_id',$asso],['state', 'En attente'] );
-        /*->where('state', 'En attente')*/
-        dd($requests);
-        return view('manageRequests', ['requests' => $requests]);
+        $requests = BorrowRequest::all()->where('asso_id',$asso );
+        $filtered = $requests->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::EnAttente;
+        });
+        foreach ($filtered as $request){
+            $items = $request->items()->get();
+            $request->items = $items;
+
+            $class = $items->first()->itemClass()->get();
+            $request->class = $class;
+
+        }
+        //dd($filtered);
+
+        return view('manageRequests', ['requests' => $filtered]);
     }
 
 }

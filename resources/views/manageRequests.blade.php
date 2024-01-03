@@ -1,4 +1,4 @@
-@props(['class'=>null, 'message'=>null])
+@props(['class'=>null, 'message'=>null, 'requests'=>null])
 
 <html>
 <head>
@@ -19,6 +19,15 @@
 
 <div>
     <p>Demandes de l'asso {{session('user')['current_asso']['login']}}</p>
+</div>
+
+<div>
+    @if(count($requests) >0)
+        @foreach($requests as $request)
+            <x-request type="request" :request="$request"></x-request>
+
+        @endforeach
+    @endif
 </div>
 </body>
 </html>
