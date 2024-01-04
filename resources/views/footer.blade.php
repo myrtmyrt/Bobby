@@ -116,5 +116,8 @@
     {{--Vider message et message_type--}}
     {{--{{ session(['message'=> null])}}
     {{session(['message_type'=> null])}}--}}
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+
 </footer>
 
