@@ -40,4 +40,5 @@ Route::post('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowControlle
 Route::get('/gererDemandes', [\App\Http\Controllers\BorrowController::class, 'getAssoRequests'])->name('manageRequests');
 Route::get('/refuserDemande/{id}', [\App\Http\Controllers\BorrowController::class, 'denyRequest'])->name('denyRequest');
 Route::get('/accepterDemande/{id}', [\App\Http\Controllers\BorrowController::class, 'acceptRequest'])->name('acceptRequest');
+Route::get('/supprimerDemande/{id}', [\App\Http\Controllers\BorrowController::class, 'deleteRequest'])->name('deleteRequest');
 

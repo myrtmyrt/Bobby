@@ -136,6 +136,21 @@ class BorrowController extends Controller
     }
 
     public function deleteRequest($request_id){
+        $request = BorrowRequest::find($request_id);
+        if (!$request) {
+            $message = "La demande n'existe pas.";
+            session(['message' => $message]);
+            session(['message_type' => 'error']);
+            return redirect('mesDemandes');
+        }
+        $request->items()->detach();
+
+        $request->delete();
+
+        $message = "Demande suprimée";
+        session(['message' => $message]);
+        session(['message_type' => 'success']);
+        return redirect('mesDemandes');
 
     }
 

@@ -9,7 +9,7 @@
 
         <!-- Colonne 2 -->
         <div class="col-span-2">
-            <h1></h1>
+            <h1><b>Demande</b>: {{$request->id}}</h1>
             <h1><b>Date début</b>: {{$request->debut_date->format('d-m-Y')}}</h1>
             <h1><b>Date fin</b>: {{$request->end_date->format('d-m-Y')}}</h1>
             <h1>Asso: {{$request->asso_id}}</h1>
