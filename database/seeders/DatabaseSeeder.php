@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        /*$this->call(ItemClassSeeder::class);
+        $this->call(ItemClassSeeder::class);
         $this->call(ItemSeeder::class);
-        $this->call(ConditionHistorySeeder::class);*/
+        $this->call(ConditionHistorySeeder::class);
         $this->call(BorrowRequestSeeder::class);
 
     }
