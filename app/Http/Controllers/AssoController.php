@@ -13,7 +13,8 @@ class AssoController extends Controller
     public function getAssoItems(Request $request)
     {
         $asso = session("user")["current_asso"]["login"];
-        $class_id = ItemClass::where('asso_id', $asso)->with('items')->get();
+        $class_id = ItemClass::where('asso_id', $asso)->with('items')->paginate(10);
+        //$class_id = $class_id->paginate(10);
         return view('myAsso', ['items' => $class_id]);
     }
 

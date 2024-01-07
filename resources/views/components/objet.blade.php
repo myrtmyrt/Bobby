@@ -1,22 +1,21 @@
 @props(['class'])
 
-<div class="container rounded-md">
-    <div class="grid grid-cols-5 items-center shadow-lg m-4">
-        <div class="col-span-1">
+<div class="">
+    <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg">
             <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-0 m-0" alt="Image objet">
-        </div>
-        <div class="col-span-2">
-            <h1>{{$class->id}}</h1>
-            <h1>{{$class->name}}</h1>
-            <h1>{{$class->asso_id}}</h1>
 
-            <h2>Categories: </h2>
+        <div class="w-full p-4 bg-gray-100">
+            <h1><b>Id: </b>{{$class->id}}</h1>
+            <h1><b>Name: </b>{{$class->name}}</h1>
+            <h1><b>Asso: </b>{{$class->asso_id}}</h1>
+
+            <h2><b>Categories:</b> </h2>
             @foreach($class->categories as $category)
             <p>{{$category['name']}}</p>
             @endforeach
         </div>
-        <div class="col-span-2 ltr h-full bg-gray-300">
-            <div class=" border-s-2 border-dashed border-l-rose-600">
+        <div class="w-full border-s-2 border-dashed border-l-rose-600 p-4  ltr bg-gray-100 rounded-br rounded-tr">
+            <div class="">
                 <h2>Position de l'objet</h2>
                 @if($class->private)
                     <button disabled class="mt-4 ml-4 bg-zinc-400 text-white px-4 py-2 rounded">Non empruntable</button>

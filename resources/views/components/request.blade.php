@@ -1,7 +1,7 @@
 @props(['request'])
 
 <div class="">
-    <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg shadow-md ">
+    <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg">
 
             <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-4 m-0" alt="Image objet">
 
