@@ -62,7 +62,7 @@
                 <a href="/materiel/deguisements" class="block px-4 py-2 hover:text-[#D90368]">Déguisements</a>
             </div>
         </div>
-        <a href="/emprunts" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
+        <a href="/mesDemandes" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
         <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
         @endif
         @if (session("user"))

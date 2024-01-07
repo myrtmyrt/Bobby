@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\RequestStateEnum;
 use App\Models\BorrowRequest;
 use App\Models\ItemClass;
 use Illuminate\Http\Request;
+
 
 class AssoController extends Controller
 {
@@ -32,9 +34,26 @@ class AssoController extends Controller
 
     public function myRequests(){
         $asso = session('user')['current_asso']['login'];
-        $requests = BorrowRequest::all()->where('asso_id', $asso);
 
-        return view('assoRequests', ['requests' => $requests]);
+        // Utilisez where() et paginate() directement sur la requête Eloquent
+        $requests = BorrowRequest::where('asso_id', $asso)->paginate(10);
+        $result = BorrowRequest::all()->where('asso_id', $asso);
+
+
+        $result1 = $result->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::EnAttente;
+        });
+
+        $result2 = $result->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::Validee;
+        });
+
+        $result3 = $result->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::Refusee;
+        });
+
+        return view('assoRequests', ['requests' => $requests, 'enAttente' => $result1, 'validees'=>$result2, 'refusees'=>$result3]);
     }
+
 
 }

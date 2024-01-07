@@ -1,14 +1,11 @@
 @props(['request'])
 
-<div class="container rounded-md">
-    <div class="grid grid-cols-5 items-center shadow-lg m-4">
-        <!-- Colonne 1 -->
-        <div class="col-span-1">
-            <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-0 m-0" alt="Image objet">
-        </div>
+<div class="">
+    <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg shadow-md ">
 
-        <!-- Colonne 2 -->
-        <div class="col-span-2">
+            <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-4 m-0" alt="Image objet">
+
+        <div class="w-full p-4 bg-gray-100">
             <h1><b>Demande</b>: {{$request->id}}</h1>
             <h1><b>Date début</b>: {{$request->debut_date->format('d-m-Y')}}</h1>
             <h1><b>Date fin</b>: {{$request->end_date->format('d-m-Y')}}</h1>
@@ -28,9 +25,8 @@
             @endif
         </div>
 
-        <!-- Colonne 3 -->
-        <div class="col-span-2 ltr h-full bg-gray-300">
-            <div class="border-s-2 border-dashed border-l-rose-600 p-4">
+        <div class="w-full border-s-2 border-dashed border-l-rose-600 p-4  ltr bg-gray-100">
+            <div class="">
                 <!-- Afficher les items -->
                 @foreach($request['items'] as $item)
                     <div class="py-2">
