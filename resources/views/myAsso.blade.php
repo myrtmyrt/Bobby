@@ -43,23 +43,33 @@
 
 <h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
 <div class="p-4 flex flex-row">
-    <div class="p-4 relative inline-block">
-        <h1>Vous etes connecté en tant que <b>{{session('user')['current_asso']['login']}}</b></h1>
+    <div class="flex p-4 relative inline-block justify-center items-center">
+        <h1>Vous etes connecté en tant que</h1>
 
         @if(count(session('user')['assos']) >1)
-            <label for="changeAsso">Changer d'asso:</label>
+{{--            <label for="changeAsso">Changer d'asso:</label>--}}
 
-            <form method="GET" action="/changeAsso">
+            <form id="changeAssoForm" method="GET" action="/changeAsso">
                 @csrf
 
-                <select name="changeAsso" id="changeAsso" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300">
-                    @foreach(session('user')['assos'] as $asso)
-                        <option value="{{$asso['login']}}">{{$asso['login']}}</option>
-                    @endforeach
-                </select>
+                <div class="relative">
+                    <select name="changeAsso" id="changeAsso" class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
+                        <option value="{{ session('user')['current_asso']['login'] }}" selected>{{ session('user')['current_asso']['login'] }}</option>
+                        @foreach(session('user')['assos'] as $asso)
+                            @if($asso['login'] !== session('user')['current_asso']['login'])
+                                <option value="{{ $asso['login'] }}">{{ $asso['login'] }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                        <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M10 12l-6-6-1.414 1.414L10 14.828l7.414-7.414L16 6z"/>
+                        </svg>
+                    </div>
+                </div>
 
                 <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
-                    Valider
+                    Changer d'association
                 </button>
             </form>
         @endif
@@ -114,6 +124,17 @@
 </div>
 
 @include('.footer')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Détecter le changement de sélection et soumettre automatiquement le formulaire
+        $('#changeAsso').on('change', function () {
+            $('#changeAssoForm').submit();
+        });
+    });
+</script>
+
 </body>
 
 </html>
