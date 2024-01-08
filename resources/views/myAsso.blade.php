@@ -41,7 +41,7 @@
 
 @include('.header')
 
-<h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
+<h1 class="bg-custom-gray text-white text-center py-1">Mon association</h1>
 <div class="p-4 flex flex-row">
     <div class="flex p-4 relative inline-block justify-center items-center">
         <h1>Vous etes connecté en tant que</h1>

@@ -22,32 +22,29 @@
 @include('.header')
 
 
-<h1 class="bg-custom-gray text-white text-center py-1">HOME</h1>
+<h1 class="bg-custom-gray text-white text-center py-1">Matériel de la fédération</h1>
 
 
 <div class="h-full justify-between items-center  grid gap-3grid grid-cols-6 gap-4">
-    <div class="col-span-2 bg-gray-300  h-full">
+    <div class="col-span-2 bg-gray-200  h-full">
         <div class="grid grid-cols-4 h-full">
-            <div class="col-span-1 bg-[#D90368] p-2 flex items-center justify-center">
-                <h2>Catégories</h2>
-            </div>
-            <div class="col-span-3 p-2  justify-center items-center">
-                <form method="get" class="p-2 w-auto space-y-2">
+            <div class="col-span-3 p-2 justify-center items-center relative">
+                <form method="get" class="p-4 w-auto space-y-2 sticky top-0 z-10">
                     @csrf
                     <div>
-                        <label for="asso_id" class="block">Entre asso_id</label>
-                        <input type="text" name="asso_id" id="asso_id" placeholder="Entrer le nom de l'asso">
+                        <label for="asso_id" class="block">Recherche par association : </label>
+                        <input type="text" name="asso_id" id="asso_id" class="mb-4 block w-full border border-[#D90368] px-1 py-2 rounded-md" placeholder="Entrer le nom de l'asso">
                     </div>
                     <div>
-                        <label for="query" class="block">Entre query</label>
-                        <input type="text" name="query" id="asso_id" placeholder="Entrer le nom de l'item">
+                        <label for="query" class="block">Recherche par objet :</label>
+                        <input type="text" name="query" id="asso_id" class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md" placeholder="Entrer le nom de l'item">
                     </div>
 
                     <div>
-                        <label for="categories" class="block">Selectionne une categorie</label>
+                        <label for="categories" class="block ">Recherche par catégorie :</label>
 
                         <select name="categories" id="categories"
-                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                                class="mt-1 block w-full p-2 border border-[#D90368] rounded-md shadow-sm">
                             @foreach($categories as $cat)
                                 <option value={{$cat->name}}>{{$cat->name}}</option>
                             @endforeach
@@ -57,7 +54,7 @@
                                                 <input type="text" name="category" id="category" placeholder="Entrer le nom de la category">
                         --}}
                     </div>
-                    <button type="submit" class="bg-red-500 text-white p-1 rounded-md">Entrer</button>
+                    <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Entrer</button>
 
                 </form>
             </div>
@@ -67,7 +64,7 @@
 
     </div>
 
-    <div class="col-span-4  p-4">
+    <div class="col-span-4 transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368] m-4">
         @if(count($classes) > 0)
             @foreach($classes as $index => $class)
                 <x-objet type="objet" :class="$class"></x-objet>
