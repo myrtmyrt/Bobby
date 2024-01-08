@@ -61,6 +61,34 @@ class MaterielController extends Controller
 
     }
 
+    public function create(Request $request){
+        return view('materiel', ['classes' => [], 'request' => $request]);
+    }
+
+
+    public function store(Request $request)
+    {
+        // Valider les données du formulaire
+        $validatedData = $request->validate([
+            'objectName' => 'required',
+            'objectPosition' => 'required',
+        ]);
+
+        $asso = session("user")["assos"][0]["login"];
+
+        // Créer un nouvel objet dans la base de données
+        $newObject = ItemClass::create([
+
+            'name' => $validatedData['objectName'],
+            'description' => $validatedData['objectPosition'],
+            'private' => False,
+            'quantity' => 0,
+            'asso_id' => $asso
+        ]);
+
+        // Rediriger ou effectuer toute autre action après l'ajout
+        return redirect()->back()->with('success', 'Objet ajouté avec succès');
+    }
 
 
 

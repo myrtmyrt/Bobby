@@ -118,8 +118,10 @@
 
             <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter</button>
         </form>
+        <a href="/myAsso">
+            <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Annuler</button>
+        </a>
 
-        <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Annuler</button>
     </div>
 </div>
 

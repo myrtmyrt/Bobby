@@ -59,9 +59,8 @@
 
         </div>
         <div class="flex p-4 relative inline-block justify-center items-center text-center">
-            <h2 class="mr-4">Connecté.e en tant que : </h2>
-
             @if (session("user"))
+                <h2 class="mr-4">Connecté.e en tant que : </h2>
                 @if(count(session('user')['assos']) > 1)
                     <form method="GET" action="/changeAsso">
                         @csrf

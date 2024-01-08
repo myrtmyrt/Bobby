@@ -34,6 +34,8 @@ Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getA
 //Route::get('/materiel/search', [\App\Http\Controllers\MaterielController::class, 'searchClassesByAsso'])->name("materiel");
 
 
+Route::post('/addObject', [\App\Http\Controllers\MaterielController::class, 'store'])->name('addObject');
+
 Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests");
 Route::post('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests");
 

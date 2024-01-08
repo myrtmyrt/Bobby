@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->boolean("mono_item");
             $table->foreignId('class_id')->constrained('item_classes');
+            $table->integer('quantity')->default(0);
             $table->text('description');
             $table->timestamps();
         });
