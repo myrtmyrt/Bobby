@@ -50,10 +50,10 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
-<header class="bg-#FFFFFF text-#73747A p-3 flex items-center content-center justify-between">
+<header class="bg-#FFFFFF text-#73747A p-3 flex items-center content-center justify-between fixed top-0 left-0 right-0 z-50">
     <div class="flex items-center">
         <div class="flex-shrink-0 mr-2">
-            <a href="/materiel">
+            <a href="/">
                 <img src="{{ asset('assets/logoBobby.png') }}" alt="Logo" class="h-12">
             </a>
 
