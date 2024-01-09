@@ -1,4 +1,4 @@
-@props(['classes'=>null])
+{{--@props(['classes'=>null])--}}
     <!DOCTYPE html>
 
 <html>
@@ -13,7 +13,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
-    @vite('resources/css/app.css')
+{{--    @vite('resources/css/app.css')--}}
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -49,7 +49,7 @@
         <div class="flex p-4 relative inline-block justify-center items-center">
             <h1>Vous etes connecté en tant que</h1>
 
-            @if(count(session('user')['assos']) >1)
+{{--            @if(count(session('user')['assos']) >1)--}}
                 {{--            <label for="changeAsso">Changer d'asso:</label>--}}
 
                 <form id="changeAssoForm" method="GET" action="/changeAsso">
@@ -75,7 +75,6 @@
                         Changer d'association
                     </button>
                 </form>
-            @endif
         </div>
         <div>
             <a href="/gererDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes</button></a>
@@ -111,13 +110,24 @@
 
     <div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
-            <form action="/addObject" method="post">
+            <form action="/addObject" enctype="multipart/form-data" method="post">
                 @csrf
                 <label for="objectName">Nom de l'objet:</label>
                 <input type="text" name="objectName" id="objectName" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
                 <label for="objectPosition">Position de l'objet:</label>
                 <input type="text" name="objectPosition" id="objectPosition" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+
+                <label for="objectCategory">Catégorie de l'objet:</label>
+                <select name="objectCategory" id="objectCategory"
+                        class="mt-1 block w-full p-2 border border-[#D90368] rounded-md shadow-sm">
+                    @foreach(\App\Models\Category::all() as $cat)
+                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                    @endforeach
+                </select>
+
+                <label for="objectImage">Image correspondant à l'objet:</label>
+                <input type="file" name="objectImage" id="objectImage" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
                 <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter</button>
             </form>

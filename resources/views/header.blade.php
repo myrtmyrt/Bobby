@@ -88,19 +88,17 @@
         <nav class="flex justify-center items-center">
             <div class="relative">
 
-                <a href="/materiel" class="mr-4 hover:text-[#D90368]">Voir le matériel de la fédération</a>
-                {{--            <div class="absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">--}}
-                {{--                <a href="/materiel/evenementiel" class="block px-4 py-2 hover:text-[#D90368]">Evènementiel</a>--}}
-                {{--                <a href="/materiel/decoration" class="block px-4 py-2 hover:text-[#D90368]">Décoration</a>--}}
-                {{--                <a href="/materiel/meubles" class="block px-4 py-2 hover:text-[#D90368]">Meubles</a>--}}
-                {{--                <a href="/materiel/deguisements" class="block px-4 py-2 hover:text-[#D90368]">Déguisements</a>--}}
-                {{--            </div>--}}
+                <a href="/materiel" class="mr-4 hover:text-[#D90368] relative group">
+                    Voir le matériel de la fédération
+                </a>
             </div>
 
             <a href="/mesDemandes" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
             <div class="relative group">
-                <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
-                <div class="absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">
+                <a href="/myAsso" class="mr-4 hover:text-[#D90368] relative group">
+                    Mon Association
+                </a>
+                <div class="group absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">
                     <a href="/materiel/evenementiel" class="block px-4 py-2 hover:text-[#D90368]">Gérer mes emprunts</a>
                     <a href="/materiel/decoration" class="block px-4 py-2 hover:text-[#D90368]">Faire mon inventaire</a>
                 </div>
@@ -154,7 +152,9 @@
         subMenu.classList.add('hidden');
     });
 </script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<!-- Supprimez un des deux scripts jQuery si vous en avez deux -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     // if there is message and message_type in url parameters, show toast
     const urlParams = new URLSearchParams(window.location.search);
@@ -176,9 +176,6 @@
         }).showToast();
     }
 </script>
-
-
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {

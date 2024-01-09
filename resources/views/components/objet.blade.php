@@ -2,17 +2,15 @@
 
 <div class="">
     <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg">
-            <img src="{{ asset('assets/chaise.png') }}" class="w-32 h-auto p-0 m-0" alt="Image objet">
+            <img src="{{Storage::disk('public')->url($class->image)}}" class="w-32 h-auto p-0 m-0" alt="Image objet">
 
         <div class="w-full p-4 bg-gray-100">
             <h1><b>Id: </b>{{$class->id}}</h1>
             <h1><b>Name: </b>{{$class->name}}</h1>
             <h1><b>Asso: </b>{{$class->asso_id}}</h1>
 
-            <h2><b>Categories:</b> </h2>
-            @foreach($class->categories as $category)
-            <p>{{$category['name']}}</p>
-            @endforeach
+            <h2><b>Categories: </b>{{$class->categories->pluck('name')->implode(', ')}}</h2>
+
         </div>
         <div class="w-full border-s-2 border-dashed border-l-rose-600 p-4  ltr bg-gray-100 rounded-br rounded-tr">
             <div class="">

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer("quantity");
             $table->string("asso_id");
             $table->text('description');
+            $table->string('image');
             $table->boolean('private');
             $table->timestamps();
         });
