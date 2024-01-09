@@ -68,23 +68,31 @@ class MaterielController extends Controller
 
     public function store(Request $request)
     {
+
         // Valider les données du formulaire
         $validatedData = $request->validate([
             'objectName' => 'required',
             'objectPosition' => 'required',
+            'objectImage' =>['required','image'],
         ]);
 
         $asso = session("user")["assos"][0]["login"];
 
         // Créer un nouvel objet dans la base de données
-        $newObject = ItemClass::create([
+        $itemClass = ItemClass::create([
 
             'name' => $validatedData['objectName'],
             'description' => $validatedData['objectPosition'],
             'private' => False,
             'quantity' => 0,
+            'image' => $request->file('objectImage')->store('images','public'),
             'asso_id' => $asso
         ]);
+
+        if($request->has('objectCategory')){
+            $itemClass->categories()->attach($request->get('objectCategory'));
+        }
+
 
         // Rediriger ou effectuer toute autre action après l'ajout
         return redirect()->back()->with('success', 'Objet ajouté avec succès');

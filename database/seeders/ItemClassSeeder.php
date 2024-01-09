@@ -162,7 +162,8 @@ class ItemClassSeeder extends Seeder
             "description" => $faker->text(),
             "private" => rand(0, 100) > 5,
             "quantity" => rand(0, 10),
-            "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)]
+            "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)],
+            "image" => asset("assets/chaise.png")
         ]);
         $itemClass->save();
     }

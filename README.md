@@ -1,4 +1,4 @@
-# Nom de Votre Projet
+# Nouveau Bobby
 
 Description brève de votre projet.
 
@@ -13,6 +13,13 @@ Description brève de votre projet.
 - [Utilisation](#utilisation)
 - [Contributions](#contributions)
 - [Code de Conduite](#code-de-conduite)
+
+## Fonctionnalités
+- Voir le matériel des associations
+- Pouvoir demander un emprunt
+- Pouvoir ajouter un objet
+- Pouvoir gérer les demandes d'emprunt 
+
 ## Introduction
 
 Une brève introduction à votre projet, expliquant son objectif, ses fonctionnalités principales et son public cible.
@@ -65,3 +72,92 @@ Expliquez comment votre code est structuré. Quels sont les principaux répertoi
 *myAsso.blade.php : 
 *borrowRequests.blade.php : 
 *manageRequests.blade.php : 
+
+## UML
+
+```puml
+@startuml
+
+skinparam groupInheritance 2
+
+cenum RequestState{
+    Validee
+    Refusee
+    En attente
+}
+
+enum Condition{
+    neuf
+    tresBon
+    bon
+    moyen
+    mauvais
+    tresMauvais
+}
+
+class ConditionHistory{
+    date: datetime,
+    condition: Condition
+}
+
+class TemporaryAccess{
+    user: string
+    end_date: date
+    state : RequestState
+}
+
+class Item{
+    quantity : int
+    mono-item : bool
+    description: string
+}
+
+class Class{
+    name : char
+    description : string
+    private : bool
+}
+
+class Category{
+    name : string
+}
+
+class Unavailability{
+start_date : date
+end_date : date
+}
+
+class Borrow_Request{
+request_date : datetime,
+debut_date : datetime,
+end_date : datetime,
+state : RequestState,
+comment : string
+}
+
+class Inventory{
+    user: string
+    date: date
+}
+
+class Association{
+    name: string
+}
+class Borrowed_Item{
+    quantity : int 
+} 
+
+Class  "1..1" --  "1..*" Item : "belong to" < 
+Borrow_Request "0..*" -- "1..*" Item 
+(Borrow_Request, Item) . Borrowed_Item
+Category "0..*" - "0..*" Class : "belong to" >
+Unavailability "1..1" - "0..*" Item : "is not available" <
+TemporaryAccess "0..*" - "1..1" Association : gives <
+Association "1..1" - "0..*" Inventory : "has" >
+Association "1.1" -- "0..*" Class :  Belongs to <
+Association "1..1" -- "0..*" Borrow_Request : "demands" >
+
+
+Item "1..1" -- "1..*" ConditionHistory : "has" >
+@enduml
+```
