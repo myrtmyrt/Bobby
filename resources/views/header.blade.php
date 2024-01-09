@@ -97,7 +97,7 @@
                 {{--            </div>--}}
             </div>
 
-            <a href="/emprunts" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
+            <a href="/mesDemandes" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
             <div class="relative group">
                 <a href="/myAsso" class="mr-4 hover:text-[#D90368]">Mon Association</a>
                 <div class="absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">
@@ -106,8 +106,6 @@
                 </div>
             </div>
 
-            @endif
-            @if (session("user"))
                 <!-- User is logged in, show logout button -->
                 <a href="/logout">
                     <button class="ml-4 w-8 h-8 bg-[#D90368] rounded-full flex items-center justify-center">
@@ -178,6 +176,9 @@
         }).showToast();
     }
 </script>
+
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {

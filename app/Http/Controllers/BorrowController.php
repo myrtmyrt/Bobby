@@ -88,30 +88,45 @@ class BorrowController extends Controller
         }
     }
 
-    public function getAssoRequests(){
+    public function getAssoRequests()
+    {
         $asso = session('user')['current_asso']['login'];
 
+       /* $requests = BorrowRequest::all()->where('state', RequestStateEnum::EnAttente);
 
-        $requests = BorrowRequest::all();
-        $asso_requests = $requests->filter(function ($request) use ($asso){
+        $asso_requests = $requests->filter(function ($request) use ($asso) {
             return $request->isAssoRequest($asso);
-        });
-
-        $filtered = $requests->filter(function ($request) {
-            return $request['state'] == RequestStateEnum::EnAttente;
-        });
-        foreach ($filtered as $request){
+        }); // tri pour récupérer les demandes qui s'adressent a l'asso
+        dd($asso_requests->first()->items->first()->itemclass['id']);
+        foreach ($asso_requests as $request) {
             $items = $request->items()->get();
             $request->items = $items;
 
             $class = $items->first()->itemClass()->get();
             $request->class = $class;
 
-        }
-        //dd($filtered);
+        }*/
 
-        return view('manageRequests', ['requests' => $filtered]);
+//        $requests = BorrowRequest::join('bobby.borrow_request_item as bri', 'borrow_requests.id', '=', 'bri.borrow_request_id')
+//            ->join('bobby.items as i', 'bri.item_id', '=', 'i.id')
+//            ->join('bobby.item_classes as ic', 'i.class_id', '=', 'ic.id')
+//            ->where('ic.asso_id', '=', 'comedmus')
+//            ->get();
+
+        $assoId = 'comedmus';
+
+        $requests = BorrowRequest::whereHas('items.itemClass', function ($query) use ($assoId) {
+            $query->where('asso_id', $assoId);
+        })
+            ->with(['items' => function ($query) {
+                $query->select('items.id', 'class_id');
+            }])
+            ->paginate(10);
+        dd($requests);
+
+        return view('manageRequests', ['requests' => $requests]);
     }
+
 
     public function denyRequest($request_id){
         $request = BorrowRequest::find($request_id);

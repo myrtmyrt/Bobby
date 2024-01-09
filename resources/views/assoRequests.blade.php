@@ -19,10 +19,10 @@
 <body>
 @include('.header')
 
-<div class="mt-8 px-4">
-    <p class="text-xl font-bold">Mes demandes</p>
+<div class="mt-20 ">
+    <h1 class="bg-custom-gray text-white text-center py-1">Mes demandes</h1>
 </div>
-<div class="bg-gray-100 font-sans ">
+<div class="bg-gray-100 font-sans px-4 ">
     <div x-data="{ openTab: 1 }" class="p-8">
         <div class="max-w-md mx-auto">
             <div class="mb-4 flex space-x-4 p-2 bg-white rounded-lg shadow-md">
