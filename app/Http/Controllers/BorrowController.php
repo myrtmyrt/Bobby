@@ -122,7 +122,7 @@ class BorrowController extends Controller
                 $query->select('items.id', 'class_id');
             }])
             ->paginate(10);
-        dd($requests);
+        //dd($requests);
 
         return view('manageRequests', ['requests' => $requests]);
     }
