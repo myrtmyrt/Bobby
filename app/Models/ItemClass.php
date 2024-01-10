@@ -16,6 +16,7 @@ class ItemClass extends Model
         "name",
         "description",
         "private",
+        "position",
         'quantity',
         'image',
         "asso_id"

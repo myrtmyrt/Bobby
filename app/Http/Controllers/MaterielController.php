@@ -95,6 +95,7 @@ class MaterielController extends Controller
         ]);
 
         $asso = session('user')['current_asso']['login'];
+
         // Créer un nouvel objet dans la base de données
         $itemClass = ItemClass::create([
 
@@ -116,7 +117,21 @@ class MaterielController extends Controller
         return redirect()->back()->with('message', 'Objet ajouté avec succès');
     }
 
+    public function updateObject(Request $request, $id)
+    {
+        $object = ItemClass::findOrFail($id);
 
+
+        $validatedData = $request->validate([
+            'objectName' => 'required',
+            'objectPosition' => 'required',
+            'objectImage' =>['required','image'],
+        ]);
+
+        $object->update($validatedData);
+
+        return redirect('/myAsso')->with('success', 'Object updated successfully');
+    }
 
 
 
