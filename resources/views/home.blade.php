@@ -93,9 +93,15 @@
                 d’inventaire.</p>
             <p class="pb-8">Avec Bobby, profitez aussi du système d’emprunt. Vous avez besoin de matériel? Vérifiez
                 d’abord qu’une autre asso ne le possède pas déjà!</p>
-            <a href="/materiel">
-                <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded">Découvrir Bobby</button>
-            </a>
+            @if (session("user"))
+                <a href="/materiel">
+                    <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded">Découvrir Bobby</button>
+                </a>
+            @else
+                <a href="/login">
+                    <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded">Connecte toi pour découvrir Bobby !</button>
+                </a>
+            @endif
 
         </div>
 

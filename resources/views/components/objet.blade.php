@@ -17,7 +17,14 @@
 
 <div class="">
     <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg">
-        <img src="{{Storage::disk('public')->url($class->image)}}" class="max-w-24 max-h-24 p-0 m-0" alt="Image objet">
+        <img
+            @if(Str::startsWith($class->image, 'http'))
+                src="{{ $class->image }}"
+            @else
+                src="{{ Storage::disk('public')->url($class->image) }}"
+            @endif
+            class="max-w-24 max-h-24 p-0 m-0"
+        >
 
         <div class="w-full p-6 p-4 bg-gray-100">
             <h1><b>Id: </b>{{$class->id}}</h1>

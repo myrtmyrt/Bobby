@@ -165,7 +165,7 @@ class ItemClassSeeder extends Seeder
             "quantity" => rand(0, 10),
             "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)],
             "position" => "MDE",
-            "image" => asset("images/DiyJSb2l8QZ3PTXnK1bJrgTUoZS3DnSLzy9qcMAu.jpg")
+            "image" => asset("storage/images/DiyJSb2l8QZ3PTXnK1bJrgTUoZS3DnSLzy9qcMAu.jpg")
         ]);
         $itemClass->save();
         return $itemClass;
