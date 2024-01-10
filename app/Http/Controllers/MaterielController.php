@@ -82,13 +82,8 @@ class MaterielController extends Controller
 
     }
 
-    public function create(Request $request)
-    {
-        return view('materiel', ['classes' => [], 'request' => $request]);
-    }
 
-
-    public function store(Request $request)
+    public function createClass(Request $request)
     {
 
         // Valider les données du formulaire

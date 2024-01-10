@@ -32,7 +32,7 @@ Route::get('/mesDemandes', [\App\Http\Controllers\AssoController::class, 'myRequ
 Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getClasses'])->name("materiel")->middleware(\App\Http\Middleware\Connexion::class);
 Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel")->middleware(\App\Http\Middleware\Connexion::class);
 
-Route::post('/addObject', [\App\Http\Controllers\MaterielController::class, 'store'])->name('addObject')->middleware(\App\Http\Middleware\Connexion::class);
+Route::post('/addObject', [\App\Http\Controllers\MaterielController::class, 'createClass'])->name('addObject')->middleware(\App\Http\Middleware\Connexion::class);
 Route::post('/updateObject/{id}', [MaterielController::class, 'updateObject'])->name('updateObject');
 
 Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests")->middleware(\App\Http\Middleware\Connexion::class);

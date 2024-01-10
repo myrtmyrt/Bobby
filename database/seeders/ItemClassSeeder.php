@@ -156,6 +156,8 @@ class ItemClassSeeder extends Seeder
         "workandchill"
     ];
 
+    const positions=['MDE','Pic','Garage 1','Garage 2','Garage 3','Garage 4','Garage 5','Garage 6','Garage 7', 'Salle de stockage PAE','Salle de stockage PVDC','Salle de stockage Decibels','Salle de stockage PSEC','SHRED'];
+
     public function createItemClass($faker, $cat)
     {
         $itemClass = new ItemClass([
@@ -164,7 +166,7 @@ class ItemClassSeeder extends Seeder
             "private" => rand(0, 100) > 5,
             "quantity" => rand(0, 10),
             "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)],
-            "position" => "MDE",
+            "position" => self::positions[rand(0, count(self::positions) - 1)],
             "image" => asset("storage/images/DiyJSb2l8QZ3PTXnK1bJrgTUoZS3DnSLzy9qcMAu.jpg")
         ]);
         $itemClass->save();
