@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('item_classes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer("quantity");
             $table->string("asso_id");
+            $table->string("position");
             $table->text('description');
+            $table->string('image');
             $table->boolean('private');
             $table->timestamps();
         });

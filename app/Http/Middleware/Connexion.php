@@ -19,6 +19,6 @@ class Connexion
         if(session()->has('user')){
             return $next($request);
         }
-        return redirect()->route("login");
+        return redirect()->route("home");
     }
 }

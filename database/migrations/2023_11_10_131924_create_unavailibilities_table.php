@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('unavailibilities', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('item_id')->nullable()->constrained();
             $table->datetime('start_date');
             $table->datetime('end_date');
             $table->timestamps();

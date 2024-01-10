@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemClass;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -155,23 +156,30 @@ class ItemClassSeeder extends Seeder
         "workandchill"
     ];
 
-    public function createItemClass($faker)
+    public function createItemClass($faker, $cat)
     {
         $itemClass = new ItemClass([
             "name" => $faker->word()." ".$faker->word(),
             "description" => $faker->text(),
             "private" => rand(0, 100) > 5,
-            "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)]
+            "quantity" => rand(0, 10),
+            "asso_id" => self::assoIds[rand(0, count(self::assoIds) - 1)],
+            "position" => "MDE",
+            "image" => asset("storage/images/DiyJSb2l8QZ3PTXnK1bJrgTUoZS3DnSLzy9qcMAu.jpg")
         ]);
         $itemClass->save();
+        return $itemClass;
     }
 
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-
-        for ($i = 0; $i < 800; $i++) {
-            $this->createItemClass($faker);
+        $categories = Category::all();
+        for ($i = 0; $i < 400; $i++) {
+            $class = $this->createItemClass($faker, $categories);
+            $cat = $categories[rand(0, count($categories) - 1)];
+            $class->categories()->attach($cat);
         }
+
     }
 }
