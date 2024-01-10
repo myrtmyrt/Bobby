@@ -24,7 +24,7 @@ class ItemSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
         $classIds = ItemClass::all()->pluck('id');
-        for ($i = 0; $i < 850; $i++) {
+        for ($i = 0; $i < 450; $i++) {
             $this->createItem($faker, $classIds[rand(0, count($classIds) - 1)]);
         }
     }

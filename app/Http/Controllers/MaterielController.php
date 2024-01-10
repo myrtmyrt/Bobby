@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemClass;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,17 +29,34 @@ class MaterielController extends Controller
 
         $query = $request->input('query');
         $asso_id = $request->input('asso_id');
-        $category = $request->input('category');
+        $category = $request->input('categories');
 
         $classes = ItemClass::query();
-        $classes->with('categories');
+        $classes->with('categories')->get();
         if ($query) {
             $classes = $classes->where('name', 'like', '%'.$query.'%');
+
         }
         if ($asso_id) {
-            $classes = $classes->where('asso_id', $asso_id);
+            $classes = $classes->where('asso_id', 'like', '%'.$asso_id.'%');
         }
-        $classes=$classes->paginate(10);
+        /*if ($category) {
+            $classes = ItemClass::whereHas('categories', function (Builder $query) use($category){
+                $query->where('category_id', 'like', $category);
+            })->get();
+            dd($classes->first());
+
+        }*/
+        if ($category) {
+            $classes = $classes->whereHas('categories', function ($query) use ($category) {
+                $query->where('categories.id', $category);
+            });
+        }
+
+
+
+        $classes = $classes->paginate(10);
+
         $categories = Category::all();
 
 
@@ -76,8 +94,7 @@ class MaterielController extends Controller
             'objectImage' =>['required','image'],
         ]);
 
-        $asso = session("user")["assos"][0]["login"];
-
+        $asso = session('user')['current_asso']['login'];
         // Créer un nouvel objet dans la base de données
         $itemClass = ItemClass::create([
 

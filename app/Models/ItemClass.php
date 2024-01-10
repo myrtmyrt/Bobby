@@ -33,6 +33,18 @@ class ItemClass extends Model
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_item_class', 'item_class_id', 'category_id');
     }
+
+    public function belongsToCategory($cat)
+    {
+        foreach ($this->categories as $category) {
+            if ($category->id === $cat) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

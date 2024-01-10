@@ -8,8 +8,14 @@
             <h1><b>Id: </b>{{$class->id}}</h1>
             <h1><b>Name: </b>{{$class->name}}</h1>
             <h1><b>Asso: </b>{{$class->asso_id}}</h1>
-
-            <h2><b>Categories: </b>{{$class->categories->pluck('name')->implode(', ')}}</h2>
+            <h2><b>Categories: </b>
+                @foreach($class->categories as $category)
+                    {{ $category->name }}
+                    @if (!$loop->last)
+                    ,
+                    @endif
+                @endforeach
+            </h2>
 
         </div>
         <div class="w-full border-s-2 border-dashed border-l-rose-600 p-4  ltr bg-gray-100 rounded-br rounded-tr">

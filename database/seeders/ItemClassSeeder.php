@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemClass;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -155,7 +156,7 @@ class ItemClassSeeder extends Seeder
         "workandchill"
     ];
 
-    public function createItemClass($faker)
+    public function createItemClass($faker, $cat)
     {
         $itemClass = new ItemClass([
             "name" => $faker->word()." ".$faker->word(),
@@ -166,14 +167,18 @@ class ItemClassSeeder extends Seeder
             "image" => asset("assets/chaise.png")
         ]);
         $itemClass->save();
+        return $itemClass;
     }
 
     public function run(): void
     {
         $faker = \Faker\Factory::create();
-
-        for ($i = 0; $i < 800; $i++) {
-            $this->createItemClass($faker);
+        $categories = Category::all();
+        for ($i = 0; $i < 400; $i++) {
+            $class = $this->createItemClass($faker, $categories);
+            $cat = $categories[rand(0, count($categories) - 1)];
+            $class->categories()->attach($cat);
         }
+
     }
 }

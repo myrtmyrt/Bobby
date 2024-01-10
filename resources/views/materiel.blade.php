@@ -27,7 +27,7 @@
     <h1 class="bg-custom-gray text-white text-center py-1">Matériel de la fédération</h1>
 
 
-    <div class="h-full justify-between items-center  grid gap-3grid grid-cols-6 gap-4">
+    <div class="h-full justify-between items-center  grid gap-3grid grid-cols-7 gap-4">
         <div class="col-span-2 bg-gray-200  h-full">
             <div class="grid grid-cols-4 h-full">
                 <div class="col-span-3 p-2 justify-center items-center relative">
@@ -47,8 +47,9 @@
 
                             <select name="categories" id="categories"
                                     class="mt-1 block w-full p-2 border border-[#D90368] rounded-md shadow-sm">
+{{--                                <option value=""></option>--}}
                                 @foreach($categories as $cat)
-                                    <option value={{$cat->name}}>{{$cat->name}}</option>
+                                    <option value={{$cat->id}}>{{$cat->name}}</option>
                                 @endforeach
                             </select>
 
@@ -66,7 +67,7 @@
 
         </div>
 
-        <div class="col-span-4 transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368] m-4">
+        <div class="col-span-5 transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368] m-4">
             @if(count($classes) > 0)
                 @foreach($classes as $index => $class)
                     <x-objet type="objet" :class="$class"></x-objet>
@@ -83,6 +84,8 @@
     </div>
 
 </div>
+
+@include('.footer')
 </body>
 
 </html>
