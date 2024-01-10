@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MaterielController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::get('/materiel', [\App\Http\Controllers\MaterielController::class, 'getCl
 Route::post('/materiel', [\App\Http\Controllers\MaterielController::class, 'getAssoItems'])->name("materiel")->middleware(\App\Http\Middleware\Connexion::class);
 
 Route::post('/addObject', [\App\Http\Controllers\MaterielController::class, 'store'])->name('addObject')->middleware(\App\Http\Middleware\Connexion::class);
+Route::post('/updateObject/{id}', [MaterielController::class, 'updateObject'])->name('updateObject');
 
 Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests")->middleware(\App\Http\Middleware\Connexion::class);
 Route::post('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'addRequest'])->name("borrowRequests")->middleware(\App\Http\Middleware\Connexion::class);

@@ -17,11 +17,12 @@
 </head>
 
 <body >
-<div>
+<div class="w-screen transition-all bg-gray-50 fixed z-50 h-20 top-0 flex justify-between items-center px-10">
     @include('.header')
 </div>
 
 <div class="pt-20">
+    <h1 class="bg-custom-gray text-white text-center py-1">Gérer mes demandes</h1>
     <div class="mt-8 px-4">
         <p class="text-xl font-bold">Mes demandes</p>
     </div>

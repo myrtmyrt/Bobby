@@ -4,29 +4,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            const addObjectButton = $('#addObjectButton');
-            const addObjectForm = $('#addObjectForm');
-            const closeFormButton = $('#closeForm');
-            const modifyObjectButton = $('#modifyObjectButton'); // Add this line
+            const modifyObjectButton = $('#modifyObjectButton');
+            const updateObjectForm = $('#updateObjectForm');
 
-            addObjectButton.on('click', function (e) {
-                // Prevent the default form submission
+            modifyObjectButton.on('click', function (e) {
                 e.preventDefault();
-                addObjectForm.removeClass('hidden');
-            });
-
-            closeFormButton.on('click', function () {
-                addObjectForm.addClass('hidden');
-            });
-
-            modifyObjectButton.on('click', function (e) { // Add this block
-                e.preventDefault();
-                addObjectForm.removeClass('hidden');
-            });
-
-            // Automatically submit the form when the dropdown value changes
-            $('#changeAsso').on('change', function () {
-                $('#changeAssoForm').submit();
+                updateObjectForm.removeClass('hidden');
             });
         });
     </script>
@@ -74,9 +57,9 @@
         </div>
     </div>
 
-    <div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
+    <div id="updateObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
-            <form action="/addObject" enctype="multipart/form-data" method="post">
+            <form action="{{ route('updateObject', ['id' => $class->id]) }}" enctype="multipart/form-data" method="post">
                 @csrf
                 <label for="objectName">Nom de l'objet:</label>
                 <input type="text" name="objectName" id="objectName" required value="{{$class->name}}"

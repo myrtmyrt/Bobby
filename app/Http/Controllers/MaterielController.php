@@ -125,14 +125,24 @@ class MaterielController extends Controller
     {
         $object = ItemClass::findOrFail($id);
 
-
         $validatedData = $request->validate([
             'objectName' => 'required',
             'objectPosition' => 'required',
-            'objectImage' => ['required', 'image'],
+            'objectImage' => ['image'],
         ]);
 
-        $object->update($validatedData);
+        // Update non-file fields
+        $object->name = $validatedData['objectName'];
+        $object->position = $validatedData['objectPosition'];
+
+        if ($request->hasFile('objectImage')) {
+//            Storage::disk('public')->delete($object->image);
+
+            $imagePath = $request->file('objectImage')->store('your/path', 'public');
+            $object->image = $imagePath;
+        }
+
+        $object->save();
 
         return redirect('/myAsso')->with('success', 'Object updated successfully');
     }
