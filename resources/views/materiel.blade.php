@@ -56,8 +56,13 @@
                             {{--
                                                     <input type="text" name="category" id="category" placeholder="Entrer le nom de la category">
                             --}}
+                        <div class="flex pb-5 space-y-5">
                         </div>
-                        <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Rechercher</button>
+                            <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700 mb-4">Rechercher</button>
+                            <a href="/materiel">
+                                <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Réinitialiser la recherche</button>
+                            </a>
+                        </div>
 
                     </form>
                 </div>

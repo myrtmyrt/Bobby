@@ -130,7 +130,7 @@
         </div>
     </div>
     @if(session()->has('message'))
-        <div class="alert alert-success">
+        <div class="-success">
             {{ session()->get('message') }}
         </div>
     @endif

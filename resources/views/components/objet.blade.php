@@ -2,7 +2,7 @@
 
 <div class="">
     <div class="flex flex-row shadow-lg m-4 transition-all duration-300 bg-white rounded-lg">
-            <img src="{{Storage::disk('public')->url($class->image)}}" class="w-32 h-auto p-0 m-0" alt="Image objet">
+            <img src="{{Storage::disk('public')->url($class->image)}}" class="max-w-24 max-h-24 p-0 m-0" alt="Image objet">
 
         <div class="w-full p-4 bg-gray-100">
             <h1><b>Id: </b>{{$class->id}}</h1>
