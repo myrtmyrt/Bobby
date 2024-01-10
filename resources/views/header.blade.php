@@ -69,7 +69,7 @@
         <nav class="flex justify-center items-center">
             <div class="relative">
 
-                <a href="/materiel" class="mr-4 hover:text-[#D90368] relative group">
+                <a href="/materiel" class="mr-4 hover:text-[#D90368] relative">
                     Voir le matériel de la fédération
                 </a>
             </div>
@@ -80,7 +80,7 @@
                     Mon Association
                 </a>
                 <div class="group absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">
-                    <a href="/materiel/evenementiel" class="block px-4 py-2 hover:text-[#D90368]">Gérer mes emprunts</a>
+                    <a href="/gererDemandes" class="block px-4 py-2 hover:text-[#D90368]">Gérer mes emprunts</a>
                     <a href="/materiel/decoration" class="block px-4 py-2 hover:text-[#D90368]">Faire mon inventaire</a>
                 </div>
             </div>
@@ -134,10 +134,8 @@
     });
 </script>
 
-<!-- Supprimez un des deux scripts jQuery si vous en avez deux -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // if there is message and message_type in url parameters, show toast
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get('message');
     const messageType = urlParams.get('message_type');
