@@ -76,7 +76,7 @@
                 </a>
             </div>
 
-            <a href="/mesDemandes" class="mr-4 hover:text-[#D90368]">Mes emprunts</a>
+            <a href="/mesDemandes" class="mr-4 hover:text-[#D90368]">Gérer les demandes de prêts</a>
             <div class="relative group">
                 <a href="/myAsso" class="mr-4 hover:text-[#D90368] relative group">
                     Mon Association

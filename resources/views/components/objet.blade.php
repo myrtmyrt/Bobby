@@ -55,10 +55,17 @@
                         </a>
                     @endif
                 @else
-                    <button id="modifyObjectButton"
-                            class="bg-[#D90368] hover:bg-pink-700 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
-                        Modifier l'objet
-                    </button>
+                    <div class="flex">
+                        <button id="modifyObjectButton"
+                                class="bg-[#D90368] hover:bg-pink-700 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
+                            Modifier l'objet
+                        </button>
+                        <button id="modifyObjectButton"
+                                class="bg-red-600 hover:bg-red-800 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
+                            Supprimer l'objet
+                        </button>
+                    </div>
+
                 @endif
             </div>
         </div>
