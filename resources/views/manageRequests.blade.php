@@ -22,6 +22,7 @@
 </div>
 
 <div class="pt-20">
+    <h1 class="bg-custom-gray text-white text-center py-1">Gérer mes emprunts</h1>
     <div class="mt-8 px-4">
         <p class="text-xl font-bold">Demandes de l'asso {{ session('user')['current_asso']['login'] }}</p>
     </div>

@@ -112,7 +112,7 @@ class MaterielController extends Controller
 
 
         // Rediriger ou effectuer toute autre action après l'ajout
-        return redirect()->back()->with('success', 'Objet ajouté avec succès');
+        return redirect()->back()->with('message', 'Objet ajouté avec succès');
     }
 
 

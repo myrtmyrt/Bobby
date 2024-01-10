@@ -29,7 +29,9 @@
             });
 
             closeFormButton.on('click', function () {
+
                 addObjectForm.addClass('hidden');
+
             });
 
             // Automatically submit the form when the dropdown value changes
@@ -127,7 +129,11 @@
             </div>
         </div>
     </div>
-
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="/addObject" enctype="multipart/form-data" method="post">
@@ -154,7 +160,6 @@
             <a href="/myAsso">
                 <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Annuler</button>
             </a>
-
         </div>
     </div>
 
