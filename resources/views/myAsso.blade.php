@@ -15,21 +15,38 @@
     <!-- Styles -->
 {{--    @vite('resources/css/app.css')--}}
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const addObjectButton = document.getElementById('addObjectButton');
-            const addObjectForm = document.getElementById('addObjectForm');
-            const closeFormButton = document.getElementById('closeForm');
+        $(document).ready(function () {
+            const addObjectButton = $('#addObjectButton');
+            const addObjectForm = $('#addObjectForm');
+            const closeFormButton = $('#closeForm');
 
-            addObjectButton.addEventListener('click', function () {
-                addObjectForm.classList.remove('hidden');
+            addObjectButton.on('click', function (e) {
+                // Prevent the default form submission
+                e.preventDefault();
+                addObjectForm.removeClass('hidden');
             });
 
-            closeFormButton.addEventListener('click', function () {
-                addObjectForm.classList.add('hidden');
+            closeFormButton.on('click', function () {
+                addObjectForm.addClass('hidden');
+            });
+
+            // Automatically submit the form when the dropdown value changes
+            $('#changeAsso').on('change', function () {
+                $('#changeAssoForm').submit();
             });
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            // Détecter le changement de sélection et soumettre automatiquement le formulaire
+            $('#changeAsso').on('change', function () {
+                $('#changeAssoForm').submit();
+            });
+        });
+    </script>
+
 </head>
 
 <div class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden items-center justify-center">
@@ -45,9 +62,9 @@
 
 <div class="pt-20">
     <h1 class="bg-custom-gray text-white text-center py-1">Mon association</h1>
-    <div class="p-4 flex flex-row">
+    <div class="p-4 flex flex-row justify-center items-center">
         <div class="flex p-4 relative inline-block justify-center items-center">
-            <h1>Vous etes connecté en tant que</h1>
+            <h1 class="space-x-5">Vous etes connecté en tant que</h1>
 
 {{--            @if(count(session('user')['assos']) >1)--}}
                 {{--            <label for="changeAsso">Changer d'asso:</label>--}}
@@ -55,25 +72,28 @@
                 <form id="changeAssoForm" method="GET" action="/changeAsso">
                     @csrf
 
-                    <div class="relative">
-                        <select name="changeAsso" id="changeAsso" class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
-                            <option value="{{ session('user')['current_asso']['login'] }}" selected>{{ session('user')['current_asso']['login'] }}</option>
-                            @foreach(session('user')['assos'] as $asso)
-                                @if($asso['login'] !== session('user')['current_asso']['login'])
-                                    <option value="{{ $asso['login'] }}">{{ $asso['login'] }}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                            <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M10 12l-6-6-1.414 1.414L10 14.828l7.414-7.414L16 6z"/>
-                            </svg>
+                    <div class="flex justify-center items-center space-x-5">
+                        <div class="relative">
+                            <select name="changeAsso" id="changeAsso" class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
+                                <option value="{{ session('user')['current_asso']['login'] }}" selected>{{ session('user')['current_asso']['login'] }}</option>
+                                @foreach(session('user')['assos'] as $asso)
+                                    @if($asso['login'] !== session('user')['current_asso']['login'])
+                                        <option value="{{ $asso['login'] }}">{{ $asso['login'] }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M10 12l-6-6-1.414 1.414L10 14.828l7.414-7.414L16 6z"/>
+                                </svg>
+                            </div>
                         </div>
+
+                        <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
+                            Changer d'association
+                        </button>
                     </div>
 
-                    <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
-                        Changer d'association
-                    </button>
                 </form>
         </div>
         <div>
@@ -141,17 +161,6 @@
     @include('.footer')
 </div>
 
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Détecter le changement de sélection et soumettre automatiquement le formulaire
-        $('#changeAsso').on('change', function () {
-            $('#changeAssoForm').submit();
-        });
-    });
-</script>
 
 </body>
 

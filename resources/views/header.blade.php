@@ -60,26 +60,7 @@
         </div>
         <div class="flex p-4 relative inline-block justify-center items-center text-center">
             @if (session("user"))
-                <h2 class="mr-4">Connecté.e en tant que : </h2>
-                @if(count(session('user')['assos']) > 1)
-                    <form method="GET" action="/changeAsso">
-                        @csrf
-
-                        <div class="relative">
-                            <select name="changeAsso" id="changeAsso"
-                                    class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
-                                @foreach(session('user')['assos'] as $asso)
-                                    <option value="{{ $asso['login'] }}">{{ $asso['login'] }}</option>
-                                @endforeach
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                                <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M10 12l-6-6-1.414 1.414L10 14.828l7.414-7.414L16 6z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </form>
-                @endif
+                Connecté.e en tant que :  <span class="text-xl"> {{ session('user')['current_asso']['login'] }}</span> </h2>
             @endif
         </div>
     </div>

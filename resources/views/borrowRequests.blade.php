@@ -15,10 +15,13 @@
         @vite('resources/css/app.css')
     </head>
     <body>
-    @include('.header')
+    <div>
+        @include('.header')
+    </div>
 
-    <div class="container p-4">
-        @dump($class->id)
+    <div class="pt-20">
+        <div class="container p-4">
+            @dump($class->id)
             <form method="post" action="/demandeEmprunt/{{$class->id}}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 @csrf
                 <div>
@@ -54,6 +57,8 @@
                 </div>
             </form>
         </div>
+    </div>
+
     </body>
 
     @include('.footer')
