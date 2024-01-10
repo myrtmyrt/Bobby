@@ -64,17 +64,15 @@
 
 <div class="pt-20">
     <h1 class="bg-custom-gray text-white text-center py-1">Mon association</h1>
-    <div class="p-4 flex flex-row justify-center items-center">
-        <div class="flex p-4 relative inline-block justify-center items-center">
-            <h1 class="space-x-5">Vous etes connecté en tant que</h1>
-
-            {{--            @if(count(session('user')['assos']) >1)--}}
-            {{--            <label for="changeAsso">Changer d'asso:</label>--}}
+    <div class="p-4 flex flex-col justify-center items-center">
+        <div class="flex justify-between items-center p-4">
+            <h1>Vous êtes connecté en tant que : </h1>
 
             <form id="changeAssoForm" method="GET" action="/changeAsso">
                 @csrf
 
-                <div class="flex justify-center items-center space-x-5">
+                <div class="flex items-center space-x-5">
+
                     <div class="relative flex">
                         <select name="changeAsso" id="changeAsso"
                                 class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
@@ -97,24 +95,22 @@
                     {{--                            Changer d'association--}}
                     {{--                        </button>--}}
                 </div>
-
             </form>
         </div>
-        <div>
-            <a href="/gererDemandes">
-                <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes
-                </button>
-            </a>
-            {{--    <a href="/mesDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Mes demandes</button></a>--}}
+        <div class="flex ">
+            <div>
+                <a href="/gererDemandes">
+                    <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes
+                    </button>
+                </a>
+                {{--    <a href="/mesDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Mes demandes</button></a>--}}
 
-        </div>
-        <div class="">
+            </div>
             <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Faire mon inventaire
             </button>
             <button id="addObjectButton" class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
                 Ajouter un objet
             </button>
-
         </div>
     </div>
 

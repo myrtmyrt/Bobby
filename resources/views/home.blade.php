@@ -104,7 +104,7 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-16 p-28">
+    <div class="grid grid-cols-2 gap-16 p-24">
         <div class="bg-gray-100 p-6 rounded-md shadow-lg">
             <h2 class="text-lg font-semibold mb-4">Materiel</h2>
             <p>Dans cet onglet, retrouve tout le matériel disponible sur Bobby. Il correspond au matériel que les
@@ -141,10 +141,10 @@
     {{--        </section>--}}
 
 
-    <div class="content p-24">--}}
-        <h2 class="m-0 p-0 text-2xl">Besoin d'aide</h2>
+    <div class="bg-[#F16EAC] px-32 py-10">
+        <h2 class="text-2xl">Besoin d'aide</h2>
         <br>
-        <p class="m-0 p-0 text-base p-24">Nous sommes là pour répondre à toutes questions, contacte-nous sans
+        <p class=" text-base">Nous sommes là pour répondre à toutes questions, contacte-nous sans
             hésitations dès que tu en as le besoin !
 
             S’il s’agit d’une question sur la vie associative, ton BDE préféré sera ravi de t’aider.
