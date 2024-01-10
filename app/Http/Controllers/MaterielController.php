@@ -92,11 +92,12 @@ class MaterielController extends Controller
             'objectPosition' => 'required',
             'objectImage' => ['required', 'image'],
         ]);
+        //dd($request->has('objectCategory'));
 
         $asso = session('user')['current_asso']['login'];
 
         // Créer un nouvel objet dans la base de données
-        $itemClass = ItemClass::create([
+        $itemClass = new ItemClass([
 
             'name' => $validatedData['objectName'],
             'description' => $validatedData['objectPosition'],
@@ -107,12 +108,13 @@ class MaterielController extends Controller
             'asso_id' => $asso
         ]);
 
-        if ($request->has('objectCategory')) {
-            $itemClass->categories()->attach($request->get('objectCategory'));
+        $itemClass->save();
+        $category = $request->get('objectCategory');
+        if ($category) {
+            $itemClass->categories()->attach($category);
+
         }
 
-
-        // Rediriger ou effectuer toute autre action après l'ajout
         return redirect()->back()->with('message', 'Objet ajouté avec succès');
     }
 

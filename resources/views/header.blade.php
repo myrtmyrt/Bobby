@@ -141,25 +141,30 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const message = urlParams.get('message');
-    const messageType = urlParams.get('message_type');
-    if (message && messageType) {
+    const message = @json(session('message'));
+    const messageType = @json(session('message_type'));
+    // console.log(messageType);
+    // console.log(message);
+
+    if (/*message && messageType*/1) {
         const typeColorMap = {
             success: "#10B981",
             danger: "#EF4444",
         }
         Toastify({
-            text: message,
+            // text: message,
+            text: "ok",
             duration: 3000,
             close: true,
             gravity: "bottom",
             position: "right",
             stopOnFocus: true,
-            backgroundColor: typeColorMap[messageType],
+            // backgroundColor: typeColorMap[messageType],
+            backgroundColor: typeColorMap['success'],
         }).showToast();
     }
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
 <script>
     $(document).ready(function () {
         // Détecter le changement de sélection et soumettre automatiquement le formulaire

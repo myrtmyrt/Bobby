@@ -49,7 +49,7 @@
 
                             <select name="categories" id="categories"
                                     class="mt-1 block w-full p-2 border border-[#D90368] rounded-md shadow-sm">
-                                {{--                                <option value=""></option>--}}
+                                                                <option value=""></option>
                                 @foreach($categories as $cat)
                                     <option value={{$cat->id}}>{{$cat->name}}</option>
                                 @endforeach
