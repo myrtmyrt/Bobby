@@ -57,7 +57,7 @@ class MaterielController extends Controller
         }
 
 
-        $classes = $classes->paginate(10);
+        $classes = $classes->paginate(10)->withQueryString();
 
         $categories = Category::all();
 
