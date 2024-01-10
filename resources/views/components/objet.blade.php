@@ -28,9 +28,9 @@
 
         <div class="w-full p-6 p-4 bg-gray-100">
             <h1><b>Id: </b>{{$class->id}}</h1>
-            <h1><b>Name: </b>{{$class->name}}</h1>
-            <h1><b>Asso: </b>{{$class->asso_id}}</h1>
-            <h2><b>Categories: </b>
+            <h1><b>Nom: </b>{{$class->name}}</h1>
+            <h1><b>Association: </b>{{$class->asso_id}}</h1>
+            <h2><b>Categorie: </b>
                 @foreach($class->categories as $category)
                     {{ $category->name }}
                     @if (!$loop->last)

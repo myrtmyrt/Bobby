@@ -158,7 +158,7 @@
                     @endforeach
                 </select>
 
-                <label for="objectImage">Image correspondant à l'objet:</label>
+                <label for="objectImage" >Image correspondant à l'objet:</label>
                 <input type="file" name="objectImage" id="objectImage" required
                        class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
