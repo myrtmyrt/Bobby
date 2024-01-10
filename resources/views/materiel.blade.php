@@ -1,5 +1,3 @@
-
-
 @props(['classes'=>null, 'message'=> null])
     <!DOCTYPE html>
 
@@ -35,11 +33,15 @@
                         @csrf
                         <div>
                             <label for="asso_id" class="block">Recherche par association : </label>
-                            <input type="text" name="asso_id" id="asso_id" class="mb-4 block w-full border border-[#D90368] px-1 py-2 rounded-md" placeholder="Entrer le nom de l'asso">
+                            <input type="text" name="asso_id" id="asso_id"
+                                   class="mb-4 block w-full border border-[#D90368] px-1 py-2 rounded-md"
+                                   placeholder="Entrer le nom de l'asso">
                         </div>
                         <div>
                             <label for="query" class="block">Recherche par objet :</label>
-                            <input type="text" name="query" id="asso_id" class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md" placeholder="Entrer le nom de l'item">
+                            <input type="text" name="query" id="asso_id"
+                                   class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md"
+                                   placeholder="Entrer le nom de l'item">
                         </div>
 
                         <div>
@@ -47,7 +49,7 @@
 
                             <select name="categories" id="categories"
                                     class="mt-1 block w-full p-2 border border-[#D90368] rounded-md shadow-sm">
-{{--                                <option value=""></option>--}}
+                                {{--                                <option value=""></option>--}}
                                 @foreach($categories as $cat)
                                     <option value={{$cat->id}}>{{$cat->name}}</option>
                                 @endforeach
@@ -56,11 +58,16 @@
                             {{--
                                                     <input type="text" name="category" id="category" placeholder="Entrer le nom de la category">
                             --}}
-                        <div class="flex pb-5 space-y-5">
-                        </div>
-                            <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700 mb-4">Rechercher</button>
+                            <div class="flex pb-5 space-y-5">
+                            </div>
+                            <button type="submit"
+                                    class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700 mb-4">Rechercher
+                            </button>
                             <a href="/materiel">
-                                <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Réinitialiser la recherche</button>
+                                <button type="submit"
+                                        class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Réinitialiser
+                                    la recherche
+                                </button>
                             </a>
                         </div>
 
@@ -72,7 +79,8 @@
 
         </div>
 
-        <div class="col-span-5 transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368] m-4">
+        <div
+            class="col-span-5 transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368] m-4">
             @if(count($classes) > 0)
                 @foreach($classes as $index => $class)
                     <x-objet type="objet" :class="$class"></x-objet>

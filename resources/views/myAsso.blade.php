@@ -10,10 +10,10 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
     <!-- Styles -->
-{{--    @vite('resources/css/app.css')--}}
+    {{--    @vite('resources/css/app.css')--}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -52,8 +52,8 @@
 </head>
 
 <div class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden items-center justify-center">
-        <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Fermer</button>
-    </div>
+    <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Fermer</button>
+</div>
 
 
 <body>
@@ -68,44 +68,52 @@
         <div class="flex p-4 relative inline-block justify-center items-center">
             <h1 class="space-x-5">Vous etes connecté en tant que</h1>
 
-{{--            @if(count(session('user')['assos']) >1)--}}
-                {{--            <label for="changeAsso">Changer d'asso:</label>--}}
+            {{--            @if(count(session('user')['assos']) >1)--}}
+            {{--            <label for="changeAsso">Changer d'asso:</label>--}}
 
-                <form id="changeAssoForm" method="GET" action="/changeAsso">
-                    @csrf
+            <form id="changeAssoForm" method="GET" action="/changeAsso">
+                @csrf
 
-                    <div class="flex justify-center items-center space-x-5">
-                        <div class="relative flex">
-                            <select name="changeAsso" id="changeAsso" class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
-                                <option value="{{ session('user')['current_asso']['login'] }}" selected>{{ session('user')['current_asso']['login'] }}</option>
-                                @foreach(session('user')['assos'] as $asso)
-                                    @if($asso['login'] !== session('user')['current_asso']['login'])
-                                        <option value="{{ $asso['login'] }}">{{ $asso['login'] }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                                <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path d="M10 12l-6-6-1.414 1.414L10 14.828l7.414-7.414L16 6z"/>
-                                </svg>
-                            </div>
+                <div class="flex justify-center items-center space-x-5">
+                    <div class="relative flex">
+                        <select name="changeAsso" id="changeAsso"
+                                class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
+                            <option value="{{ session('user')['current_asso']['login'] }}"
+                                    selected>{{ session('user')['current_asso']['login'] }}</option>
+                            @foreach(session('user')['assos'] as $asso)
+                                @if($asso['login'] !== session('user')['current_asso']['login'])
+                                    <option value="{{ $asso['login'] }}">{{ $asso['login'] }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                            <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M10 12l-6-6-1.414 1.414L10 14.828l7.414-7.414L16 6z"/>
+                            </svg>
                         </div>
-
-{{--                        <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">--}}
-{{--                            Changer d'association--}}
-{{--                        </button>--}}
                     </div>
 
-                </form>
+                    {{--                        <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">--}}
+                    {{--                            Changer d'association--}}
+                    {{--                        </button>--}}
+                </div>
+
+            </form>
         </div>
         <div>
-            <a href="/gererDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes</button></a>
+            <a href="/gererDemandes">
+                <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes
+                </button>
+            </a>
             {{--    <a href="/mesDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Mes demandes</button></a>--}}
 
         </div>
         <div class="">
-            <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Faire mon inventaire</button>
-            <button id="addObjectButton" class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter un objet</button>
+            <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Faire mon inventaire
+            </button>
+            <button id="addObjectButton" class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
+                Ajouter un objet
+            </button>
 
         </div>
     </div>
@@ -120,7 +128,7 @@
                 @if(count($items) > 0)
 
                     @foreach($items as $item)
-                        <x-objet :class="$item" />
+                        <x-objet :class="$item"/>
                     @endforeach
                     {{ $items->links() }}
                 @else
@@ -129,20 +137,22 @@
             </div>
         </div>
     </div>
-{{--    @if(session()->has('message'))--}}
-{{--        <div class="-success">--}}
-{{--            {{ session()->get('message') }}--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    {{--    @if(session()->has('message'))--}}
+    {{--        <div class="-success">--}}
+    {{--            {{ session()->get('message') }}--}}
+    {{--        </div>--}}
+    {{--    @endif--}}
     <div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="/addObject" enctype="multipart/form-data" method="post">
                 @csrf
                 <label for="objectName">Nom de l'objet:</label>
-                <input type="text" name="objectName" id="objectName" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+                <input type="text" name="objectName" id="objectName" required
+                       class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
                 <label for="objectPosition">Position de l'objet:</label>
-                <input type="text" name="objectPosition" id="objectPosition" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+                <input type="text" name="objectPosition" id="objectPosition" required
+                       class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
                 <label for="objectCategory">Catégorie de l'objet:</label>
                 <select name="objectCategory" id="objectCategory"
@@ -153,9 +163,11 @@
                 </select>
 
                 <label for="objectImage">Image correspondant à l'objet:</label>
-                <input type="file" name="objectImage" id="objectImage" required class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+                <input type="file" name="objectImage" id="objectImage" required
+                       class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
-                <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter</button>
+                <button type="submit" class="bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Ajouter
+                </button>
             </form>
             <a href="/myAsso">
                 <button class="mt-4 bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500">Annuler</button>

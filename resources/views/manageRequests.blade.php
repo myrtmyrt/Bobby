@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
 
     <!-- Styles -->
     @vite('resources/css/app.css')
@@ -30,7 +30,7 @@
     <div class="mt-4">
         @if(count($requests) > 0)
             @foreach($requests as $request)
-                <x-request :request="$request" />
+                <x-request :request="$request"/>
             @endforeach
         @endif
     </div>
