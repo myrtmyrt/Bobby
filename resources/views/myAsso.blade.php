@@ -75,7 +75,7 @@
                     @csrf
 
                     <div class="flex justify-center items-center space-x-5">
-                        <div class="relative">
+                        <div class="relative flex ju">
                             <select name="changeAsso" id="changeAsso" class="appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 bg-no-repeat bg-right">
                                 <option value="{{ session('user')['current_asso']['login'] }}" selected>{{ session('user')['current_asso']['login'] }}</option>
                                 @foreach(session('user')['assos'] as $asso)
@@ -91,9 +91,9 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">
-                            Changer d'association
-                        </button>
+{{--                        <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">--}}
+{{--                            Changer d'association--}}
+{{--                        </button>--}}
                     </div>
 
                 </form>

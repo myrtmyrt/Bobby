@@ -100,6 +100,7 @@ class MaterielController extends Controller
 
             'name' => $validatedData['objectName'],
             'description' => $validatedData['objectPosition'],
+            'position' => $validatedData['objectPosition'],
             'private' => False,
             'quantity' => 0,
             'image' => $request->file('objectImage')->store('images','public'),

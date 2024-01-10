@@ -20,14 +20,17 @@
         </div>
         <div class="w-full border-s-2 border-dashed border-l-rose-600 p-4  ltr bg-gray-100 rounded-br rounded-tr">
             <div class="">
-                <h2>Position de l'objet</h2>
-                @if($class->private)
-                    <button disabled class="mt-4 ml-4 bg-zinc-400 text-white px-4 py-2 rounded">Non empruntable</button>
+                <h2><b>Position de l'objet : </b>{{$class->position}}</h2>
+                @if(!request()->is('myAsso'))
+                    @if($class->private)
+                        <button disabled class="mt-4 ml-4 bg-zinc-400 text-white px-4 py-2 rounded">Non empruntable</button>
 
-                @else
-                    <a href="/demandeEmprunt/{{$class->id}}"><button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button></a>
+                    @else
+                        <a href="/demandeEmprunt/{{$class->id}}"><button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Emprunter</button></a>
 
+                    @endif
                 @endif
+
             </div>
         </div>
     </div>
