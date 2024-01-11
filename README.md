@@ -68,13 +68,15 @@ php artisan storage:link
 
 ## Organisation-gérérale
 Il y a quatres principales pages : la page d'accueil, la page de matériel, la page de gestion de demande d'emprunts et la page propre à son association.
+
 <div style="display: flex;">
     <img width="47.5%" src="Photos/accueil.png" alt="screenshot of the application showing the interactions between agents">
     <img width="47.5%" src="Photos/materiel.png" style="margin-left: 5%" alt="screenshot of the application showing the computed paths of the agents">
 </div>
+
 <div style="display: flex;">
-    <img width="47.5%" src="Photos/gestionPrets.png.png" alt="screenshot of the application showing the interactions between agents">
-    <img width="47.5%" src="Photos/monAsso.png.png" style="margin-left: 5%" alt="screenshot of the application showing the computed paths of the agents">
+    <img width="47.5%" src="Photos/gestionPrets.png" alt="screenshot of the application showing the interactions between agents">
+    <img width="47.5%" src="Photos/monAsso.png" style="margin-left: 5%" alt="screenshot of the application showing the computed paths of the agents">
 </div>
 
 
