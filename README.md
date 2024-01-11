@@ -67,6 +67,17 @@ php artisan storage:link
 ```
 
 ## Organisation-gérérale
+Il y a quatres principales pages : la page d'accueil, la page de matériel, la page de gestion de demande d'emprunts et la page propre à son association.
+<div style="display: flex;">
+    <img width="47.5%" src="Photos/accueil.png" alt="screenshot of the application showing the interactions between agents">
+    <img width="47.5%" src="Photos/materiel.png" style="margin-left: 5%" alt="screenshot of the application showing the computed paths of the agents">
+</div>
+<div style="display: flex;">
+    <img width="47.5%" src="Photos/gestionPrets.png.png" alt="screenshot of the application showing the interactions between agents">
+    <img width="47.5%" src="Photos/monAsso.png.png" style="margin-left: 5%" alt="screenshot of the application showing the computed paths of the agents">
+</div>
+
+
 ### Modèles
 * BorrowRequests.php : composé d'une date de début, d'une date de fin, de l'id de l'asso, de l'état de l'objet et d'un commentaire
 * Category.php : composée d'un nom
