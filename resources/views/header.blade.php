@@ -26,6 +26,30 @@
         border-radius: 1px;
     }
 
+    [x-cloak] {
+        display: none;
+    }
+
+    .duration-300 {
+        transition-duration: 300ms;
+    }
+
+    .ease-in {
+        transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .ease-out {
+        transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .scale-90 {
+        transform: scale(.9);
+    }
+
+    .scale-100 {
+        transform: scale(1);
+    }
+
 </style>
 
 <html>
@@ -173,3 +197,34 @@
         });
     });
 </script>
+
+{{--<script> /*accordion*/
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('accordion', () => ({
+            data: [
+                {
+                    id: '1',
+                    heading: 'What is Alpine.js?',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pharetra dui, ac feugiat metus. Vivamus id pellentesque urna, quis hendrerit tortor. Sed pharetra sapien a metus fringilla varius.',
+                    isOpen: false,
+                },
+                {
+                    id: '2',
+                    heading: 'Is Alpine.js better than jQuery?',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pharetra dui, ac feugiat metus. Vivamus id pellentesque urna, quis hendrerit tortor. Sed pharetra sapien a metus fringilla varius.',
+                    isOpen: false,
+                },
+                {
+                    id: '3',
+                    heading: 'Who created Alpine.js?',
+                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pharetra dui, ac feugiat metus. Vivamus id pellentesque urna, quis hendrerit tortor. Sed pharetra sapien a metus fringilla varius.',
+                    isOpen: false,
+                },
+            ]
+        }))
+    });
+</script> --}}
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+

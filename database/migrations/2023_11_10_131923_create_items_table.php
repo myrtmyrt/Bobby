@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->boolean("mono_item");
-            $table->foreignId('class_id')->constrained('item_classes');
+            $table->foreignId('class_id')->default(1)->constrained('item_classes');
             $table->integer('quantity')->default(0);
             $table->text('description');
             $table->timestamps();

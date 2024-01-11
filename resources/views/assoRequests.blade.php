@@ -40,7 +40,7 @@
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Demandes a traiter</h2>
                 @if(count($enAttente) > 0)
                     @foreach($enAttente as $request)
-                        <x-request :request="$request" />
+                        <x-myRequest :request="$request" />
                     @endforeach
                 @endif
             </div>
@@ -48,7 +48,7 @@
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Demandes validées</h2>
                 @if(count($validees) > 0)
                     @foreach($validees as $request)
-                        <x-request :request="$request" />
+                        <x-myRequest :request="$request" />
                     @endforeach
                 @endif
             </div>
@@ -56,14 +56,15 @@
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Demandes refusées</h2>
                 @if(count($refusees) > 0)
                     @foreach($refusees as $request)
-                        <x-request :request="$request" />
+                        <x-myRequest :request="$request" />
                     @endforeach
                 @endif
             </div>
             <div x-show="openTab === 1" class="transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368]">
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Toutes les demandes</h2>
                 @if(count($requests) > 0)
-                    @foreach($requests as $request)
+
+                @foreach($requests as $request)
                         <x-myRequest :request="$request" />
                     @endforeach
                     {{ $requests->links() }}

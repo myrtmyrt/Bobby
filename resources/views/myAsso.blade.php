@@ -40,6 +40,7 @@
             });
         });
     </script>
+
     <script>
         $(document).ready(function () {
             // Détecter le changement de sélection et soumettre automatiquement le formulaire
@@ -131,15 +132,15 @@
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="/addObject" enctype="multipart/form-data" method="post">
                 @csrf
-                <label for="objectName">Nom de l'objet:</label>
+                <label for="objectName">Nom de la classe:</label>
                 <input type="text" name="objectName" id="objectName" required
                        class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
-                <label for="position">Position de l'objet:</label>
+                <label for="position">Position de la classe:</label>
                 <input type="text" name="position" id="objectPosition" required
                        class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
-                <label for="objectCategory">Catégorie de l'objet:</label>
+                <label for="objectCategory">Catégorie de la classe:</label>
                 <select name="objectCategory" id="objectCategory"
                         class="mt-1 mb-4 block w-full p-2 border border-[#D90368] rounded-md shadow-sm bg-white focus:outline-none focus:ring focus:border-[#D90368]">
                     @if($categories)
@@ -148,6 +149,10 @@
                         @endforeach
                     @endif
                 </select >
+
+                <label for="nb_items">Combien d'items a ajouter:</label>
+                <input type="number" name="nb_items" id="nb_items" required
+                       class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
                 <label for="description">Description de la classe d'objet:</label>
                 <input type="text" name="description" id="description" required

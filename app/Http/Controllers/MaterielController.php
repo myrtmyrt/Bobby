@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\ConditionEnum;
 use App\Models\Category;
+use App\Models\ConditionHistory;
 use App\Models\Item;
 use App\Models\ItemClass;
 use Illuminate\Database\Eloquent\Builder;
@@ -117,9 +119,63 @@ class MaterielController extends Controller
 
         }
 
-        return redirect()->back()->with('message', 'Objet ajouté avec succès');
+        $nb_items = $request->get('nb_items');
+        $conditions = ['Neuf','Tres bon','Bon','Moyen','Mauvais','Tres mauvais'];
+/*        $conditions = [ConditionEnum::Neuf,ConditionEnum::TB,ConditionEnum::Bon, ConditionEnum::Moyen,ConditionEnum::Mauvais. ConditionEnum::TM];*/
+        return view('addItems', ['nb_items'=>$nb_items, 'class'=>$itemClass, 'conditions' =>$conditions]);
     }
 
+    public function addItems(Request $request){
+
+        $items = $request->input('items');
+
+        foreach ($items as $item) {
+            $class_id = $item['class_id'];
+            if (isset($item['monoItem'])) {
+                $monoItem = true;
+            }else
+                $monoItem = false;
+            $description = $item['description'];
+            $quantity = $item['quantity'];
+
+            $new_item = new Item([
+                'mono_item'=>$monoItem,
+                'quantity'=>$quantity,
+                'description'=>$description]);
+            $new_item->save();
+            $class = ItemClass::find($class_id);
+            $new_item['class_id']=$class_id;
+            $new_item->save();
+            $new_item->itemClass()->associate($class);
+
+            $condition = $item['condition'];
+            if($condition == 'Neuf')
+                $condition = ConditionEnum::Neuf;
+            elseif ($condition == 'Bon')
+                $condition=ConditionEnum::Bon;
+            elseif ($condition == 'Tres bon')
+                $condition=ConditionEnum::TB;
+            elseif ($condition == 'Moyen')
+                $condition=ConditionEnum::Moyen;
+            elseif ($condition == 'Mauvais')
+                $condition=ConditionEnum::Mauvais;
+            else
+                $condition=ConditionEnum::TM;
+
+            $new_cond = new ConditionHistory([
+                'condition'=>$condition,
+                'date' => now()->format('Y-m-d H:i:s'),
+                'item_id'=> $new_item->id,
+            ]);
+
+            $cond = $new_cond->save();
+            $new_cond->item()->associate($new_item);
+            $new_cond = $new_cond->save();
+
+
+        }
+        return redirect('/myAsso');
+    }
     public function updateObject(Request $request, $id)
     {
         $object = ItemClass::findOrFail($id);
