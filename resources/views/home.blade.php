@@ -128,10 +128,6 @@
             <p>Dans cet onglet, tu as accès à tout le matériel de ton association.</p>
         </div>
 
-        {{--            <div class="bg-gray-100 p-6 rounded-md shadow-lg">--}}
-        {{--                <h2 class="text-lg font-semibold mb-4">Inventaire</h2>--}}
-        {{--                <p>Dans cet onglet, tu as accès à tout le matériel de ton association.</p>--}}
-        {{--            </div>--}}
     </div>
 
     {{--        <section>--}}

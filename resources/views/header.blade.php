@@ -90,7 +90,7 @@
             @endif
         </div>
     </div>
-
+{{--    on affiche le matériel de la fédération et le bouton de logout que si le user est connecté --}}
     @if (session("user"))
         <nav class="flex justify-center items-center">
             <div class="relative">
@@ -111,8 +111,6 @@
                     <a href="/materiel/decoration" class="block px-4 py-2 hover:text-[#D90368]">Faire mon inventaire</a>
                 </div>
             </div>
-
-            <!-- User is logged in, show logout button -->
             <a href="/logout">
                 <button class="ml-4 w-8 h-8 bg-[#D90368] rounded-full flex items-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -123,7 +121,6 @@
                 </button>
             </a>
             @else
-                <!-- User is not logged in, show login button -->
                 <a href="/login">
                     <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Connexion
                     </button>
@@ -148,7 +145,7 @@
     group.addEventListener('mouseleave', function () {
         mouseTimer = setTimeout(() => {
             subMenu.classList.add('hidden');
-        }, 200); // Délai en millisecondes avant de masquer le sous-menu
+        }, 200);
     });
 
     // Annuler le délai si la souris revient sur le sous-menu
@@ -191,39 +188,12 @@
 {{--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--}}
 <script>
     $(document).ready(function () {
-        // Détecter le changement de sélection et soumettre automatiquement le formulaire
         $('#changeAsso').on('change', function () {
             $('#changeAssoForm').submit();
         });
     });
 </script>
 
-{{--<script> /*accordion*/
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('accordion', () => ({
-            data: [
-                {
-                    id: '1',
-                    heading: 'What is Alpine.js?',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pharetra dui, ac feugiat metus. Vivamus id pellentesque urna, quis hendrerit tortor. Sed pharetra sapien a metus fringilla varius.',
-                    isOpen: false,
-                },
-                {
-                    id: '2',
-                    heading: 'Is Alpine.js better than jQuery?',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pharetra dui, ac feugiat metus. Vivamus id pellentesque urna, quis hendrerit tortor. Sed pharetra sapien a metus fringilla varius.',
-                    isOpen: false,
-                },
-                {
-                    id: '3',
-                    heading: 'Who created Alpine.js?',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pharetra dui, ac feugiat metus. Vivamus id pellentesque urna, quis hendrerit tortor. Sed pharetra sapien a metus fringilla varius.',
-                    isOpen: false,
-                },
-            ]
-        }))
-    });
-</script> --}}
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

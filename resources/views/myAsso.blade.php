@@ -69,6 +69,7 @@
         <div class="flex justify-between items-center p-4">
             <h1>Vous êtes connecté en tant que : </h1>
 
+{{--            Formulaire de changement d'asso--}}
             <form id="changeAssoForm" method="GET" action="/changeAsso">
                 @csrf
 
@@ -128,6 +129,7 @@
         </div>
     </div>
 
+{{--    Formulaire d'ajout d'objet--}}
     <div id="addObjectForm" class="fixed pt-20 inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="/addObject" enctype="multipart/form-data" method="post">
