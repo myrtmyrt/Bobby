@@ -6,10 +6,36 @@
         $(document).ready(function () {
             const modifyObjectButton = $('#modifyObjectButton');
             const updateObjectForm = $('#updateObjectForm');
+            const deleteObjectButton = $('#deleteObjectButton');
 
             modifyObjectButton.on('click', function (e) {
                 e.preventDefault();
                 updateObjectForm.removeClass('hidden');
+            });
+
+            deleteObjectButton.on('click', function (e) {
+                e.preventDefault();
+
+                if (confirm("Êtes-vous sûr de vouloir supprimer cet objet?")) {
+                    // Récupérez l'ID de l'objet pour la suppression
+                    const objectId = $(this).data('objectId');
+
+                    // Envoyez une requête AJAX pour supprimer l'objet
+                    $.ajax({
+                        url: '/deleteObject/' + objectId,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}', // Ajoutez le jeton CSRF
+                        },
+                        success: function (data) {
+                            alert('Objet supprimé avec succès');
+                            // Redirigez ou effectuez d'autres actions si nécessaire
+                        },
+                        error: function (error) {
+                            alert('Erreur lors de la suppression de l\'objet');
+                        }
+                    });
+                }
             });
         });
     </script>
@@ -61,8 +87,8 @@
                                 class="bg-[#D90368] hover:bg-pink-700 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
                             Modifier l'objet
                         </button>
-                        <button id="modifyObjectButton"
-                                class="bg-red-600 hover:bg-red-800 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
+
+                        <button id="deleteObjectButton" data-object-id="{{ $class->id }}" class="bg-red-600 hover:bg-red-800 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
                             Supprimer l'objet
                         </button>
                     </div>

@@ -1,58 +1,45 @@
 # Nouveau Bobby
 
-Description brève de votre projet.
-
 ## Table des matières
 
 - [Introduction](#introduction)
+- [Fonctionalités](#fonctionnalités)
 - [Structure du Code](#structure-du-code)
 - [Modèle de Données](#modèle-de-données)
-- [Organisation Générale](#organisation-générale)
 - [Installation](#installation)
-- [Configuration](#configuration)
-- [Utilisation](#utilisation)
-- [Contributions](#contributions)
 - [Code de Conduite](#code-de-conduite)
-
-## Fonctionnalités
-- Voir le matériel des associations
-- Pouvoir demander un emprunt
-- Pouvoir ajouter un objet
-- Pouvoir gérer les demandes d'emprunt 
 
 ## Introduction
 
-Une brève introduction à votre projet, expliquant son objectif, ses fonctionnalités principales et son public cible.
+Le projet fut de refaire de zéro Bobby, une application Web devant être capable de
+permettre aux associations de faire leur inventaire, de le sauvegarder sur la plateforme et si
+elles le souhaitent, de proposer leur matériel au prêt pour les autres associations. Elle devra
+rendre possible l’individualisation de chaque objet. Quant au prêt, une association peut,
+dans le but d’éviter un achat inutile, chercher un objet dont elle aurait besoin sur la
+plateforme. Si elle trouve cet objet, elle peut grâce à la plateforme faire la demande de
+prêt à l’association propriétaire, qui acceptera ou non le prêt. La trace du prêt sera
+sauvegardée sur la plateforme.
+
+## Fonctionnalités
+- Voir le matériel des associations
+- Pouvoir gérer le matériel de son.ses association.s 
+- Pouvoir demander un emprunt et gérer ses demandes en cours
+- Pouvoir gérer les demandes d'emprunt faites à son.ses associations
+- Gestion des droits en fonction de la personne connectée 
+
+
 
 ## Structure du Code
-
-Expliquez comment votre code est structuré. Quels sont les principaux répertoires et fichiers et leur rôle dans l'application.
-
-```plaintext
-/chemin/vers/votre/projet
-|-- app
-|   |-- Console
-|   |-- Exceptions
-|   |-- Http
-|       |-- Controllers
-|       |-- Middleware
-|   |-- Models
-|   ...
-|-- config
-|-- database
-|   |-- migrations
-|   |-- seeders
-|-- public
-|-- resources
-|   |-- views
-|-- routes
-|-- tests
-|-- artisan
-|-- csomposer.json
-...
+Etant donné que nous avons codé en laravel, le projet suit une organisation MVC. Nous avons utilisé quasiment uniquement du Tailwind pour notre CSS.
+Ensuite, nous avons fait plusieurs script ou nous avons utilisé Javascript et parfois sa bibliothèque JQuery.
 
 
-##Organisation-gérérale
+
+## Modèle de données
+<img src="Conception/UML_V6.png" style="margin-top: 5%; margin-left: 50%; transform: translateX(-50%)" alt="">
+
+
+## Organisation-gérérale
 
 ###Routes
 
@@ -72,6 +59,10 @@ Expliquez comment votre code est structuré. Quels sont les principaux répertoi
 *myAsso.blade.php : 
 *borrowRequests.blade.php : 
 *manageRequests.blade.php : 
+
+*my-request.blade.php :
+*objet.blade.php :
+*request.blade.php : 
 
 ## UML
 
@@ -161,3 +152,31 @@ Association "1..1" -- "0..*" Borrow_Request : "demands" >
 Item "1..1" -- "1..*" ConditionHistory : "has" >
 @enduml
 ```
+
+## Installation
+
+1. Clone le repository:
+
+```bash
+git clone https://gitlab.utc.fr/royhucheradorni/ia04.git
+```
+
+2. Lancer l'application en local :
+
+Démarrer le serveur :
+
+```bash
+php artisan serve 
+```
+
+3. Démarrer le Tailwind :
+
+```bash
+npm run dev
+```
+
+4. Permettre la gestion et le stockage des images :
+```bash
+php artisan storage:link
+```
+

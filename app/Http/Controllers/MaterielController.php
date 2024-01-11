@@ -83,8 +83,7 @@ class MaterielController extends Controller
         $category = $request->input('category');
 
     }
-
-    public function createClass(Request $request)
+    public function store(Request $request)
     {
 
         // Valider les données du formulaire
@@ -202,5 +201,15 @@ class MaterielController extends Controller
         return redirect('/myAsso')->with('success', 'Object updated successfully');
     }
 
+    public function deleteObject($id)
+    {
+        try {
+            $object = ItemClass::findOrFail($id);
+            $object->delete();
+            return redirect()->back()->with('success', 'Objet supprimé avec succès');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Erreur lors de la suppression de l\'objet');
+        }
+    }
 
 }
