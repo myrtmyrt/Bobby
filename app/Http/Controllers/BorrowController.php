@@ -17,12 +17,6 @@ use function Termwind\render;
 
 class BorrowController extends Controller
 {
-   /* public function requests(){
-        $result = BorrowRequest::all();
-        return view('borrowRequests', ['requests' => $result]);
-    }*/
-    // changer de vue --> vue pour voir ses borrow requests
-
     public function getForm($class_id){
         $class = ItemClass::where('id',$class_id)->get();
         //dd($classes);
@@ -88,43 +82,33 @@ class BorrowController extends Controller
         }
     }
 
-    public function getAssoRequests()
+    public function getAssoRequests() //les demandes que l'asso a faites
     {
         $asso = session('user')['current_asso']['login'];
 
-       /* $requests = BorrowRequest::all()->where('state', RequestStateEnum::EnAttente);
+        $requests = BorrowRequest::whereHas('items.itemClass', function ($query) use ($asso) {
+            $query->where('asso_id', $asso);
+        })->with(['items' => function ($query) {
+            $query->select('items.id', 'class_id');
+        }]);
 
-        $asso_requests = $requests->filter(function ($request) use ($asso) {
-            return $request->isAssoRequest($asso);
-        }); // tri pour récupérer les demandes qui s'adressent a l'asso
-        dd($asso_requests->first()->items->first()->itemclass['id']);
-        foreach ($asso_requests as $request) {
-            $items = $request->items()->get();
-            $request->items = $items;
+        $result1 = $requests->get()->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::EnAttente;
+        });
 
-            $class = $items->first()->itemClass()->get();
-            $request->class = $class;
+        $result2 = $requests->get()->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::Validee;
+        });
 
-        }*/
+        $result3 = $requests->get()->filter(function ($request) {
+            return $request['state'] == RequestStateEnum::Refusee;
+        });
 
-//        $requests = BorrowRequest::join('bobby.borrow_request_item as bri', 'borrow_requests.id', '=', 'bri.borrow_request_id')
-//            ->join('bobby.items as i', 'bri.item_id', '=', 'i.id')
-//            ->join('bobby.item_classes as ic', 'i.class_id', '=', 'ic.id')
-//            ->where('ic.asso_id', '=', 'comedmus')
-//            ->get();
+        $paginatesRequests = $requests->paginate(10);
 
-        $assoId = 'comedmus';
 
-        $requests = BorrowRequest::whereHas('items.itemClass', function ($query) use ($assoId) {
-            $query->where('asso_id', $assoId);
-        })
-            ->with(['items' => function ($query) {
-                $query->select('items.id', 'class_id');
-            }])
-            ->paginate(10);
-        //dd($requests);
+        return view('manageRequests', ['requests' => $paginatesRequests, 'enAttente' => $result1, 'validees'=>$result2, 'refusees'=>$result3]);
 
-        return view('manageRequests', ['requests' => $requests]);
     }
 
 

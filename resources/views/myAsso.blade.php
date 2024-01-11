@@ -1,4 +1,4 @@
-{{--@props(['classes'=>null])--}}
+@props(['classes'=>null, 'categories'=>null])
     <!DOCTYPE html>
 
 <html>
@@ -138,7 +138,7 @@
     {{--            {{ session()->get('message') }}--}}
     {{--        </div>--}}
     {{--    @endif--}}
-    <div id="addObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
+    <div id="addObjectForm" class="fixed pt-20 inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="/addObject" enctype="multipart/form-data" method="post">
                 @csrf
@@ -146,17 +146,31 @@
                 <input type="text" name="objectName" id="objectName" required
                        class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
-                <label for="objectPosition">Position de l'objet:</label>
-                <input type="text" name="objectPosition" id="objectPosition" required
+                <label for="position">Position de l'objet:</label>
+                <input type="text" name="position" id="objectPosition" required
                        class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
 
                 <label for="objectCategory">Catégorie de l'objet:</label>
                 <select name="objectCategory" id="objectCategory"
-                        class="mt-1 block w-full p-2 border border-[#D90368] rounded-md shadow-sm">
-                    @foreach(\App\Models\Category::all() as $cat)
-                        <option value="{{$cat->id}}">{{$cat->name}}</option>
-                    @endforeach
-                </select>
+                        class="mt-1 mb-4 block w-full p-2 border border-[#D90368] rounded-md shadow-sm bg-white focus:outline-none focus:ring focus:border-[#D90368]">
+                    @if($categories)
+                        @foreach($categories as $cat)
+                            <option value="{{$cat->id}}"> {{$cat->name}}</option>
+                        @endforeach
+                    @endif
+                </select >
+
+                <label for="description">Description de la classe d'objet:</label>
+                <input type="text" name="description" id="description" required
+                       class="mb-4 block w-full border border-[#D90368] px-3 py-2 rounded-md">
+
+                <div class="flex items-center mb-4">
+                    <label for="private" class="ml-2">Rendre cette classe privée à l'asso (non empruntable)</label>
+                    <input type="checkbox" name="private" id="private" class="mb-4 block border border-[#D90368] px-3 py-2 rounded-md">
+
+                </div>
+
+
 
                 <label for="objectImage" >Image correspondant à l'objet:</label>
                 <input type="file" name="objectImage" id="objectImage" required

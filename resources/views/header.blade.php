@@ -76,14 +76,14 @@
                 </a>
             </div>
 
-            <a href="/mesDemandes" class="mr-4 hover:text-[#D90368]">Gérer les demandes de prêts</a>
+            <a href="/gererDemandes" class="mr-4 hover:text-[#D90368]">Gérer les demandes de prêts</a>
             <div class="relative group">
                 <a href="/myAsso" class="mr-4 hover:text-[#D90368] relative group">
                     Mon Association
                 </a>
                 <div
                     class="group absolute hidden mt-2 space-y-2 bg-white rounded-md shadow-md border border-gray-300 w-40">
-                    <a href="/gererDemandes" class="block px-4 py-2 hover:text-[#D90368]">Gérer mes emprunts</a>
+                    <a href="/mesDemandes" class="block px-4 py-2 hover:text-[#D90368]">Gérer mes emprunts</a>
                     <a href="/materiel/decoration" class="block px-4 py-2 hover:text-[#D90368]">Faire mon inventaire</a>
                 </div>
             </div>

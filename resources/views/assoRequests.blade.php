@@ -44,7 +44,6 @@
                     @endforeach
                 @endif
             </div>
-
             <div x-show="openTab === 2" class="transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368]">
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Demandes validées</h2>
                 @if(count($validees) > 0)
@@ -53,7 +52,6 @@
                     @endforeach
                 @endif
             </div>
-
             <div x-show="openTab === 3" class="transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368]">
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Demandes refusées</h2>
                 @if(count($refusees) > 0)
@@ -62,7 +60,6 @@
                     @endforeach
                 @endif
             </div>
-
             <div x-show="openTab === 1" class="transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368]">
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Toutes les demandes</h2>
                 @if(count($requests) > 0)
@@ -76,7 +73,8 @@
 
 
 
-</div>
+    </div>
+
 @include('.footer')
 
 </body>

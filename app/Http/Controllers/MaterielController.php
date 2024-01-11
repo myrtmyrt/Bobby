@@ -82,27 +82,29 @@ class MaterielController extends Controller
 
     }
 
-
     public function createClass(Request $request)
     {
 
         // Valider les données du formulaire
         $validatedData = $request->validate([
             'objectName' => 'required',
-            'objectPosition' => 'required',
+            'position' => 'required',
             'objectImage' => ['required', 'image'],
+            'description' => 'required',
         ]);
-        //dd($request->has('objectCategory'));
-
         $asso = session('user')['current_asso']['login'];
+        $position =$request->get('position');
 
-        // Créer un nouvel objet dans la base de données
+        if($position)
+            $private = true;
+        else
+            $private=false;
+
         $itemClass = new ItemClass([
-
             'name' => $validatedData['objectName'],
-            'description' => $validatedData['objectPosition'],
-            'position' => $validatedData['objectPosition'],
-            'private' => False,
+            'description' => $validatedData['description'],
+            'position' => $position,
+            'private' => $private,
             'quantity' => 0,
             'image' => $request->file('objectImage')->store('images', 'public'),
             'asso_id' => $asso
