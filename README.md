@@ -44,7 +44,7 @@ Ensuite, nous avons fait plusieurs script ou nous avons utilisé Javascript et p
 1. Clone le repository:
 
 ```bash
-git clone https://gitlab.utc.fr/royhucheradorni/ia04.git
+git https://gitlab.utc.fr/simde/bobby.git
 ```
 
 2. Lancer l'application en local :
@@ -67,10 +67,18 @@ php artisan storage:link
 ```
 
 ## Organisation-gérérale
-###Modèles
+### Modèles
+* BorrowRequests.php : composé d'une date de début, d'une date de fin, de l'id de l'asso, de l'état de l'objet et d'un commentaire
+* Category.php : composée d'un nom
+* ConditionHistory.php : composé d'un état et d'une date 
+* Item.php : composé d'une description, d'une quantité, d'un booléen mono_item
+* ItemClass.php :  composé d'un nom, d'une description, d'un booléen private, d'une position, d'une image, d'une quantité et de l'id de l'asso"
+* TemporaryAccess.php : composé d'un user, d'une date de fin de prêt, de l'état de l'objet 
+* Unavailibility.php : composé d'une date de début et d'une date de fin 
+* User.php : composé d'un nom, d'un email et d'un mot de passe
 
 
-###Contrôleurs
+### Contrôleurs
 * AssoController.php : Permet le changement d'association (quand une personne est dans plusieurs assos) et la récupération des demandes faites par l'asso 
 * BorrowController.php : Permet la gestion des demandes d'emprunts
 * Controller.php :
@@ -78,7 +86,7 @@ php artisan storage:link
 * LoginController.php : Gére l'authentification avec le CAS 
 * MaterielController.php : Permet la gestion du matériel, avec les ajouts, suppression d'objets, les recherches...
 
-###Vues
+### Vues
 * welcome.blade.php : gére la connexion au portail des assos
 * home.blade.php : gére la page d'accueil 
 * header.blade.php : header, qui est importé ensuite sur chacune des pages 
