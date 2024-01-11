@@ -90,10 +90,6 @@
                             </svg>
                         </div>
                     </div>
-
-                    {{--                        <button type="submit" class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">--}}
-                    {{--                            Changer d'association--}}
-                    {{--                        </button>--}}
                 </div>
             </form>
         </div>
@@ -103,8 +99,6 @@
                     <button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Gérer les demandes
                     </button>
                 </a>
-                {{--    <a href="/mesDemandes"><button class="mt-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Mes demandes</button></a>--}}
-
             </div>
             <button class="mt-4 ml-4 bg-[#D90368] text-white px-4 py-2 rounded hover:bg-sky-700">Faire mon inventaire
             </button>
@@ -115,12 +109,11 @@
     </div>
 
     <div class="mt-8 px-4">
-        <p class="text-xl font-bold">Mes items</p>
+        <p class="text-xl font-bold">Mes classes d'items</p>
     </div>
     <div class="">
         <div class="flex flex-col bg-gray-100 font-sans ">
             <div class="transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-[#D90368] m-4">
-
                 @if(count($items) > 0)
 
                     @foreach($items as $item)
@@ -133,11 +126,7 @@
             </div>
         </div>
     </div>
-    {{--    @if(session()->has('message'))--}}
-    {{--        <div class="-success">--}}
-    {{--            {{ session()->get('message') }}--}}
-    {{--        </div>--}}
-    {{--    @endif--}}
+
     <div id="addObjectForm" class="fixed pt-20 inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="/addObject" enctype="multipart/form-data" method="post">

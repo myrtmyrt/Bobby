@@ -28,7 +28,6 @@
 
         <div class="w-full p-6 p-4 bg-gray-100">
             <h1 class="text-xl"><b>{{$class->name}}</b></h1>
-
             <h1><b>Id: </b>{{$class->id}}</h1>
             <h1><b>Association: </b>{{$class->asso_id}}</h1>
             <h2><b>Categorie: </b>
@@ -39,6 +38,7 @@
                     @endif
                 @endforeach
             </h2>
+            <h1><b>Items:</b> {{$class['items']->count()}}</h1>
 
         </div>
         <div class="w-full border-s-2 border-dashed border-l-rose-600 p-4  ltr bg-gray-100 rounded-br rounded-tr">

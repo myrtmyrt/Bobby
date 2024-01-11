@@ -92,6 +92,13 @@ class BorrowController extends Controller
             $query->select('items.id', 'class_id');
         }]);
 
+        /*foreach ($requests as $request){
+            $class_id = $request->items[0]['class_id'];
+            $class = ItemClass::find($class_id);
+            $request['class'] = $class;
+        }*/
+
+
         $result1 = $requests->get()->filter(function ($request) {
             return $request['state'] == RequestStateEnum::EnAttente;
         });
@@ -105,7 +112,6 @@ class BorrowController extends Controller
         });
 
         $paginatesRequests = $requests->paginate(10);
-
 
         return view('manageRequests', ['requests' => $paginatesRequests, 'enAttente' => $result1, 'validees'=>$result2, 'refusees'=>$result3]);
 

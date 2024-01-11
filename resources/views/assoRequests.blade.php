@@ -64,7 +64,7 @@
                 <h2 class="text-2xl font-semibold mb-2 text-[#D90368]">Toutes les demandes</h2>
                 @if(count($requests) > 0)
                     @foreach($requests as $request)
-                        <x-request :request="$request" />
+                        <x-myRequest :request="$request" />
                     @endforeach
                     {{ $requests->links() }}
                 @endif
