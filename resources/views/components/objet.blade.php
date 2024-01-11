@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <div id="updateObjectForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
+    <div id="updateObjectForm" class="fixed top-20 inset-0 bg-gray-800 bg-opacity-50 hidden flex items-center justify-center overflow-y-auto">
         <div class="bg-white p-8 rounded-lg mx-auto">
             <form action="{{ route('updateObject', ['id' => $class->id]) }}" enctype="multipart/form-data" method="post">
                 @csrf
