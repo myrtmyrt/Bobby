@@ -116,7 +116,7 @@ Il y a quatres principales pages : la page d'accueil, la page de matériel, la p
 
 ## UML
 
-```puml
+```plantuml
 @startuml
 
 skinparam groupInheritance 2
