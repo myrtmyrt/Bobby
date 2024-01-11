@@ -117,8 +117,6 @@ Il y a quatres principales pages : la page d'accueil, la page de matériel, la p
 ## UML
 
 ```plantuml
-@startuml
-
 skinparam groupInheritance 2
 
 cenum RequestState{
@@ -200,6 +198,5 @@ Association "1..1" -- "0..*" Borrow_Request : "demands" >
 
 
 Item "1..1" -- "1..*" ConditionHistory : "has" >
-@enduml
 ```
 
