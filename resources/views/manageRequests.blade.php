@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<div class="bg-white">
+<div class="w-screen transition-all bg-gray-50 fixed z-50 h-20 top-0 flex justify-between items-center px-10">
     @include('.header')
 </div>
 
