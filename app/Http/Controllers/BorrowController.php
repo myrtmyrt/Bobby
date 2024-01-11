@@ -62,6 +62,8 @@ class BorrowController extends Controller
                     // Ajoutez l'entrée à la table pivot avec les informations nécessaires
                     $borrowRequest->items()->attach($item->id);
                 }
+                $result = $borrowRequest->save();
+
 
                 $message = "Demande prise en compte avec succes";
                 session(['message' => $message]);
