@@ -7,7 +7,8 @@
 - [Structure du Code](#structure-du-code)
 - [Modèle de Données](#modèle-de-données)
 - [Installation](#installation)
-- [Code de Conduite](#code-de-conduite)
+- [Organisation_générale](#organisation-gérérale)
+- [UML](#uml)
 
 ## Introduction
 
@@ -21,12 +22,12 @@ prêt à l’association propriétaire, qui acceptera ou non le prêt. La trace 
 sauvegardée sur la plateforme.
 
 ## Fonctionnalités
-- Voir le matériel des associations
-- Pouvoir gérer le matériel de son.ses association.s 
-- Pouvoir demander un emprunt et gérer ses demandes en cours
-- Pouvoir gérer les demandes d'emprunt faites à son.ses associations
+- Pouvoir gérer le matériel de son.ses association.s (Ajout, modifications)
+- Voir le matériel des associations de la fédération
+- Pouvoir demander un emprunt à une association
+- Pouvoir gérer ses demandes d'emprunts en cours
+- Pouvoir gérer les prêts en cours de son.ses associations
 - Gestion des droits en fonction de la personne connectée 
-
 
 
 ## Structure du Code
@@ -38,31 +39,59 @@ Ensuite, nous avons fait plusieurs script ou nous avons utilisé Javascript et p
 ## Modèle de données
 <img src="Conception/UML_V6.png" style="margin-top: 5%; margin-left: 50%; transform: translateX(-50%)" alt="">
 
+## Installation
+
+1. Clone le repository:
+
+```bash
+git clone https://gitlab.utc.fr/royhucheradorni/ia04.git
+```
+
+2. Lancer l'application en local :
+
+Démarrer le serveur :
+
+```bash
+php artisan serve 
+```
+
+3. Démarrer le Tailwind :
+
+```bash
+npm run dev
+```
+
+4. Permettre la gestion et le stockage des images :
+```bash
+php artisan storage:link
+```
 
 ## Organisation-gérérale
+###Modèles
 
-###Routes
 
 ###Contrôleurs
-*AssoController.php
-*BorrowController.php
-*Controller.php
-*HomeController.php 
-*LoginController.php
-*MaterielController.php
+* AssoController.php : Permet le changement d'association (quand une personne est dans plusieurs assos) et la récupération des demandes faites par l'asso 
+* BorrowController.php : Permet la gestion des demandes d'emprunts
+* Controller.php :
+* HomeController.php : Retourne uniquement la vue de la page d'accueil 
+* LoginController.php : Gére l'authentification avec le CAS 
+* MaterielController.php : Permet la gestion du matériel, avec les ajouts, suppression d'objets, les recherches...
 
 ###Vues
-*welcome.blade.php : gérer la connexion au portail des assos
-*home.blade.php : gère la page d'accueil 
-*header.blade.php : 
-*footer.blade.php :
-*myAsso.blade.php : 
-*borrowRequests.blade.php : 
-*manageRequests.blade.php : 
+* welcome.blade.php : gére la connexion au portail des assos
+* home.blade.php : gére la page d'accueil 
+* header.blade.php : header, qui est importé ensuite sur chacune des pages 
+* footer.blade.php : footer, qui est ensuite importé sur chacune des pages 
+* myAsso.blade.php : Page propre à l'association, permet de gérer son matériel, ses emprunts,  de faire son inventaire...
+* materiel.blade.php : Page permettant à n'importe quel membre d'asso de voir le matériel de la fédération et de pouvoir faire une demande de prêt
+* borrowRequests.blade.php : Vue permettant la demande d'emprunts
+* assRequests.blade.php : Vue permettant la gestion des demandes d'emprunts
+* addItems.blade.php : Page permettant de gérer l'ajout d'items à la BDD 
 
-*my-request.blade.php :
-*objet.blade.php :
-*request.blade.php : 
+*my-request.blade.php : Component pour les demandes d'emprunts
+*objet.blade.php : Component pour l'affichage des objets 
+*request.blade.php : Component pour gérer les demandes d'emprunts
 
 ## UML
 
@@ -151,32 +180,5 @@ Association "1..1" -- "0..*" Borrow_Request : "demands" >
 
 Item "1..1" -- "1..*" ConditionHistory : "has" >
 @enduml
-```
-
-## Installation
-
-1. Clone le repository:
-
-```bash
-git clone https://gitlab.utc.fr/royhucheradorni/ia04.git
-```
-
-2. Lancer l'application en local :
-
-Démarrer le serveur :
-
-```bash
-php artisan serve 
-```
-
-3. Démarrer le Tailwind :
-
-```bash
-npm run dev
-```
-
-4. Permettre la gestion et le stockage des images :
-```bash
-php artisan storage:link
 ```
 
