@@ -37,7 +37,7 @@ Route::post('/ajouterItems', [\App\Http\Controllers\MaterielController::class, '
 
 Route::post('/addObject', [\App\Http\Controllers\MaterielController::class, 'store'])->name('addObject')->middleware(\App\Http\Middleware\Connexion::class);
 Route::post('/updateObject/{id}', [MaterielController::class, 'updateObject'])->name('updateObject');
-Route::post('/deleteObject/{id}', [MaterielController::class, 'deleteObject'])->name('deleteObject');
+Route::get('/deleteObject/{id}', [MaterielController::class, 'deleteObject'])->name('deleteObject');
 
 
 Route::get('/demandeEmprunt/{class_id}', [\App\Http\Controllers\BorrowController::class, 'getForm'])->name("borrowRequests")->middleware(\App\Http\Middleware\Connexion::class);

@@ -6,14 +6,14 @@
         $(document).ready(function () {
             const modifyObjectButton = $('#modifyObjectButton');
             const updateObjectForm = $('#updateObjectForm');
-            const deleteObjectButton = $('#deleteObjectButton');
+           /* const deleteObjectButton = $('#deleteObjectButton');*/
 
             modifyObjectButton.on('click', function (e) {
                 e.preventDefault();
                 updateObjectForm.removeClass('hidden');
             });
 
-            deleteObjectButton.on('click', function (e) {
+           /* deleteObjectButton.on('click', function (e) {
                 e.preventDefault();
 
                 if (confirm("Êtes-vous sûr de vouloir supprimer cet objet?")) {
@@ -36,7 +36,7 @@
                         }
                     });
                 }
-            });
+            });*/
         });
     </script>
 </head>
@@ -88,9 +88,9 @@
                             Modifier l'objet
                         </button>
 
-                        <button id="deleteObjectButton" data-object-id="{{ $class->id }}" class="bg-red-600 hover:bg-red-800 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
-                            Supprimer l'objet
-                        </button>
+                        <a href="/deleteObject/{{$class->id}}"><button id="deleteObjectButton" data-object-id="{{ $class->id }}" class="bg-red-600 hover:bg-red-800 mt-4 ml-4 px-4 py-2 text-white rounded flex items-center">
+                                Supprimer l'objet
+                            </button></a>
                     </div>
 
                 @endif

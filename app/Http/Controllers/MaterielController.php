@@ -208,9 +208,9 @@ class MaterielController extends Controller
         try {
             $object = ItemClass::findOrFail($id);
             $object->delete();
-            return redirect()->back()->with('success', 'Objet supprimé avec succès');
+            return redirect('/myAsso');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Erreur lors de la suppression de l\'objet');
+            return redirect('/myAsso');
         }
     }
 
