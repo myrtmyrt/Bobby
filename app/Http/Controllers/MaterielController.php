@@ -94,9 +94,11 @@ class MaterielController extends Controller
             'description' => 'required',
         ]);
         $asso = session('user')['current_asso']['login'];
-        $position =$request->get('position');
+        $position=$request->get('position');
 
-        if($position)
+        $private=$request->get('private');
+
+        if($private)
             $private = true;
         else
             $private=false;

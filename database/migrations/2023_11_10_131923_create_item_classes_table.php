@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("position");
             $table->text('description');
             $table->string('image');
-            $table->boolean('private');
+            $table->boolean('private')->default(false);
             $table->timestamps();
         });
     }
